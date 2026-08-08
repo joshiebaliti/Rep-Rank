@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#070707">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="REP//RANK">
 <title>REP//RANK</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"></script>
@@ -24,7 +22,9 @@ body{
  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Arial,sans-serif;
 }
 
-button{font:inherit}
+button{
+ font:inherit;
+}
 
 .app{
  max-width:540px;
@@ -32,8 +32,13 @@ button{font:inherit}
  padding:22px 18px 110px;
 }
 
-.screen{display:none}
-.screen.active{display:block}
+.screen{
+ display:none;
+}
+
+.screen.active{
+ display:block;
+}
 
 .top{
  display:flex;
@@ -128,7 +133,9 @@ h2{
  font-weight:950;
 }
 
-.section{margin-top:28px}
+.section{
+ margin-top:28px;
+}
 
 .exercise{
  width:100%;
@@ -145,7 +152,9 @@ h2{
  cursor:pointer;
 }
 
-.exercise strong{font-size:15px}
+.exercise strong{
+ font-size:15px;
+}
 
 .exercise span{
  display:block;
@@ -223,9 +232,17 @@ h2{
  transition:.3s;
 }
 
-.bodyPart.low{background:#555}
-.bodyPart.medium{background:#aaa}
-.bodyPart.high{background:#fff}
+.bodyPart.low{
+ background:#555;
+}
+
+.bodyPart.medium{
+ background:#aaa;
+}
+
+.bodyPart.high{
+ background:#fff;
+}
 
 .head{
  width:58px;
@@ -267,8 +284,13 @@ h2{
  border-radius:45%;
 }
 
-.chestL{left:49px}
-.chestR{right:49px}
+.chestL{
+ left:49px;
+}
+
+.chestR{
+ right:49px;
+}
 
 .armL,.armR{
  width:37px;
@@ -310,8 +332,13 @@ h2{
  border-radius:28px;
 }
 
-.legL{left:55px}
-.legR{right:55px}
+.legL{
+ left:55px;
+}
+
+.legR{
+ right:55px;
+}
 
 .bodyLegend{
  display:flex;
@@ -330,7 +357,9 @@ h2{
  margin-right:4px;
 }
 
-.legendDot.active{background:#fff}
+.legendDot.active{
+ background:#fff;
+}
 
 /* WORKOUT */
 
@@ -367,7 +396,7 @@ h2{
  right:14px;
  display:flex;
  justify-content:space-between;
- z-index:15;
+ z-index:20;
 }
 
 .status{
@@ -386,7 +415,7 @@ h2{
  padding:15px;
  background:rgba(0,0,0,.78);
  border-radius:19px;
- z-index:15;
+ z-index:20;
 }
 
 .repBig{
@@ -401,8 +430,17 @@ h2{
  margin-top:5px;
 }
 
-.good{color:#fff}
-.warn{color:#aaa}
+.good{
+ color:#fff;
+}
+
+.warn{
+ color:#aaa;
+}
+
+.fail{
+ color:#777;
+}
 
 .workoutStats{
  display:grid;
@@ -440,10 +478,6 @@ h2{
  overflow:hidden;
 }
 
-.petLayer.hidden{
- display:none;
-}
-
 #petCanvas{
  width:100%;
  height:100%;
@@ -453,7 +487,7 @@ h2{
  position:absolute;
  left:14px;
  top:58px;
- background:rgba(0,0,0,.8);
+ background:rgba(0,0,0,.82);
  padding:10px 13px;
  border-radius:15px;
  font-size:11px;
@@ -461,14 +495,16 @@ h2{
  display:none;
 }
 
-.petInfo.show{display:block}
+.petInfo.show{
+ display:block;
+}
 
 .mutationBox{
  position:absolute;
  left:14px;
  right:14px;
  top:105px;
- background:rgba(0,0,0,.88);
+ background:rgba(0,0,0,.9);
  border:1px solid #333;
  border-radius:20px;
  padding:15px;
@@ -476,7 +512,9 @@ h2{
  z-index:30;
 }
 
-.mutationBox.show{display:block}
+.mutationBox.show{
+ display:block;
+}
 
 .mutationName{
  font-size:20px;
@@ -504,7 +542,7 @@ h2{
  transition:.2s;
 }
 
-/* GRAPH */
+/* CHART */
 
 .chart{
  height:220px;
@@ -558,13 +596,13 @@ canvas.chartCanvas{
 }
 
 .petVisual{
- height:120px;
+ height:130px;
  position:relative;
 }
 
 .petVisual canvas{
- width:120px;
- height:120px;
+ width:130px;
+ height:130px;
 }
 
 .petName{
@@ -589,7 +627,6 @@ canvas.chartCanvas{
  margin-top:10px;
  font-size:11px;
  font-weight:950;
- cursor:pointer;
 }
 
 .emptyPets{
@@ -629,7 +666,9 @@ canvas.chartCanvas{
  width:20%;
 }
 
-.nav button.active{color:#fff}
+.nav button.active{
+ color:#fff;
+}
 
 .navIcon{
  display:block;
@@ -653,7 +692,9 @@ canvas.chartCanvas{
  box-shadow:0 15px 50px rgba(0,0,0,.5);
 }
 
-.popup.show{display:block}
+.popup.show{
+ display:block;
+}
 
 .popupTitle{
  font-weight:950;
@@ -681,9 +722,7 @@ canvas.chartCanvas{
 </div>
 
 <div class="hero">
-
-<div class="muted">CURRENT LEVEL</div>
-
+<div class="muted">TOTAL XP</div>
 <div class="level" id="level">1</div>
 
 <div class="muted">
@@ -693,7 +732,6 @@ canvas.chartCanvas{
 <div class="xpbar">
 <div class="xpfill" id="xpFill"></div>
 </div>
-
 </div>
 
 <div class="grid">
@@ -795,7 +833,9 @@ canvas.chartCanvas{
 </div>
 
 </div>
+
 </div>
+
 </div>
 
 
@@ -809,13 +849,13 @@ canvas.chartCanvas{
 
 <h1 id="workoutTitle">Push-ups</h1>
 
-<div class="camera">
+<div class="camera" id="camera">
 
 <video id="video" autoplay playsinline muted></video>
 
 <canvas id="poseCanvas"></canvas>
 
-<div id="petLayer" class="petLayer hidden">
+<div class="petLayer" id="petLayer">
 
 <canvas id="petCanvas"></canvas>
 
@@ -830,7 +870,7 @@ BASE
 </div>
 
 <div class="mutationReq">
-Complete <span id="mutationRequired">4</span> reps
+Complete <span id="mutationRequired">4</span> extra reps
 </div>
 
 <div class="captureBar">
@@ -870,7 +910,7 @@ Start camera to begin
 <div class="workoutStats">
 
 <div class="smallStat">
-<b>FORM</b>
+<b>LAST REP FORM</b>
 <strong id="formScore">--</strong>
 </div>
 
@@ -1013,33 +1053,27 @@ RESET PROGRESS
 
 <div class="nav">
 
-<button id="navHome"
-class="active"
-onclick="stopCamera();show('home')">
+<button id="navHome" class="active" onclick="goHome()">
 <span class="navIcon">⌂</span>
 Home
 </button>
 
-<button id="navWorkout"
-onclick="show('workout')">
+<button id="navWorkout" onclick="show('workout')">
 <span class="navIcon">🏋️</span>
 Train
 </button>
 
-<button id="navProgress"
-onclick="stopCamera();show('progress')">
+<button id="navProgress" onclick="show('progress')">
 <span class="navIcon">↗</span>
 Progress
 </button>
 
-<button id="navPets"
-onclick="stopCamera();show('pets')">
+<button id="navPets" onclick="show('pets')">
 <span class="navIcon">◆</span>
 Pets
 </button>
 
-<button id="navProfile"
-onclick="stopCamera();show('profile')">
+<button id="navProfile" onclick="show('profile')">
 <span class="navIcon">●</span>
 Profile
 </button>
@@ -1067,8 +1101,8 @@ DATA
 ===================================================== */
 
 const defaultData={
- reps:0,
  xp:0,
+ reps:0,
  level:1,
  streak:0,
  bestStreak:0,
@@ -1084,25 +1118,39 @@ const defaultData={
  pets:[]
 };
 
-let data;
+let saved=localStorage.getItem("reprank");
 
-try{
- data=JSON.parse(localStorage.getItem("reprank"));
-}catch(e){
- data=null;
-}
+let data=saved
+ ? JSON.parse(saved)
+ : JSON.parse(JSON.stringify(defaultData));
 
-if(!data){
- data=JSON.parse(JSON.stringify(defaultData));
-}
-
+data.xp=data.xp||0;
+data.reps=data.reps||0;
+data.level=data.level||1;
+data.streak=data.streak||0;
+data.bestStreak=data.bestStreak||0;
+data.workouts=data.workouts||0;
+data.history=data.history||[];
 data.muscles=data.muscles||JSON.parse(JSON.stringify(defaultData.muscles));
 data.pets=data.pets||[];
-data.history=data.history||[];
 
 let currentWorkout="Push-ups";
+
 let sessionReps=0;
 let sessionXP=0;
+
+let cameraRunning=false;
+let cameraStream=null;
+let pose=null;
+
+let exercisePhase="START";
+let cycleQuality=[];
+let lastRepTime=0;
+
+let plankTimer=null;
+let plankSeconds=0;
+
+let feedbackTimeout=null;
 
 
 /* =====================================================
@@ -1110,64 +1158,33 @@ RANKS
 ===================================================== */
 
 const ranks=[
- {name:"ROOKIE I",xp:0},
- {name:"ROOKIE II",xp:100},
- {name:"ROOKIE III",xp:200},
- {name:"GRINDER I",xp:300},
- {name:"GRINDER II",xp:400},
- {name:"ATHLETE",xp:500},
- {name:"BEAST",xp:600},
- {name:"ELITE",xp:700},
- {name:"CHAMPION",xp:800},
- {name:"LEGEND",xp:900},
- {name:"GOAT",xp:1000}
+{name:"ROOKIE I",xp:0},
+{name:"ROOKIE II",xp:100},
+{name:"ROOKIE III",xp:200},
+{name:"GRINDER I",xp:300},
+{name:"GRINDER II",xp:400},
+{name:"ATHLETE",xp:500},
+{name:"BEAST",xp:600},
+{name:"ELITE",xp:700},
+{name:"CHAMPION",xp:800},
+{name:"LEGEND",xp:900},
+{name:"GOAT",xp:1000}
 ];
-
-
-/* =====================================================
-XP / RANK
-===================================================== */
-
-function getTotalXP(){
-
- return data.reps +
- Object.values(data.muscles).reduce(
-  (a,b)=>a+b,
-  0
- ) +
- data.pets.reduce(
-  (a,p)=>a+(p.xp||0),
-  0
- );
-
-}
 
 function getRank(){
 
  return Math.min(
-  Math.floor(getTotalXP()/100),
+  Math.floor(data.xp/100),
   ranks.length-1
  );
 
 }
 
+function updateLevel(){
 
-/* =====================================================
-CAMERA
-===================================================== */
+ data.level=Math.floor(data.xp/100)+1;
 
-let pose=null;
-let cameraStream=null;
-let cameraRunning=false;
-
-let exerciseState="UP";
-let downFrames=0;
-let upFrames=0;
-
-let plankTimer=null;
-let plankSeconds=0;
-
-let lastRepTime=0;
+}
 
 
 /* =====================================================
@@ -1186,98 +1203,87 @@ const species=[
 ];
 
 const rarities=[
- {
-  name:"COMMON",
-  multiplier:1,
-  chance:.55
- },
- {
-  name:"UNCOMMON",
-  multiplier:1.5,
-  chance:.25
- },
- {
-  name:"RARE",
-  multiplier:2.5,
-  chance:.12
- },
- {
-  name:"EPIC",
-  multiplier:4,
-  chance:.055
- },
- {
-  name:"LEGENDARY",
-  multiplier:7,
-  chance:.02
- },
- {
-  name:"MYTHIC",
-  multiplier:12,
-  chance:.005
- }
+{
+ name:"COMMON",
+ multiplier:1,
+ chance:.55
+},
+{
+ name:"UNCOMMON",
+ multiplier:1.5,
+ chance:.25
+},
+{
+ name:"RARE",
+ multiplier:2.5,
+ chance:.12
+},
+{
+ name:"EPIC",
+ multiplier:4,
+ chance:.055
+},
+{
+ name:"LEGENDARY",
+ multiplier:7,
+ chance:.02
+},
+{
+ name:"MYTHIC",
+ multiplier:12,
+ chance:.005
+}
 ];
 
-
-/*
-BASE  = 4
-ICE   = 6
-FIRE  = 8
-LIGHT  = 10
-BEAST = 15
-*/
-
 const mutations=[
- {
-  name:"BASE",
-  required:4,
-  multiplier:1
- },
- {
-  name:"ICE",
-  required:6,
-  multiplier:1.6
- },
- {
-  name:"FIRE",
-  required:8,
-  multiplier:2.5
- },
- {
-  name:"LIGHTNING",
-  required:10,
-  multiplier:4
- },
- {
-  name:"BEAST",
-  required:15,
-  multiplier:8
- }
+{
+ name:"BASE",
+ required:4,
+ multiplier:1
+},
+{
+ name:"ICE",
+ required:6,
+ multiplier:1.6
+},
+{
+ name:"FIRE",
+ required:8,
+ multiplier:2.5
+},
+{
+ name:"LIGHTNING",
+ required:10,
+ multiplier:4
+},
+{
+ name:"BEAST",
+ required:15,
+ multiplier:8
+}
 ];
 
 let wildPet=null;
 
 let petX=100;
-let petY=120;
+let petY=150;
 
-let petVX=1.2;
-let petVY=.8;
+let petVX=1;
+let petVY=.7;
 
-let petAnimation=0;
+let petFrame=0;
 
 let mutationProgress=0;
 
 
 /* =====================================================
-PET RANDOMNESS
+RANDOM PETS
 ===================================================== */
 
 function randomSpecies(){
 
  return species[
-  Math.floor(
-   Math.random()*species.length
-  )
+  Math.floor(Math.random()*species.length)
  ];
 
 }
@@ -1291,9 +1297,8 @@ function randomRarity(){
 
   total+=rarity.chance;
 
-  if(r<=total){
+  if(r<=total)
    return rarity;
-  }
 
  }
 
@@ -1303,12 +1308,19 @@ function randomRarity(){
 
 function randomMutation(){
 
- const r=Math.random();
+ let r=Math.random();
 
- if(r<.50)return mutations[0];
- if(r<.72)return mutations[1];
- if(r<.88)return mutations[2];
- if(r<.97)return mutations[3];
+ if(r<.50)
+  return mutations[0];
+
+ if(r<.72)
+  return mutations[1];
+
+ if(r<.88)
+  return mutations[2];
+
+ if(r<.97)
+  return mutations[3];
 
  return mutations[4];
 
@@ -1316,7 +1328,58 @@ function randomMutation(){
 
 
 /* =====================================================
-PET SPRITE
+PET COLOUR
+===================================================== */
+
+function petGradient(ctx,mutation){
+
+ let g=ctx.createLinearGradient(
+  -40,-40,
+  40,40
+ );
+
+ if(mutation==="ICE"){
+
+  g.addColorStop(0,"#ffffff");
+  g.addColorStop(1,"#37bfff");
+
+ }
+
+ else if(mutation==="FIRE"){
+
+  g.addColorStop(0,"#fff38a");
+  g.addColorStop(1,"#ff2600");
+
+ }
+
+ else if(mutation==="LIGHTNING"){
+
+  g.addColorStop(0,"#ffffff");
+  g.addColorStop(1,"#735cff");
+
+ }
+
+ else if(mutation==="BEAST"){
+
+  g.addColorStop(0,"#ffdb4d");
+  g.addColorStop(1,"#7a00ff");
+
+ }
+
+ else{
+
+  g.addColorStop(0,"#aaa");
+  g.addColorStop(1,"#333");
+
+ }
+
+ return g;
+
+}
+
+
+/* =====================================================
+ANIMATED SPRITES
 ===================================================== */
 
 function drawCreature(
@@ -1324,244 +1387,800 @@ function drawCreature(
  x,
  y,
  scale,
- speciesName,
+ species,
  rarity,
- mutation
+ mutation,
+ mini=false
 ){
+
+ const t=petFrame;
 
  ctx.save();
 
  ctx.translate(x,y);
-
  ctx.scale(scale,scale);
 
- const bounce=
- Math.sin(petAnimation*3)*4;
+ const bounce=Math.sin(t*.08)*3;
 
  ctx.translate(0,bounce);
 
+ const grad=petGradient(ctx,mutation);
+
+ let ring="#444";
+
+ if(rarity==="UNCOMMON") ring="#777";
+ if(rarity==="RARE") ring="#aaa";
+ if(rarity==="EPIC") ring="#bbb";
+ if(rarity==="LEGENDARY") ring="#ddd";
+ if(rarity==="MYTHIC") ring="#fff";
+
  /* shadow */
+
+ ctx.fillStyle="rgba(0,0,0,.35)";
 
  ctx.beginPath();
 
  ctx.ellipse(
   0,
+  38,
   32,
-  28,
   7,
   0,
   0,
   Math.PI*2
  );
 
- ctx.fillStyle="rgba(0,0,0,.45)";
- ctx.fill();
-
- /* body */
-
- ctx.beginPath();
-
- ctx.ellipse(
-  0,
-  0,
-  28,
-  30,
-  0,
-  0,
-  Math.PI*2
- );
-
- let grad=
- ctx.createLinearGradient(
-  -25,
-  -25,
-  25,
-  25
- );
-
- if(mutation==="ICE"){
-
-  grad.addColorStop(0,"#ffffff");
-  grad.addColorStop(1,"#35bfff");
-
- }
-
- else if(mutation==="FIRE"){
-
-  grad.addColorStop(0,"#fff8a0");
-  grad.addColorStop(1,"#ff2500");
-
- }
-
- else if(mutation==="LIGHTNING"){
-
-  grad.addColorStop(0,"#ffffff");
-  grad.addColorStop(1,"#554cff");
-
- }
-
- else if(mutation==="BEAST"){
-
-  grad.addColorStop(0,"#ffff80");
-  grad.addColorStop(1,"#a000ff");
-
- }
-
- else{
-
-  grad.addColorStop(0,"#aaa");
-  grad.addColorStop(1,"#444");
-
- }
-
- ctx.fillStyle=grad;
- ctx.fill();
-
- ctx.strokeStyle="#fff";
- ctx.lineWidth=2;
- ctx.stroke();
-
-
- /* ears */
-
- ctx.beginPath();
-
- ctx.moveTo(-18,-20);
- ctx.lineTo(-30,-42);
- ctx.lineTo(-6,-28);
-
- ctx.fillStyle=grad;
- ctx.fill();
-
- ctx.stroke();
-
-
- ctx.beginPath();
-
- ctx.moveTo(18,-20);
- ctx.lineTo(30,-42);
- ctx.lineTo(6,-28);
-
- ctx.fill();
- ctx.stroke();
-
-
- /* eyes */
-
- ctx.fillStyle="#050505";
-
- ctx.beginPath();
- ctx.arc(-9,-5,4,0,Math.PI*2);
- ctx.fill();
-
- ctx.beginPath();
- ctx.arc(9,-5,4,0,Math.PI*2);
  ctx.fill();
 
 
  /* rarity ring */
+
+ ctx.strokeStyle=ring;
+ ctx.lineWidth=3;
 
  ctx.beginPath();
 
  ctx.arc(
   0,
   0,
-  39,
+  48,
   0,
   Math.PI*2
  );
 
- const rarityColors={
-  COMMON:"#444",
-  UNCOMMON:"#777",
-  RARE:"#aaa",
-  EPIC:"#ccc",
-  LEGENDARY:"#fff",
-  MYTHIC:"#fff"
- };
-
- ctx.strokeStyle=
- rarityColors[rarity]||"#444";
-
- ctx.lineWidth=
- rarity==="MYTHIC"?5:3;
-
  ctx.stroke();
 
 
- /* ICE */
+ /* DRAGON */
 
- if(mutation==="ICE"){
+ if(species==="DRAGON"){
 
-  for(let i=0;i<6;i++){
+  let flap=Math.sin(t*.12)*12;
 
-   ctx.fillStyle="#fff";
+  /* wings */
 
-   ctx.fillRect(
-    Math.sin(
-     i*3+petAnimation
-    )*35,
-    Math.cos(
-     i*4+petAnimation
-    )*35,
-    4,
-    4
-   );
+  ctx.fillStyle=grad;
 
-  }
+  ctx.beginPath();
+  ctx.moveTo(-18,-5);
+  ctx.lineTo(-58,-30-flap);
+  ctx.lineTo(-45,12);
+  ctx.lineTo(-18,18);
+  ctx.fill();
 
- }
+  ctx.beginPath();
+  ctx.moveTo(18,-5);
+  ctx.lineTo(58,-30+flap);
+  ctx.lineTo(45,12);
+  ctx.lineTo(18,18);
+  ctx.fill();
 
+  /* body */
 
- /* FIRE */
+  ctx.beginPath();
 
- if(mutation==="FIRE"){
+  ctx.ellipse(
+   0,
+   10,
+   25,
+   31,
+   0,
+   0,
+   Math.PI*2
+  );
+
+  ctx.fillStyle=grad;
+  ctx.fill();
+
+  /* head */
 
   ctx.beginPath();
 
   ctx.arc(
    0,
-   30,
-   10+
-   Math.sin(petAnimation*4)*3,
+   -18,
+   24,
    0,
    Math.PI*2
   );
 
-  ctx.fillStyle="#ffdf00";
+  ctx.fill();
+
+  /* horns */
+
+  ctx.fillStyle="#ddd";
+
+  ctx.beginPath();
+  ctx.moveTo(-12,-35);
+  ctx.lineTo(-22,-55);
+  ctx.lineTo(-3,-40);
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.moveTo(12,-35);
+  ctx.lineTo(22,-55);
+  ctx.lineTo(3,-40);
+  ctx.fill();
+
+  /* tail */
+
+  ctx.strokeStyle=grad;
+  ctx.lineWidth=10;
+
+  ctx.beginPath();
+
+  ctx.moveTo(20,28);
+  ctx.quadraticCurveTo(
+   50,
+   45,
+   38,
+   60
+  );
+
+  ctx.stroke();
+
+  /* eyes */
+
+  drawEyes(ctx);
+
+ }
+
+
+ /* WOLF */
+
+ if(species==="WOLF"){
+
+  let walk=Math.sin(t*.14)*6;
+
+  drawLegs(
+   ctx,
+   grad,
+   walk
+  );
+
+  ctx.fillStyle=grad;
+
+  ctx.beginPath();
+
+  ctx.ellipse(
+   0,
+   15,
+   31,
+   24,
+   0,
+   0,
+   Math.PI*2
+  );
+
+  ctx.fill();
+
+  /* tail */
+
+  ctx.strokeStyle=grad;
+  ctx.lineWidth=10;
+
+  ctx.beginPath();
+
+  ctx.moveTo(28,15);
+  ctx.quadraticCurveTo(
+   55,
+   0,
+   48,
+   -20+walk
+  );
+
+  ctx.stroke();
+
+  /* head */
+
+  ctx.beginPath();
+
+  ctx.arc(
+   -3,
+   -13,
+   25,
+   0,
+   Math.PI*2
+  );
+
+  ctx.fill();
+
+  /* ears */
+
+  ctx.beginPath();
+  ctx.moveTo(-22,-27);
+  ctx.lineTo(-27,-50);
+  ctx.lineTo(-7,-34);
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.moveTo(15,-30);
+  ctx.lineTo(29,-50);
+  ctx.lineTo(31,-23);
+  ctx.fill();
+
+  drawEyes(ctx);
+
+ }
+
+
+ /* TIGER */
+
+ if(species==="TIGER"){
+
+  let tail=Math.sin(t*.1)*10;
+
+  drawLegs(
+   ctx,
+   grad,
+   Math.sin(t*.12)*3
+  );
+
+  ctx.fillStyle=grad;
+
+  ctx.beginPath();
+
+  ctx.ellipse(
+   0,
+   13,
+   31,
+   25,
+   0,
+   0,
+   Math.PI*2
+  );
+
+  ctx.fill();
+
+  /* stripes */
+
+  ctx.strokeStyle="#111";
+  ctx.lineWidth=4;
+
+  for(let i=-2;i<=2;i++){
+
+   ctx.beginPath();
+
+   ctx.moveTo(
+    -25+i*10,
+    0
+   );
+
+   ctx.lineTo(
+    -15+i*10,
+    25
+   );
+
+   ctx.stroke();
+
+  }
+
+  /* head */
+
+  ctx.fillStyle=grad;
+
+  ctx.beginPath();
+
+  ctx.arc(
+   0,
+   -15,
+   25,
+   0,
+   Math.PI*2
+  );
+
+  ctx.fill();
+
+  /* ears */
+
+  ctx.beginPath();
+  ctx.moveTo(-18,-30);
+  ctx.lineTo(-30,-48);
+  ctx.lineTo(-5,-36);
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.moveTo(18,-30);
+  ctx.lineTo(30,-48);
+  ctx.lineTo(5,-36);
+  ctx.fill();
+
+  /* tail */
+
+  ctx.strokeStyle=grad;
+  ctx.lineWidth=9;
+
+  ctx.beginPath();
+
+  ctx.moveTo(27,16);
+
+  ctx.quadraticCurveTo(
+   58,
+   20+tail,
+   47,
+   -8
+  );
+
+  ctx.stroke();
+
+  drawEyes(ctx);
+
+ }
+
+
+ /* GOLEM */
+
+ if(species==="GOLEM"){
+
+  let stomp=Math.sin(t*.08)>0?3:0;
+
+  ctx.fillStyle=grad;
+
+  /* legs */
+
+  ctx.fillRect(
+   -25,
+   20,
+   18,
+   27+stomp
+  );
+
+  ctx.fillRect(
+   7,
+   20,
+   18,
+   27-stomp
+  );
+
+  /* body */
+
+  roundRect(
+   ctx,
+   -32,
+   -22,
+   64,
+   55,
+   10
+  );
+
+  ctx.fill();
+
+  /* arms */
+
+  ctx.fillRect(
+   -48,
+   -15,
+   16,
+   40
+  );
+
+  ctx.fillRect(
+   32,
+   -15,
+   16,
+   40
+  );
+
+  /* head */
+
+  roundRect(
+   ctx,
+   -27,
+   -45,
+   54,
+   30,
+   7
+  );
+
+  ctx.fill();
+
+  /* core */
+
+  ctx.fillStyle="#fff";
+
+  ctx.beginPath();
+
+  ctx.arc(
+   0,
+   3,
+   8+Math.sin(t*.1)*2,
+   0,
+   Math.PI*2
+  );
+
   ctx.fill();
 
  }
 
 
- /* LIGHTNING */
+ /* FOX */
 
- if(mutation==="LIGHTNING"){
+ if(species==="FOX"){
 
-  for(let i=0;i<3;i++){
+  let tail=Math.sin(t*.1)*12;
+
+  drawLegs(
+   ctx,
+   grad,
+   Math.sin(t*.13)*4
+  );
+
+  ctx.fillStyle=grad;
+
+  ctx.beginPath();
+
+  ctx.ellipse(
+   0,
+   14,
+   29,
+   22,
+   0,
+   0,
+   Math.PI*2
+  );
+
+  ctx.fill();
+
+  /* huge tail */
+
+  ctx.strokeStyle=grad;
+  ctx.lineWidth=15;
+
+  ctx.beginPath();
+
+  ctx.moveTo(25,14);
+
+  ctx.quadraticCurveTo(
+   65,
+   20+tail,
+   45,
+   -20
+  );
+
+  ctx.stroke();
+
+  /* head */
+
+  ctx.beginPath();
+
+  ctx.arc(
+   -4,
+   -13,
+   24,
+   0,
+   Math.PI*2
+  );
+
+  ctx.fill();
+
+  /* ears */
+
+  ctx.beginPath();
+  ctx.moveTo(-20,-28);
+  ctx.lineTo(-25,-51);
+  ctx.lineTo(-5,-35);
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.moveTo(14,-30);
+  ctx.lineTo(28,-50);
+  ctx.lineTo(28,-23);
+  ctx.fill();
+
+  drawEyes(ctx);
+
+ }
+
+
+ /* RAPTOR */
+
+ if(species==="RAPTOR"){
+
+  let run=Math.sin(t*.18)*8;
+
+  ctx.fillStyle=grad;
+
+  /* legs */
+
+  ctx.strokeStyle=grad;
+  ctx.lineWidth=8;
+
+  ctx.beginPath();
+  ctx.moveTo(-10,20);
+  ctx.lineTo(-18,47+run);
+  ctx.lineTo(-30,47+run);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(12,20);
+  ctx.lineTo(20,47-run);
+  ctx.lineTo(32,47-run);
+  ctx.stroke();
+
+  /* body */
+
+  ctx.beginPath();
+
+  ctx.ellipse(
+   0,
+   5,
+   34,
+   22,
+   0,
+   0,
+   Math.PI*2
+  );
+
+  ctx.fill();
+
+  /* neck */
+
+  ctx.beginPath();
+
+  ctx.moveTo(18,0);
+  ctx.lineTo(38,-28);
+  ctx.lineTo(25,-36);
+  ctx.lineTo(5,-5);
+  ctx.fill();
+
+  /* head */
+
+  ctx.beginPath();
+
+  ctx.arc(
+   36,
+   -38,
+   16,
+   0,
+   Math.PI*2
+  );
+
+  ctx.fill();
+
+  /* beak */
+
+  ctx.beginPath();
+
+  ctx.moveTo(48,-38);
+  ctx.lineTo(70,-32);
+  ctx.lineTo(48,-27);
+
+  ctx.fill();
+
+  /* tail */
+
+  ctx.strokeStyle=grad;
+  ctx.lineWidth=9;
+
+  ctx.beginPath();
+
+  ctx.moveTo(-27,5);
+  ctx.lineTo(-62,-12);
+
+  ctx.stroke();
+
+ }
+
+
+ /* SERPENT */
+
+ if(species==="SERPENT"){
+
+  ctx.strokeStyle=grad;
+  ctx.lineWidth=15;
+
+  ctx.beginPath();
+
+  for(let i=0;i<70;i++){
+
+   let px=
+    -35+i;
+
+   let py=
+    Math.sin(
+     i*.25+t*.12
+    )*10;
+
+   if(i===0)
+    ctx.moveTo(px,py);
+   else
+    ctx.lineTo(px,py);
+
+  }
+
+  ctx.stroke();
+
+  /* head */
+
+  ctx.fillStyle=grad;
+
+  ctx.beginPath();
+
+  ctx.arc(
+   40,
+   Math.sin(t*.1)*8,
+   20,
+   0,
+   Math.PI*2
+  );
+
+  ctx.fill();
+
+  /* tongue */
+
+  ctx.strokeStyle="#fff";
+  ctx.lineWidth=2;
+
+  ctx.beginPath();
+
+  ctx.moveTo(58,0);
+  ctx.lineTo(70,-4);
+
+  ctx.moveTo(70,-4);
+  ctx.lineTo(76,-8);
+
+  ctx.moveTo(70,-4);
+  ctx.lineTo(76,0);
+
+  ctx.stroke();
+
+ }
+
+
+ /* PHANTOM */
+
+ if(species==="PHANTOM"){
+
+  let float=Math.sin(t*.09)*8;
+
+  ctx.fillStyle=grad;
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+   -28,
+   28+float
+  );
+
+  ctx.quadraticCurveTo(
+   -35,
+   -35+float,
+   0,
+   -40+float
+  );
+
+  ctx.quadraticCurveTo(
+   35,
+   -35+float,
+   28,
+   28+float
+  );
+
+  ctx.lineTo(
+   15,
+   18+float
+  );
+
+  ctx.lineTo(
+   0,
+   32+float
+  );
+
+  ctx.lineTo(
+   -15,
+   18+float
+  );
+
+  ctx.closePath();
+
+  ctx.fill();
+
+  drawEyes(ctx);
+
+ }
+
+
+ /* MUTATIONS */
+
+ if(mutation==="FIRE"){
+
+  for(let i=0;i<5;i++){
+
+   ctx.fillStyle=
+    i%2
+     ? "#ff3b00"
+     : "#fff27a";
+
+   ctx.beginPath();
+
+   ctx.arc(
+    Math.sin(t*.1+i)*35,
+    30+Math.cos(t*.12+i)*10,
+    4,
+    0,
+    Math.PI*2
+   );
+
+   ctx.fill();
+
+  }
+
+ }
+
+ if(mutation==="ICE"){
+
+  ctx.strokeStyle="#fff";
+  ctx.lineWidth=2;
+
+  for(let i=0;i<6;i++){
 
    ctx.beginPath();
 
    ctx.moveTo(
-    Math.random()*50-25,
-    Math.random()*50-25
+    Math.sin(i*4+t*.03)*40,
+    Math.cos(i*3+t*.03)*40
    );
 
    ctx.lineTo(
-    Math.random()*70-35,
-    Math.random()*70-35
+    Math.sin(i*4+t*.03)*50,
+    Math.cos(i*3+t*.03)*50
    );
 
-   ctx.strokeStyle="#fff";
-   ctx.lineWidth=3;
    ctx.stroke();
 
   }
 
  }
 
+ if(mutation==="LIGHTNING"){
 
- /* BEAST */
+  ctx.strokeStyle="#fff";
+  ctx.lineWidth=3;
+
+  for(let i=0;i<3;i++){
+
+   ctx.beginPath();
+
+   ctx.moveTo(
+    -30+i*20,
+    -45
+   );
+
+   ctx.lineTo(
+    -10+i*20,
+    -15
+   );
+
+   ctx.lineTo(
+    -25+i*20,
+    10
+   );
+
+   ctx.stroke();
+
+  }
+
+ }
 
  if(mutation==="BEAST"){
 
@@ -1573,17 +2192,113 @@ function drawCreature(
   ctx.arc(
    0,
    0,
-   48+
-   Math.sin(petAnimation*3)*3,
+   57,
    0,
    Math.PI*2
   );
 
   ctx.stroke();
 
+  /* horns */
+
+  ctx.fillStyle="#fff";
+
+  ctx.beginPath();
+  ctx.moveTo(-18,-30);
+  ctx.lineTo(-30,-65);
+  ctx.lineTo(-5,-40);
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.moveTo(18,-30);
+  ctx.lineTo(30,-65);
+  ctx.lineTo(5,-40);
+  ctx.fill();
+
  }
 
  ctx.restore();
+
+}
+
+
+/* =====================================================
+SPRITE HELPERS
+===================================================== */
+
+function drawEyes(ctx){
+
+ ctx.fillStyle="#050505";
+
+ ctx.beginPath();
+ ctx.arc(
+  -9,
+  -18,
+  4,
+  0,
+  Math.PI*2
+ );
+ ctx.fill();
+
+ ctx.beginPath();
+ ctx.arc(
+  9,
+  -18,
+  4,
+  0,
+  Math.PI*2
+ );
+ ctx.fill();
+
+}
+
+function drawLegs(ctx,grad,walk){
+
+ ctx.strokeStyle=grad;
+ ctx.lineWidth=9;
+
+ ctx.beginPath();
+
+ ctx.moveTo(-15,25);
+ ctx.lineTo(-18,47+walk);
+
+ ctx.stroke();
+
+ ctx.beginPath();
+
+ ctx.moveTo(15,25);
+ ctx.lineTo(18,47-walk);
+
+ ctx.stroke();
+
+}
+
+function roundRect(ctx,x,y,w,h,r){
+
+ ctx.beginPath();
+
+ ctx.moveTo(x+r,y);
+ ctx.lineTo(x+w-r,y);
+ ctx.quadraticCurveTo(
+  x+w,y,
+  x+w,y+r
+ );
+ ctx.lineTo(x+w,y+h-r);
+ ctx.quadraticCurveTo(
+  x+w,y+h,
+  x+w-r,y+h
+ );
+ ctx.lineTo(x+r,y+h);
+ ctx.quadraticCurveTo(
+  x,y+h,
+  x,y+h-r
+ );
+ ctx.lineTo(x,y+r);
+ ctx.quadraticCurveTo(
+  x,y,
+  x+r,y
+ );
+ ctx.closePath();
 
 }
 
@@ -1594,115 +2309,70 @@ PET SPAWN
 
 function spawnWildPet(){
 
- if(wildPet)return;
+ if(wildPet)
+  return;
 
  const rarity=randomRarity();
-
  const mutation=randomMutation();
 
  wildPet={
-
   species:randomSpecies(),
-
   rarity:rarity.name,
-
-  rarityMultiplier:
-  rarity.multiplier,
-
+  rarityMultiplier:rarity.multiplier,
   mutation:mutation.name,
-
   required:mutation.required,
-
   baseXP:Math.round(
    10*
    rarity.multiplier*
    mutation.multiplier
   )
-
  };
 
  mutationProgress=0;
 
- petX=
- 70+
- Math.random()*180;
+ const canvas=document.getElementById("petCanvas");
 
- petY=
- 100+
- Math.random()*240;
+ petX=70+Math.random()*
+  Math.max(100,canvas.clientWidth-140);
 
- document
- .getElementById("petInfo")
- .classList
- .add("show");
+ petY=100+Math.random()*
+  Math.max(100,canvas.clientHeight-240);
 
- document
- .getElementById("petInfo")
- .textContent=
- wildPet.rarity+
- " "+
- wildPet.species+
- " • "+
- wildPet.mutation;
+ petVX=
+  (Math.random()>.5?1:-1)*
+  (0.7+Math.random()*1.2);
 
- document
- .getElementById("mutationBox")
- .classList
- .add("show");
+ petVY=
+  (Math.random()>.5?1:-1)*
+  (0.5+Math.random()*1);
 
- document
- .getElementById("mutationName")
- .textContent=
- wildPet.mutation;
+ document.getElementById("petInfo")
+  .classList.add("show");
 
- document
- .getElementById("mutationRequired")
- .textContent=
- wildPet.required;
+ document.getElementById("petInfo")
+  .textContent=
+   wildPet.rarity+
+   " "+wildPet.species+
+   " • "+wildPet.mutation;
 
- document
- .getElementById("captureFill")
- .style.width="0%";
+ document.getElementById("mutationBox")
+  .classList.add("show");
+
+ document.getElementById("mutationName")
+  .textContent=wildPet.mutation;
+
+ document.getElementById("mutationRequired")
+  .textContent=wildPet.required;
+
+ document.getElementById("captureFill")
+  .style.width="0%";
 
  showPopup(
   "CREATURE SPAWNED!",
   wildPet.rarity+
-  " "+
-  wildPet.species+
+  " "+wildPet.species+
   " appeared!"
  );
-
-}
-
-
-/* =====================================================
-RANDOM SPAWN TIMER
-===================================================== */
-
-let petSpawnTimer=null;
-
-function startPetSpawns(){
-
- clearInterval(petSpawnTimer);
-
- petSpawnTimer=setInterval(()=>{
-
-  if(
-   cameraRunning &&
-   !wildPet &&
-   Math.random()<.35
-  ){
-   spawnWildPet();
-  }
-
- },12000);
-
-}
-
-function stopPetSpawns(){
-
- clearInterval(petSpawnTimer);
- petSpawnTimer=null;
 
 }
 
@@ -1713,82 +2383,86 @@ PET ANIMATION LOOP
 
 function petLoop(){
 
+ petFrame++;
+
  const canvas=
- document.getElementById("petCanvas");
+  document.getElementById("petCanvas");
 
  if(!canvas){
+
   requestAnimationFrame(petLoop);
   return;
+
  }
 
  const rect=
- canvas.getBoundingClientRect();
+  canvas.getBoundingClientRect();
 
  const ratio=
- window.devicePixelRatio||1;
+  window.devicePixelRatio||1;
 
- if(
-  canvas.width!==rect.width*ratio ||
-  canvas.height!==rect.height*ratio
- ){
-
-  canvas.width=
-  rect.width*ratio;
-
-  canvas.height=
-  rect.height*ratio;
-
- }
-
- const ctx=
- canvas.getContext("2d");
-
- ctx.setTransform(
-  ratio,
-  0,
-  0,
-  ratio,
-  0,
-  0
- );
-
- ctx.clearRect(
-  0,
-  0,
-  rect.width,
-  rect.height
- );
-
- petAnimation+=.04;
-
- if(wildPet){
-
-  petX+=petVX;
-  petY+=petVY;
+ if(rect.width>0&&rect.height>0){
 
   if(
-   petX<55 ||
-   petX>rect.width-55
+   canvas.width!==Math.floor(rect.width*ratio)||
+   canvas.height!==Math.floor(rect.height*ratio)
   ){
-   petVX*=-1;
+
+   canvas.width=
+    Math.floor(rect.width*ratio);
+
+   canvas.height=
+    Math.floor(rect.height*ratio);
+
   }
 
-  if(
-   petY<100 ||
-   petY>rect.height-160
-  ){
-   petVY*=-1;
-  }
+  const ctx=
+   canvas.getContext("2d");
 
-  drawCreature(
-   ctx,
-   petX,
-   petY,
-   .72,
-   wildPet.species,
-   wildPet.rarity,
-   wildPet.mutation
+  ctx.setTransform(
+   ratio,
+   0,
+   0,
+   ratio,
+   0,
+   0
   );
+
+  ctx.clearRect(
+   0,
+   0,
+   rect.width,
+   rect.height
+  );
+
+  if(wildPet){
+
+   petX+=petVX;
+   petY+=petVY;
+
+   if(
+    petX<60||
+    petX>rect.width-60
+   )
+    petVX*=-1;
+
+   if(
+    petY<100||
+    petY>rect.height-130
+   )
+    petVY*=-1;
+
+   drawCreature(
+    ctx,
+    petX,
+    petY,
+    .72,
+    wildPet.species,
+    wildPet.rarity,
+    wildPet.mutation
+   );
+
+  }
 
  }
 
@@ -1798,64 +2472,54 @@ function petLoop(){
 
 
 /* =====================================================
-CAPTURE PET
+CAPTURE
 ===================================================== */
 
 function petRep(){
 
- if(!wildPet)return;
+ if(!wildPet)
+  return;
 
  mutationProgress++;
 
  const percent=
- Math.min(
-  100,
-  mutationProgress/
-  wildPet.required*
-  100
- );
+  Math.min(
+   100,
+   mutationProgress/
+   wildPet.required*
+   100
+  );
 
- document
- .getElementById("captureFill")
- .style.width=
- percent+"%";
+ document.getElementById("captureFill")
+  .style.width=percent+"%";
 
  if(
   mutationProgress>=
   wildPet.required
- ){
-
+ )
   capturePet();
-
- }
 
 }
 
 
-/* =====================================================
-CAPTURE
-===================================================== */
-
 function capturePet(){
 
  const pet={
-
   id:
-  Date.now()+
-  Math.random(),
+   Date.now()+
+   Math.random(),
 
   species:
-  wildPet.species,
+   wildPet.species,
 
   rarity:
-  wildPet.rarity,
+   wildPet.rarity,
 
   mutation:
-  wildPet.mutation,
+   wildPet.mutation,
 
   xp:
-  wildPet.baseXP
-
+   wildPet.baseXP
  };
 
  data.pets.push(pet);
@@ -1863,17 +2527,19 @@ function capturePet(){
  showPopup(
   "PET CAPTURED!",
   wildPet.rarity+
-  " "+
-  wildPet.mutation+
-  " "+
-  wildPet.species
+  " "+wildPet.mutation+
+  " "+wildPet.species
  );
 
  wildPet=null;
 
  mutationProgress=0;
 
- hidePetOverlay();
+ document.getElementById("petInfo")
+  .classList.remove("show");
+
+ document.getElementById("mutationBox")
+  .classList.remove("show");
 
  save();
 
@@ -1883,43 +2549,20 @@ function capturePet(){
 
 
 /* =====================================================
-HIDE PET OVERLAY
-===================================================== */
-
-function hidePetOverlay(){
-
- document
- .getElementById("petInfo")
- .classList
- .remove("show");
-
- document
- .getElementById("mutationBox")
- .classList
- .remove("show");
-
- document
- .getElementById("captureFill")
- .style.width="0%";
-
-}
-
-
-/* =====================================================
-EXTRACT
+EXTRACT PET
 ===================================================== */
 
 function extractPet(id){
 
  const index=
- data.pets.findIndex(
-  p=>p.id===id
- );
+  data.pets.findIndex(
+   p=>p.id===id
+  );
 
- if(index===-1)return;
+ if(index===-1)
+  return;
 
- const pet=
- data.pets[index];
+ const pet=data.pets[index];
 
  const muscles=[
   "chest",
@@ -1929,12 +2572,13 @@ function extractPet(id){
   "legs"
  ];
 
- const randomMuscle=
- muscles[
-  Math.floor(
-   Math.random()*muscles.length
-  )
- ];
+ const muscle=
+  muscles[
+   Math.floor(
+    Math.random()*
+    muscles.length
+   )
+  ];
 
  if(
   !confirm(
@@ -1943,23 +2587,31 @@ function extractPet(id){
    " "+
    pet.species+
    "?\n\n"+
-   "The pet will be permanently LOST."
+   "The pet will be permanently lost and "+
+   pet.xp+
+   " XP will go to "+
+   muscle+"."
   )
- ){
+ )
   return;
- }
 
- data.muscles[randomMuscle]+=
- pet.xp;
+ data.muscles[muscle]+=pet.xp;
 
- data.pets.splice(index,1);
+ data.xp+=pet.xp;
+
+ updateLevel();
+
+ data.pets.splice(
+  index,
+  1
+ );
 
  showPopup(
   "PET EXTRACTED",
   "+"+
   pet.xp+
   " XP → "+
-  randomMuscle.toUpperCase()
+  muscle.toUpperCase()
  );
 
  save();
@@ -1976,22 +2628,20 @@ PET MENU
 function renderPets(){
 
  const grid=
- document.getElementById("petGrid");
+  document.getElementById("petGrid");
 
- if(!grid)return;
+ if(!grid)
+  return;
 
  grid.innerHTML="";
 
  if(data.pets.length===0){
 
   grid.innerHTML=
-  `
-  <div class="emptyPets"
-  style="grid-column:1/-1">
-  No captured pets yet.<br><br>
-  Find creatures during workouts.
-  </div>
-  `;
+   '<div class="emptyPets" style="grid-column:1/-1">'+
+   'No captured pets yet.<br><br>'+
+   'Find creatures during workouts.'+
+   '</div>';
 
   return;
 
@@ -2000,55 +2650,51 @@ function renderPets(){
  data.pets.forEach(pet=>{
 
   const card=
-  document.createElement("div");
+   document.createElement("div");
 
   card.className="petCard";
 
   card.innerHTML=`
+   <div class="petVisual">
+    <canvas width="130" height="130"></canvas>
+   </div>
 
-  <div class="petVisual">
-   <canvas width="120" height="120"></canvas>
-  </div>
+   <div class="petName">
+    ${pet.mutation} ${pet.species}
+   </div>
 
-  <div class="petName">
-   ${pet.mutation}
-   ${pet.species}
-  </div>
+   <div class="petMeta">
+    ${pet.rarity}<br>
+    Extraction: +${pet.xp} XP
+   </div>
 
-  <div class="petMeta">
-   ${pet.rarity}<br>
-   Extraction: +${pet.xp} XP
-  </div>
-
-  <button class="extractBtn">
-   EXTRACT
-  </button>
+   <button class="extractBtn">
+    EXTRACT
+   </button>
   `;
 
   const canvas=
-  card.querySelector("canvas");
+   card.querySelector("canvas");
 
   const ctx=
-  canvas.getContext("2d");
+   canvas.getContext("2d");
 
   drawCreature(
    ctx,
-   60,
-   60,
-   .9,
+   65,
+   65,
+   .72,
    pet.species,
    pet.rarity,
-   pet.mutation
+   pet.mutation,
+   true
   );
 
-  card
-  .querySelector(".extractBtn")
-  .addEventListener(
-   "click",
-   ()=>{
-    extractPet(pet.id);
-   }
-  );
+  card.querySelector(
+   ".extractBtn"
+  ).onclick=()=>{
+   extractPet(pet.id);
+  };
 
   grid.appendChild(card);
 
@@ -2074,32 +2720,27 @@ function save(){
 
 
 /* =====================================================
-GAIN XP
+XP
 ===================================================== */
 
 function gainXP(amount){
 
  const oldRank=
- getRank();
+  getRank();
 
  data.xp+=amount;
 
- while(data.xp>=100){
-
-  data.xp-=100;
-
-  data.level++;
-
- }
+ updateLevel();
 
  const newRank=
- getRank();
+  getRank();
 
  if(newRank>oldRank){
 
   showPopup(
    "RANK UP!",
-   ranks[newRank].name+" 🔥"
+   ranks[newRank].name+
+   " 🔥"
   );
 
  }
@@ -2114,17 +2755,17 @@ WORKOUT RECORD
 function recordWorkout(){
 
  const today=
- new Date()
- .toISOString()
- .slice(0,10);
+  new Date()
+  .toISOString()
+  .slice(0,10);
 
  let last=
- data.history[
-  data.history.length-1
- ];
+  data.history[
+   data.history.length-1
+  ];
 
  if(
-  !last ||
+  !last||
   last.date!==today
  ){
 
@@ -2139,35 +2780,62 @@ function recordWorkout(){
   data.history.length-1
  ].reps++;
 
- data.workouts++;
+}
 
- data.streak++;
 
- if(
-  data.streak>
-  data.bestStreak
- ){
-  data.bestStreak=
-  data.streak;
+/* =====================================================
+MUSCLE XP
+===================================================== */
+
+function addMuscleXP(){
+
+ if(currentWorkout==="Push-ups"){
+
+  data.muscles.chest++;
+  data.muscles.shoulders++;
+  data.muscles.arms++;
+
+ }
+
+ if(currentWorkout==="Squats"){
+
+  data.muscles.legs++;
+  data.muscles.core++;
+
+ }
+
+ if(currentWorkout==="Sit-ups"){
+
+  data.muscles.core++;
+
+ }
+
+ if(currentWorkout==="Lunges"){
+
+  data.muscles.legs++;
+
+ }
+
+ if(currentWorkout==="Plank"){
+
+  data.muscles.core++;
+  data.muscles.shoulders++;
+
  }
 
 }
 
 
 /* =====================================================
-ADD REP
+SUCCESSFUL REP
 ===================================================== */
 
-function countRep(){
+function successfulRep(feedback){
 
  const now=Date.now();
 
- if(
-  now-lastRepTime<
-  650
- ){
+ if(now-lastRepTime<650)
   return;
- }
 
  lastRepTime=now;
 
@@ -2179,89 +2847,121 @@ function countRep(){
 
  gainXP(1);
 
+ addMuscleXP();
+
  recordWorkout();
 
+ data.workouts++;
 
- /* MUSCLES */
+ data.streak++;
 
  if(
-  currentWorkout==="Push-ups"
+  data.streak>
+  data.bestStreak
+ )
+  data.bestStreak=
+   data.streak;
+
+ document.getElementById(
+  "sessionReps"
+ ).textContent=sessionReps;
+
+ document.getElementById(
+  "cameraReps"
+ ).textContent=sessionReps;
+
+ document.getElementById(
+  "sessionXP"
+ ).textContent=sessionXP;
+
+ document.getElementById(
+  "formScore"
+ ).textContent=
+   feedback.score+"%";
+
+ setFeedback(
+  true,
+  "GOOD REP ✓",
+  feedback.message
+ );
+
+ /* chance of wild pet */
+
+ if(
+  !wildPet&&
+  Math.random()<0.07
  ){
 
-  data.muscles.chest++;
-  data.muscles.shoulders++;
-  data.muscles.arms++;
+  spawnWildPet();
 
  }
 
- if(
-  currentWorkout==="Squats"
- ){
+ /* pet capture reps */
 
-  data.muscles.legs++;
-  data.muscles.core++;
-
- }
-
- if(
-  currentWorkout==="Sit-ups"
- ){
-
-  data.muscles.core++;
-
- }
-
- if(
-  currentWorkout==="Lunges"
- ){
-
-  data.muscles.legs++;
-
- }
-
- if(
-  currentWorkout==="Plank"
- ){
-
-  data.muscles.core++;
-  data.muscles.shoulders++;
-
- }
-
-
- /* UI */
-
- document
- .getElementById("sessionReps")
- .textContent=
- sessionReps;
-
- document
- .getElementById("cameraReps")
- .textContent=
- sessionReps;
-
- document
- .getElementById("sessionXP")
- .textContent=
- sessionXP;
-
- document
- .getElementById("formStatus")
- .textContent=
- "REP COMPLETE ✓";
-
- document
- .getElementById("formStatus")
- .className=
- "formText good";
-
-
- /* PET */
-
- petRep();
+ if(wildPet)
+  petRep();
 
  save();
+
+}
+
+
+/* =====================================================
+FAILED REP
+===================================================== */
+
+function failedRep(feedback){
+
+ setFeedback(
+  false,
+  "REP FAILED",
+  feedback.message
+ );
+
+}
+
+
+/* =====================================================
+FEEDBACK
+===================================================== */
+
+function setFeedback(
+ good,
+ title,
+ message
+){
+
+ const el=
+  document.getElementById(
+   "formStatus"
+  );
+
+ el.className=
+  "formText "+
+  (good?"good":"fail");
+
+ el.innerHTML=
+  "<b>"+
+  title+
+  "</b><br>"+
+  message;
+
+ clearTimeout(feedbackTimeout);
+
+ feedbackTimeout=
+  setTimeout(()=>{
+
+   if(cameraRunning){
+
+    el.className=
+     "formText";
+
+    el.textContent=
+     "Keep going...";
+
+   }
+
+  },3000);
 
 }
 
@@ -2272,7 +2972,10 @@ MANUAL REP
 
 function manualRep(){
 
- countRep();
+ successfulRep({
+  score:100,
+  message:"Manual rep recorded."
+ });
 
 }
 
@@ -2288,45 +2991,41 @@ function openWorkout(name){
  currentWorkout=name;
 
  sessionReps=0;
-
  sessionXP=0;
 
- exerciseState="UP";
+ exercisePhase="START";
 
- downFrames=0;
+ cycleQuality=[];
 
- upFrames=0;
+ document.getElementById(
+  "workoutTitle"
+ ).textContent=name;
 
- plankSeconds=0;
+ document.getElementById(
+  "sessionReps"
+ ).textContent="0";
 
- wildPet=null;
+ document.getElementById(
+  "cameraReps"
+ ).textContent="0";
 
- hidePetOverlay();
+ document.getElementById(
+  "sessionXP"
+ ).textContent="0";
 
- document
- .getElementById("workoutTitle")
- .textContent=name;
+ document.getElementById(
+  "formScore"
+ ).textContent="--";
 
- document
- .getElementById("sessionReps")
- .textContent="0";
+ document.getElementById(
+  "formStatus"
+ ).textContent=
+  "Start camera to begin";
 
- document
- .getElementById("cameraReps")
- .textContent="0";
-
- document
- .getElementById("sessionXP")
- .textContent="0";
-
- document
- .getElementById("formScore")
- .textContent="--";
-
- document
- .getElementById("formStatus")
- .textContent=
- "Start camera to begin";
+ document.getElementById(
+  "petLayer"
+ ).style.display=
+  "none";
 
  show("workout");
 
@@ -2339,20 +3038,23 @@ BODY
 
 function bodyLevel(value){
 
- if(value>=50)return"high";
+ if(value>=50)
+  return"high";
 
- if(value>=20)return"medium";
+ if(value>=20)
+  return"medium";
 
- if(value>=5)return"low";
+ if(value>=5)
+  return"low";
 
  return"";
 
 }
 
+
 function updateBody(){
 
  const mapping={
-
   chest:[
    "bodyChestL",
    "bodyChestR"
@@ -2376,7 +3078,6 @@ function updateBody(){
    "bodyLegL",
    "bodyLegR"
   ]
-
  };
 
  Object.keys(mapping)
@@ -2386,9 +3087,10 @@ function updateBody(){
   .forEach(id=>{
 
    const el=
-   document.getElementById(id);
+    document.getElementById(id);
 
-   if(!el)return;
+   if(!el)
+    return;
 
    el.classList.remove(
     "low",
@@ -2397,12 +3099,12 @@ function updateBody(){
    );
 
    const level=
-   bodyLevel(
-    data.muscles[muscle]
-   );
+    bodyLevel(
+     data.muscles[muscle]
+    );
 
    if(level)
-   el.classList.add(level);
+    el.classList.add(level);
 
   });
 
@@ -2412,70 +3114,59 @@ function updateBody(){
 
 
 /* =====================================================
-START CAMERA
+CAMERA START
 ===================================================== */
 
 async function startPoseCamera(){
 
- if(cameraRunning)return;
-
- if(
-  !navigator.mediaDevices ||
-  !navigator.mediaDevices.getUserMedia
- ){
-
-  document
-  .getElementById("cameraStatus")
-  .textContent=
-  "CAMERA NOT SUPPORTED";
-
+ if(cameraRunning)
   return;
 
- }
-
  const video=
- document.getElementById("video");
+  document.getElementById("video");
 
- document
- .getElementById("cameraStatus")
- .textContent=
- "STARTING...";
+ const status=
+  document.getElementById(
+   "cameraStatus"
+  );
 
- document
- .getElementById("petLayer")
- .classList
- .remove("hidden");
+ status.textContent=
+  "STARTING...";
 
  try{
 
+  if(
+   !navigator.mediaDevices||
+   !navigator.mediaDevices.getUserMedia
+  ){
+
+   throw new Error(
+    "Camera unavailable"
+   );
+
+  }
+
   cameraStream=
-  await navigator.mediaDevices
-  .getUserMedia({
-
-   video:{
-    facingMode:"user",
-    width:{ideal:720},
-    height:{ideal:720}
-   },
-
-   audio:false
-
-  });
+   await navigator.mediaDevices
+   .getUserMedia({
+    video:{
+     facingMode:"user",
+     width:{ideal:720},
+     height:{ideal:720}
+    },
+    audio:false
+   });
 
   video.srcObject=
-  cameraStream;
+   cameraStream;
 
   await video.play();
 
-
   pose=
-  new Pose({
-
-   locateFile:(file)=>
-   "https://cdn.jsdelivr.net/npm/@mediapipe/pose/"+file
-
-  });
-
+   new Pose({
+    locateFile:(file)=>
+     "https://cdn.jsdelivr.net/npm/@mediapipe/pose/"+file
+   });
 
   pose.setOptions({
 
@@ -2491,39 +3182,33 @@ async function startPoseCamera(){
 
   });
 
-
   pose.onResults(results=>{
 
    processPose(
     results,
     document
-    .getElementById("poseCanvas")
-    .getContext("2d"),
-    document
-    .getElementById("poseCanvas")
+     .getElementById("poseCanvas")
+     .getContext("2d"),
+    document.getElementById(
+     "poseCanvas"
+    )
    );
 
   });
 
-
   cameraRunning=true;
 
-  document
-  .getElementById("cameraStatus")
-  .textContent=
-  "LOOKING FOR BODY";
+  document.getElementById(
+   "petLayer"
+  ).style.display="block";
 
+  status.textContent=
+   "LOOKING FOR BODY";
 
   if(
    currentWorkout==="Plank"
-  ){
-
+  )
    startPlankTimer();
-
-  }
-
-
-  startPetSpawns();
 
   requestAnimationFrame(
    poseLoop
@@ -2534,20 +3219,13 @@ async function startPoseCamera(){
 
   console.log(error);
 
-  document
-  .getElementById("cameraStatus")
-  .textContent=
-  "CAMERA ERROR";
+  status.textContent=
+   "CAMERA ERROR";
 
-  document
-  .getElementById("formStatus")
-  .textContent=
-  "Allow camera access.";
-
-  document
-  .getElementById("petLayer")
-  .classList
-  .add("hidden");
+  document.getElementById(
+   "formStatus"
+  ).textContent=
+   "Allow camera access and try again.";
 
  }
 
@@ -2560,13 +3238,14 @@ POSE LOOP
 
 async function poseLoop(){
 
- if(!cameraRunning)return;
+ if(!cameraRunning)
+  return;
 
  const video=
- document.getElementById("video");
+  document.getElementById("video");
 
  if(
-  video.readyState>=2 &&
+  video.readyState>=2&&
   pose
  ){
 
@@ -2603,15 +3282,19 @@ function processPose(
 ){
 
  const video=
- document.getElementById("video");
+  document.getElementById("video");
 
- if(!video.videoWidth)return;
+ if(
+  !video.videoWidth||
+  !video.videoHeight
+ )
+  return;
 
  canvas.width=
- video.videoWidth;
+  video.videoWidth;
 
  canvas.height=
- video.videoHeight;
+  video.videoHeight;
 
  ctx.clearRect(
   0,
@@ -2620,23 +3303,21 @@ function processPose(
   canvas.height
  );
 
- if(
-  !results.poseLandmarks
- ){
+ if(!results.poseLandmarks){
 
-  document
-  .getElementById("cameraStatus")
-  .textContent=
-  "NO BODY";
+  document.getElementById(
+   "cameraStatus"
+  ).textContent=
+   "NO BODY";
 
   return;
 
  }
 
- document
- .getElementById("cameraStatus")
- .textContent=
- "BODY DETECTED";
+ document.getElementById(
+  "cameraStatus"
+ ).textContent=
+  "BODY DETECTED";
 
  drawSkeleton(
   ctx,
@@ -2664,32 +3345,22 @@ function drawSkeleton(
 ){
 
  const connections=[
-
   [11,13],
   [13,15],
-
   [12,14],
   [14,16],
-
   [11,12],
-
   [11,23],
   [12,24],
-
   [23,24],
-
   [23,25],
   [25,27],
-
   [24,26],
   [26,28]
-
  ];
 
  ctx.lineWidth=5;
-
  ctx.lineCap="round";
-
  ctx.strokeStyle="#fff";
 
  connections.forEach(pair=>{
@@ -2698,9 +3369,7 @@ function drawSkeleton(
   const b=l[pair[1]];
 
   if(
-   a &&
-   b &&
-   a.visibility>.5 &&
+   a.visibility>.5&&
    b.visibility>.5
   ){
 
@@ -2724,10 +3393,7 @@ function drawSkeleton(
 
  l.forEach(p=>{
 
-  if(
-   p &&
-   p.visibility>.5
-  ){
+  if(p.visibility>.5){
 
    ctx.beginPath();
 
@@ -2757,29 +3423,54 @@ ANGLE
 function angle(a,b,c){
 
  const radians=
-
- Math.atan2(
-  c.y-b.y,
-  c.x-b.x
- )
-
- -
-
- Math.atan2(
-  a.y-b.y,
-  a.x-b.x
- );
+  Math.atan2(
+   c.y-b.y,
+   c.x-b.x
+  )-
+  Math.atan2(
+   a.y-b.y,
+   a.x-b.x
+  );
 
  let degrees=
- Math.abs(
-  radians*180/Math.PI
- );
+  Math.abs(
+   radians*
+   180/
+   Math.PI
+  );
 
- if(degrees>180){
+ if(degrees>180)
   degrees=360-degrees;
- }
 
  return degrees;
+
+}
+
+
+/* =====================================================
+BODY LINE
+===================================================== */
+
+function bodyLineScore(
+ shoulder,
+ hip,
+ ankle
+){
+
+ const bodyAngle=
+  angle(
+   shoulder,
+   hip,
+   ankle
+  );
+
+ return Math.max(
+  0,
+  100-
+  Math.abs(
+   180-bodyAngle
+  )*5
+ );
 
 }
 
@@ -2791,25 +3482,25 @@ EXERCISE DETECTION
 function detectExercise(l){
 
  if(currentWorkout==="Push-ups")
- detectPushup(l);
+  detectPushup(l);
 
  else if(currentWorkout==="Squats")
- detectSquat(l);
+  detectSquat(l);
 
  else if(currentWorkout==="Sit-ups")
- detectSitup(l);
+  detectSitup(l);
 
  else if(currentWorkout==="Lunges")
- detectLunge(l);
+  detectLunge(l);
 
  else if(currentWorkout==="Plank")
- detectPlank(l);
+  detectPlank(l);
 
 }
 
 
 /* =====================================================
-PUSHUPS
+PUSH-UP FULL REP
 ===================================================== */
 
 function detectPushup(l){
@@ -2823,86 +3514,270 @@ function detectPushup(l){
  const lw=l[15];
  const rw=l[16];
 
+ const hipL=l[23];
+ const hipR=l[24];
+
+ const ankleL=l[27];
+ const ankleR=l[28];
+
  if(
   !ls||!rs||
   !le||!re||
-  !lw||!rw
- )return;
+  !lw||!rw||
+  !hipL||!hipR||
+  !ankleL||!ankleR
+ )
+  return;
 
  if(
   ls.visibility<.5||
   rs.visibility<.5||
   le.visibility<.5||
-  re.visibility<.5
- )return;
+  re.visibility<.5||
+  lw.visibility<.5||
+  rw.visibility<.5
+ )
+  return;
 
- const left=
- angle(ls,le,lw);
+ const leftElbow=
+  angle(ls,le,lw);
 
- const right=
- angle(rs,re,rw);
+ const rightElbow=
+  angle(rs,re,rw);
 
  const elbow=
- (left+right)/2;
+  (leftElbow+
+   rightElbow)/2;
 
- const score=
- Math.round(
+ const shoulderLine=
+  (ls.y+rs.y)/2;
+
+ const hipLine=
+  (hipL.y+hipR.y)/2;
+
+ const ankleLine=
+  (ankleL.y+ankleR.y)/2;
+
+ const bodyStraight=
+  Math.abs(
+   (shoulderLine+
+    ankleLine)/2-
+   hipLine
+  );
+
+ const bodyScore=
+  Math.max(
+   0,
+   100-bodyStraight*500
+  );
+
+ const depthScore=
   Math.min(
    100,
    Math.max(
     0,
-    (elbow-60)/1.2
+    (160-elbow)/.8
    )
-  )
+  );
+
+ const symmetry=
+  Math.abs(
+   leftElbow-
+   rightElbow
+  );
+
+ const symmetryScore=
+  Math.max(
+   0,
+   100-symmetry*2
+  );
+
+ const score=Math.round(
+  depthScore*.45+
+  bodyScore*.35+
+  symmetryScore*.20
  );
 
- document
- .getElementById("formScore")
- .textContent=
- score+"%";
+ document.getElementById(
+  "formScore"
+ ).textContent=
+  Math.round(score)+"%";
 
- if(elbow<80){
+ /* START POSITION */
 
-  downFrames++;
+ if(exercisePhase==="START"){
 
-  document
-  .getElementById("formStatus")
-  .textContent=
-  "DOWN — push!";
+  if(elbow>145){
 
-  if(downFrames>=3)
-  exerciseState="DOWN";
+   exercisePhase="UP";
+
+   cycleQuality=[];
+
+   document.getElementById(
+    "formStatus"
+   ).textContent=
+    "Ready — go down";
+
+  }
+
+  return;
 
  }
- else{
 
-  downFrames=0;
 
- }
+ /* GOING DOWN */
 
- if(elbow>155){
+ if(
+  exercisePhase==="UP"||
+  exercisePhase==="DOWN"
+ ){
 
-  upFrames++;
+  cycleQuality.push({
+   elbow:elbow,
+   body:bodyScore,
+   symmetry:symmetryScore,
+   depth:depthScore
+  });
 
-  if(
-   upFrames>=3 &&
-   exerciseState==="DOWN"
-  ){
+  if(elbow<105){
 
-   countRep();
+   exercisePhase="DOWN";
 
-   exerciseState="UP";
-
-   upFrames=0;
+   document.getElementById(
+    "formStatus"
+   ).textContent=
+    "DOWN — keep going";
 
   }
 
  }
- else{
 
-  upFrames=0;
+
+ /* RETURN UP */
+
+ if(
+  exercisePhase==="DOWN"&&
+  elbow>150
+ ){
+
+  finishPushupRep();
 
  }
+
+}
+
+
+/* =====================================================
+FINISH PUSH-UP
+===================================================== */
+
+function finishPushupRep(){
+
+ if(cycleQuality.length<5){
+
+  failedRep({
+   score:0,
+   message:
+    "Complete the whole movement."
+  });
+
+  exercisePhase="UP";
+  cycleQuality=[];
+
+  return;
+
+ }
+
+ let lowest=
+  Math.min(
+   ...cycleQuality.map(
+    x=>x.elbow
+   )
+  );
+
+ let avgBody=
+  cycleQuality.reduce(
+   (a,b)=>a+b.body,
+   0
+  )/
+  cycleQuality.length;
+
+ let avgSym=
+  cycleQuality.reduce(
+   (a,b)=>a+b.symmetry,
+   0
+  )/
+  cycleQuality.length;
+
+ let score=
+  Math.round(
+   Math.min(
+    100,
+    (
+     Math.max(
+      0,
+      (160-lowest)/.8
+     )*.45+
+     avgBody*.35+
+     avgSym*.20
+    )
+   )
+  );
+
+ let message="";
+
+ if(lowest>100){
+
+  message=
+   "Go lower — your elbows need to bend more.";
+
+ }
+
+ else if(avgBody<70){
+
+  message=
+   "Keep your body straighter from shoulders to ankles.";
+
+ }
+
+ else if(avgSym<75){
+
+  message=
+   "Try to keep both arms moving evenly.";
+
+ }
+
+ else{
+
+  message=
+   "Great depth and control. Keep that form.";
+
+ }
+
+ if(
+  lowest>115||
+  avgBody<55||
+  avgSym<60
+ ){
+
+  failedRep({
+   score:score,
+   message:message
+  });
+
+ }
+ else{
+
+  successfulRep({
+   score:score,
+   message:message
+  });
+
+ }
+
+ exercisePhase="UP";
+
+ cycleQuality=[];
 
 }
 
@@ -2926,71 +3801,95 @@ function detectSquat(l){
   !lh||!rh||
   !lk||!rk||
   !la||!ra
- )return;
+ )
+  return;
 
  const left=
- angle(lh,lk,la);
+  angle(lh,lk,la);
 
  const right=
- angle(rh,rk,ra);
+  angle(rh,rk,ra);
 
  const knee=
- (left+right)/2;
+  (left+right)/2;
 
  const score=
- Math.round(
-  Math.min(
-   100,
-   Math.max(
-    0,
+  Math.max(
+   0,
+   Math.min(
+    100,
     100-
     Math.abs(
-     160-knee
-    )*2
+     90-knee
+    )*.5
    )
-  )
- );
+  );
 
- document
- .getElementById("formScore")
- .textContent=
- score+"%";
+ document.getElementById(
+  "formScore"
+ ).textContent=
+  Math.round(score)+"%";
 
- if(knee<105){
+ if(exercisePhase==="START"){
 
-  downFrames++;
+  if(knee>150)
+   exercisePhase="UP";
 
-  if(downFrames>=3)
-  exerciseState="DOWN";
-
- }
- else{
-
-  downFrames=0;
+  return;
 
  }
 
- if(knee>155){
+ if(exercisePhase==="UP"&&knee<115){
 
-  upFrames++;
+  exercisePhase="DOWN";
 
-  if(
-   upFrames>=3 &&
-   exerciseState==="DOWN"
-  ){
+  cycleQuality.push({
+   knee:knee
+  });
 
-   countRep();
+ }
 
-   exerciseState="UP";
+ if(exercisePhase==="DOWN"){
 
-   upFrames=0;
+  cycleQuality.push({
+   knee:knee
+  });
+
+ }
+
+ if(
+  exercisePhase==="DOWN"&&
+  knee>155
+ ){
+
+  const lowest=
+   Math.min(
+    ...cycleQuality.map(
+     x=>x.knee
+    )
+   );
+
+  if(lowest>120){
+
+   failedRep({
+    score:score,
+    message:
+     "Go lower on your squat."
+   });
+
+  }
+  else{
+
+   successfulRep({
+    score:Math.round(score),
+    message:
+     "Good depth. Keep your knees controlled."
+   });
 
   }
 
- }
- else{
-
-  upFrames=0;
+  exercisePhase="UP";
+  cycleQuality=[];
 
  }
 
@@ -2998,7 +3897,7 @@ function detectSquat(l){
 
 
 /* =====================================================
-SITUPS
+SIT-UP
 ===================================================== */
 
 function detectSitup(l){
@@ -3007,70 +3906,76 @@ function detectSitup(l){
  const hip=l[23];
  const knee=l[25];
 
- if(
-  !shoulder||
-  !hip||
-  !knee
- )return;
+ if(!shoulder||!hip||!knee)
+  return;
 
  const torso=
- angle(
-  shoulder,
-  hip,
-  knee
- );
+  angle(
+   shoulder,
+   hip,
+   knee
+  );
 
  const score=
- Math.round(
-  Math.min(
-   100,
-   Math.max(
-    0,
-    torso
+  Math.round(
+   Math.min(
+    100,
+    Math.max(
+     0,
+     torso
+    )
    )
-  )
- );
+  );
 
- document
- .getElementById("formScore")
- .textContent=
- score+"%";
+ document.getElementById(
+  "formScore"
+ ).textContent=
+  score+"%";
 
- if(torso<65){
+ if(exercisePhase==="START"){
 
-  downFrames++;
+  if(torso<70)
+   exercisePhase="DOWN";
 
-  if(downFrames>=3)
-  exerciseState="DOWN";
-
- }
- else{
-
-  downFrames=0;
+  return;
 
  }
 
- if(torso>105){
+ if(
+  exercisePhase==="START"||
+  exercisePhase==="DOWN"
+ ){
 
-  upFrames++;
+  if(torso<70)
+   exercisePhase="DOWN";
 
-  if(
-   upFrames>=3 &&
-   exerciseState==="DOWN"
-  ){
+ }
 
-   countRep();
+ if(
+  exercisePhase==="DOWN"&&
+  torso>105
+ ){
 
-   exerciseState="UP";
+  if(torso<115){
 
-   upFrames=0;
+   failedRep({
+    score:score,
+    message:
+     "Finish the full sit-up."
+   });
+
+  }
+  else{
+
+   successfulRep({
+    score:score,
+    message:
+     "Good full range. Keep your movement controlled."
+   });
 
   }
 
- }
- else{
-
-  upFrames=0;
+  exercisePhase="START";
 
  }
 
@@ -3078,7 +3983,7 @@ function detectSitup(l){
 
 
 /* =====================================================
-LUNGES — FIXED
+LUNGE
 ===================================================== */
 
 function detectLunge(l){
@@ -3096,73 +4001,102 @@ function detectLunge(l){
   !lh||!rh||
   !lk||!rk||
   !la||!ra
- )return;
+ )
+  return;
 
  const left=
- angle(lh,lk,la);
+  angle(lh,lk,la);
 
  const right=
- angle(rh,rk,ra);
+  angle(rh,rk,ra);
 
  const knee=
- Math.min(
-  left,
-  right
- );
+  Math.min(
+   left,
+   right
+  );
 
  const score=
- Math.round(
-  Math.min(
-   100,
-   Math.max(
-    0,
-    knee<100
-    ? knee
-    : 180-knee
+  Math.max(
+   0,
+   Math.min(
+    100,
+    100-
+    Math.abs(
+     90-knee
+    )*.5
    )
-  )
- );
+  );
 
- document
- .getElementById("formScore")
- .textContent=
- score+"%";
+ document.getElementById(
+  "formScore"
+ ).textContent=
+  Math.round(score)+"%";
 
- if(knee<105){
+ if(exercisePhase==="START"){
 
-  downFrames++;
+  if(knee>145)
+   exercisePhase="UP";
 
-  if(downFrames>=3)
-  exerciseState="DOWN";
-
- }
- else{
-
-  downFrames=0;
+  return;
 
  }
 
- if(knee>155){
+ if(
+  exercisePhase==="UP"&&
+  knee<115
+ ){
 
-  upFrames++;
+  exercisePhase="DOWN";
 
-  if(
-   upFrames>=3 &&
-   exerciseState==="DOWN"
-  ){
+  cycleQuality.push({
+   knee:knee
+  });
 
-   countRep();
+ }
 
-   exerciseState="UP";
+ if(exercisePhase==="DOWN"){
 
-   upFrames=0;
+  cycleQuality.push({
+   knee:knee
+  });
+
+ }
+
+ if(
+  exercisePhase==="DOWN"&&
+  knee>145
+ ){
+
+  const lowest=
+   Math.min(
+    ...cycleQuality.map(
+     x=>x.knee
+    )
+   );
+
+  if(lowest>120){
+
+   failedRep({
+    score:Math.round(score),
+    message:
+     "Drop your body lower into the lunge."
+   });
+
+  }
+  else{
+
+   successfulRep({
+    score:Math.round(score),
+    message:
+     "Good lunge depth. Keep your front knee controlled."
+   });
 
   }
 
- }
- else{
+  exercisePhase="UP";
 
-  upFrames=0;
+  cycleQuality=[];
 
  }
 
@@ -3183,45 +4117,46 @@ function detectPlank(l){
   !shoulder||
   !hip||
   !ankle
- )return;
+ )
+  return;
 
  const torsoAngle=
- angle(
-  shoulder,
-  hip,
-  ankle
- );
+  angle(
+   shoulder,
+   hip,
+   ankle
+  );
 
  const score=
- Math.round(
-  Math.max(
-   0,
-   100-
-   Math.abs(
-    180-torsoAngle
-   )*4
-  )
- );
+  Math.round(
+   Math.max(
+    0,
+    100-
+    Math.abs(
+     180-torsoAngle
+    )*4
+   )
+  );
 
- document
- .getElementById("formScore")
- .textContent=
- score+"%";
+ document.getElementById(
+  "formScore"
+ ).textContent=
+  score+"%";
 
  if(score>=75){
 
-  document
-  .getElementById("formStatus")
-  .textContent=
-  "PLANK HOLD ✓";
+  document.getElementById(
+   "formStatus"
+  ).textContent=
+   "PLANK FORM GOOD ✓";
 
  }
  else{
 
-  document
-  .getElementById("formStatus")
-  .textContent=
-  "Fix your form";
+  document.getElementById(
+   "formStatus"
+  ).textContent=
+   "FORM FAILED — straighten your body";
 
  }
 
@@ -3230,7 +4165,6 @@ function detectPlank(l){
 
 /* =====================================================
 PLANK XP
-1 XP EVERY 3 SECONDS
 ===================================================== */
 
 function startPlankTimer(){
@@ -3240,65 +4174,70 @@ function startPlankTimer(){
  plankSeconds=0;
 
  plankTimer=
- setInterval(()=>{
+  setInterval(()=>{
 
-  if(
-   !cameraRunning||
-   currentWorkout!=="Plank"
-  )return;
+   if(
+    !cameraRunning||
+    currentWorkout!=="Plank"
+   )
+    return;
 
-  const score=
-  document
-  .getElementById("formScore")
-  .textContent;
+   const score=
+    parseInt(
+     document.getElementById(
+      "formScore"
+     ).textContent
+    );
 
-  if(
-   score!=="--" &&
-   parseInt(score)>=75
-  ){
+   if(
+    !isNaN(score)&&
+    score>=75
+   ){
 
-   plankSeconds++;
+    plankSeconds++;
 
-   if(plankSeconds>=3){
+    if(plankSeconds>=3){
+
+     plankSeconds=0;
+
+     sessionXP++;
+
+     data.xp++;
+
+     updateLevel();
+
+     data.muscles.core++;
+
+     data.muscles.shoulders++;
+
+     document.getElementById(
+      "sessionXP"
+     ).textContent=
+      sessionXP;
+
+     data.workouts++;
+
+     if(
+      Math.random()<.07&&
+      !wildPet
+     )
+      spawnWildPet();
+
+     if(wildPet)
+      petRep();
+
+     save();
+
+    }
+
+   }
+   else{
 
     plankSeconds=0;
 
-    sessionXP++;
-
-    data.reps++;
-
-    gainXP(1);
-
-    recordWorkout();
-
-    data.muscles.core++;
-
-    data.muscles.shoulders++;
-
-    document
-    .getElementById("sessionReps")
-    .textContent=
-    sessionXP;
-
-    document
-    .getElementById("cameraReps")
-    .textContent=
-    sessionXP;
-
-    document
-    .getElementById("sessionXP")
-    .textContent=
-    sessionXP;
-
-    petRep();
-
-    save();
-
    }
 
-  }
-
- },1000);
+  },1000);
 
 }
 
@@ -3311,35 +4250,41 @@ function stopCamera(){
 
  cameraRunning=false;
 
- clearInterval(plankTimer);
+ clearInterval(
+  plankTimer
+ );
 
- stopPetSpawns();
+ plankTimer=null;
 
  if(cameraStream){
 
   cameraStream
-  .getTracks()
-  .forEach(
-   track=>track.stop()
-  );
+   .getTracks()
+   .forEach(track=>{
+    track.stop();
+   });
 
   cameraStream=null;
 
  }
 
  const video=
- document.getElementById("video");
+  document.getElementById(
+   "video"
+  );
 
  if(video)
- video.srcObject=null;
+  video.srcObject=null;
 
  const canvas=
- document.getElementById("poseCanvas");
+  document.getElementById(
+   "poseCanvas"
+  );
 
  if(canvas){
 
   const ctx=
-  canvas.getContext("2d");
+   canvas.getContext("2d");
 
   ctx.clearRect(
    0,
@@ -3350,90 +4295,103 @@ function stopCamera(){
 
  }
 
- document
- .getElementById("cameraStatus")
- .textContent=
- "CAMERA OFF";
+ document.getElementById(
+  "cameraStatus"
+ ).textContent=
+  "CAMERA OFF";
 
- document
- .getElementById("formStatus")
- .textContent=
- "Start camera to begin";
+ document.getElementById(
+  "formStatus"
+ ).textContent=
+  "Start camera to begin";
 
- document
- .getElementById("formScore")
- .textContent=
- "--";
+ /* REMOVE OVERLAY */
 
- document
- .getElementById("petLayer")
- .classList
- .add("hidden");
+ document.getElementById(
+  "petLayer"
+ ).style.display=
+  "none";
 
- wildPet=null;
+ document.getElementById(
+  "petInfo"
+ ).classList.remove("show");
 
- mutationProgress=0;
-
- hidePetOverlay();
+ document.getElementById(
+  "mutationBox"
+ ).classList.remove("show");
 
 }
 
 
 /* =====================================================
-NAV
+HOME
+===================================================== */
+
+function goHome(){
+
+ stopCamera();
+
+ show("home");
+
+}
+
+
+/* =====================================================
+NAVIGATION
 ===================================================== */
 
 function show(id){
 
+ if(
+  id!=="workout"&&
+  cameraRunning
+ )
+  stopCamera();
+
  document
- .querySelectorAll(".screen")
- .forEach(
-  x=>x.classList.remove("active")
- );
+  .querySelectorAll(".screen")
+  .forEach(x=>{
+   x.classList.remove("active");
+  });
 
  const screen=
- document.getElementById(id);
+  document.getElementById(id);
 
- if(!screen)return;
+ if(!screen)
+  return;
 
  screen.classList.add("active");
 
  document
- .querySelectorAll(".nav button")
- .forEach(
-  x=>x.classList.remove("active")
- );
+  .querySelectorAll(".nav button")
+  .forEach(x=>{
+   x.classList.remove("active");
+  });
 
  const nav={
-
   home:"navHome",
   workout:"navWorkout",
   progress:"navProgress",
   pets:"navPets",
   profile:"navProfile"
-
  };
 
- const navButton=
- document.getElementById(nav[id]);
+ if(nav[id]){
 
- if(navButton)
- navButton.classList.add("active");
+  document
+   .getElementById(nav[id])
+   .classList.add("active");
 
- if(id==="progress"){
+ }
 
+ if(id==="progress")
   setTimeout(
    drawChart,
    50
   );
 
- }
-
- if(id==="pets"){
-
+ if(id==="pets")
   renderPets();
-
- }
 
 }
 
@@ -3445,24 +4403,30 @@ CHART
 function drawChart(){
 
  const canvas=
- document.getElementById("chartCanvas");
+  document.getElementById(
+   "chartCanvas"
+  );
 
- if(!canvas)return;
+ if(!canvas)
+  return;
 
  const rect=
- canvas.getBoundingClientRect();
+  canvas.getBoundingClientRect();
+
+ if(!rect.width)
+  return;
 
  const ratio=
- window.devicePixelRatio||1;
+  window.devicePixelRatio||1;
 
  canvas.width=
- rect.width*ratio;
+  rect.width*ratio;
 
  canvas.height=
- rect.height*ratio;
+  rect.height*ratio;
 
  const ctx=
- canvas.getContext("2d");
+  canvas.getContext("2d");
 
  ctx.setTransform(
   ratio,
@@ -3484,7 +4448,7 @@ function drawChart(){
  );
 
  const history=
- data.history.slice(-7);
+  data.history.slice(-7);
 
  if(history.length===0){
 
@@ -3505,26 +4469,23 @@ function drawChart(){
  }
 
  const max=
- Math.max(
-  1,
-  ...history.map(
-   x=>x.reps
-  )
- );
+  Math.max(
+   1,
+   ...history.map(
+    x=>x.reps
+   )
+  );
 
  ctx.strokeStyle="#333";
 
  ctx.lineWidth=1;
 
- for(
-  let i=0;
-  i<4;
-  i++
- ){
+ for(let i=0;i<4;i++){
 
   const y=
-  20+
-  i*((h-40)/3);
+   20+
+   i*
+   ((h-40)/3);
 
   ctx.beginPath();
 
@@ -3552,24 +4513,23 @@ function drawChart(){
   (item,i)=>{
 
    const x=
-   10+
-   (i/
-   Math.max(
-    1,
-    history.length-1
-   ))*
-   (w-20);
+    10+
+    (i/
+    Math.max(
+     1,
+     history.length-1
+    ))*
+    (w-20);
 
    const y=
-   h-
-   20-
-   (item.reps/max)*
-   (h-45);
+    h-20-
+    (item.reps/max)*
+    (h-45);
 
    if(i===0)
-   ctx.moveTo(x,y);
+    ctx.moveTo(x,y);
    else
-   ctx.lineTo(x,y);
+    ctx.lineTo(x,y);
 
   }
  );
@@ -3585,74 +4545,78 @@ UI
 
 function updateUI(){
 
- document
- .getElementById("totalReps")
- .textContent=
- data.reps;
+ updateLevel();
 
- document
- .getElementById("progressReps")
- .textContent=
- data.reps;
+ document.getElementById(
+  "totalReps"
+ ).textContent=
+  data.reps;
 
- document
- .getElementById("level")
- .textContent=
- data.level;
+ document.getElementById(
+  "progressReps"
+ ).textContent=
+  data.reps;
 
- document
- .getElementById("progressLevel")
- .textContent=
- data.level;
+ document.getElementById(
+  "level"
+ ).textContent=
+  data.level;
 
- document
- .getElementById("xp")
- .textContent=
- data.xp;
+ document.getElementById(
+  "progressLevel"
+ ).textContent=
+  data.level;
 
- document
- .getElementById("xpFill")
- .style.width=
- data.xp+"%";
+ const currentRankXP=
+  data.xp%100;
 
- document
- .getElementById("streak")
- .textContent=
- data.streak;
+ document.getElementById(
+  "xp"
+ ).textContent=
+  currentRankXP;
 
- document
- .getElementById("workouts")
- .textContent=
- data.workouts;
+ document.getElementById(
+  "xpFill"
+ ).style.width=
+  currentRankXP+"%";
 
- document
- .getElementById("bestStreak")
- .textContent=
- data.bestStreak;
+ document.getElementById(
+  "streak"
+ ).textContent=
+  data.streak;
+
+ document.getElementById(
+  "workouts"
+ ).textContent=
+  data.workouts;
+
+ document.getElementById(
+  "bestStreak"
+ ).textContent=
+  data.bestStreak;
 
  const rank=
- ranks[getRank()];
+  ranks[getRank()];
 
- document
- .getElementById("rankBadge")
- .textContent=
- rank.name;
+ document.getElementById(
+  "rankBadge"
+ ).textContent=
+  rank.name;
 
- document
- .getElementById("progressRank")
- .textContent=
- rank.name;
+ document.getElementById(
+  "progressRank"
+ ).textContent=
+  rank.name;
 
- document
- .getElementById("profileRank")
- .textContent=
- rank.name;
+ document.getElementById(
+  "profileRank"
+ ).textContent=
+  rank.name;
 
- document
- .getElementById("profileRankNumber")
- .textContent=
- "Rank "+
- (getRank()+1);
+ document.getElementById(
+  "profileRankNumber"
+ ).textContent=
+  "Rank "+(getRank()+1);
 
  updateBody();
 
@@ -3663,37 +4627,33 @@ function updateUI(){
 POPUP
 ===================================================== */
 
-let popupTimeout=null;
-
 function showPopup(
  title,
  text
 ){
 
  const popup=
- document.getElementById("popup");
+  document.getElementById(
+   "popup"
+  );
 
- document
- .getElementById("popupTitle")
- .textContent=
- title;
+ document.getElementById(
+  "popupTitle"
+ ).textContent=
+  title;
 
- document
- .getElementById("popupText")
- .textContent=
- text;
+ document.getElementById(
+  "popupText"
+ ).textContent=
+  text;
 
  popup.classList.add("show");
 
- clearTimeout(popupTimeout);
+ setTimeout(()=>{
 
- popupTimeout=
- setTimeout(
-  ()=>{
-   popup.classList.remove("show");
-  },
-  2500
- );
+  popup.classList.remove("show");
+
+ },2500);
 
 }
 
@@ -3708,19 +4668,17 @@ function resetProgress(){
   !confirm(
    "Reset all REP//RANK progress?"
   )
- ){
+ )
   return;
- }
 
  data=
- JSON.parse(
-  JSON.stringify(
-   defaultData
-  )
- );
+  JSON.parse(
+   JSON.stringify(
+    defaultData
+   )
+  );
 
  sessionReps=0;
-
  sessionXP=0;
 
  wildPet=null;
