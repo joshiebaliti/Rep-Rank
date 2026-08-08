@@ -3,710 +3,591 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-
 <meta name="theme-color" content="#070707">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="REP//RANK">
-
 <title>REP//RANK</title>
-
-<script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5.1675469404/pose.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"></script>
 <style>
-
 *{
-box-sizing:border-box;
--webkit-tap-highlight-color:transparent;
+ box-sizing:border-box;
+ -webkit-tap-highlight-color:transparent;
 }
-
 body{
-margin:0;
-background:#070707;
-color:white;
-font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Arial,sans-serif;
+ margin:0;
+ background:#070707;
+ color:#fff;
+ font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Arial,sans-serif;
 }
-
-button{
-font:inherit;
-}
-
+button{font:inherit}
 .app{
-max-width:540px;
-margin:auto;
-padding:22px 18px 110px;
+ max-width:540px;
+ margin:auto;
+ padding:22px 18px 110px;
 }
-
-.screen{
-display:none;
-}
-
-.screen.active{
-display:block;
-}
-
+.screen{display:none}
+.screen.active{display:block}
 .top{
-display:flex;
-align-items:center;
-justify-content:space-between;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
 }
-
 .logo{
-font-size:25px;
-font-weight:950;
-letter-spacing:-1.6px;
+ font-size:25px;
+ font-weight:950;
+ letter-spacing:-1.6px;
 }
-
 .rankBadge{
-padding:8px 12px;
-border-radius:20px;
-font-size:10px;
-font-weight:950;
-background:#222;
+ padding:8px 12px;
+ border-radius:20px;
+ background:#222;
+ font-size:11px;
+ font-weight:950;
 }
-
 h1{
-font-size:32px;
-letter-spacing:-1.5px;
-margin:8px 0 22px;
+ font-size:32px;
+ letter-spacing:-1.5px;
+ margin:8px 0 22px;
 }
-
 h2{
-font-size:20px;
-margin:0 0 12px;
+ font-size:20px;
+ margin:0 0 12px;
 }
-
 .muted{
-color:#777;
-font-size:11px;
-font-weight:800;
+ color:#777;
+ font-size:12px;
+ font-weight:700;
 }
-
 .hero{
-margin-top:24px;
-padding:23px;
-border-radius:25px;
-background:linear-gradient(145deg,#191919,#0c0c0c);
-border:1px solid #292929;
+ margin-top:24px;
+ padding:23px;
+ border-radius:25px;
+ background:linear-gradient(145deg,#191919,#0c0c0c);
+ border:1px solid #292929;
 }
-
 .level{
-font-size:60px;
-font-weight:950;
-line-height:1;
-margin:5px 0;
+ font-size:60px;
+ font-weight:950;
+ line-height:1;
+ margin:5px 0;
 }
-
 .xpbar{
-height:9px;
-background:#292929;
-border-radius:20px;
-overflow:hidden;
-margin-top:14px;
+ height:9px;
+ background:#292929;
+ border-radius:20px;
+ overflow:hidden;
+ margin-top:14px;
 }
-
 .xpfill{
-height:100%;
-width:0;
-background:white;
-transition:.3s;
+ height:100%;
+ width:0;
+ background:#fff;
+ transition:.3s;
 }
-
 .grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-margin-top:13px;
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px;
+ margin-top:13px;
 }
-
 .card{
-background:#121212;
-border:1px solid #252525;
-border-radius:20px;
-padding:18px;
+ background:#121212;
+ border:1px solid #252525;
+ border-radius:20px;
+ padding:18px;
 }
-
 .card h3{
-margin:0;
-font-size:10px;
-color:#777;
+ margin:0;
+ font-size:10px;
+ color:#777;
 }
-
 .card p{
-margin:6px 0 0;
-font-size:28px;
-font-weight:950;
+ margin:6px 0 0;
+ font-size:28px;
+ font-weight:950;
 }
-
-.section{
-margin-top:28px;
-}
-
+.section{margin-top:28px}
 .exercise{
-width:100%;
-border:1px solid #292929;
-background:#131313;
-color:white;
-border-radius:18px;
-padding:16px;
-margin-bottom:10px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-text-align:left;
-cursor:pointer;
+ width:100%;
+ border:1px solid #292929;
+ background:#131313;
+ color:white;
+ border-radius:18px;
+ padding:16px;
+ margin-bottom:10px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ text-align:left;
+ cursor:pointer;
 }
-
-.exercise strong{
-font-size:15px;
-}
-
+.exercise strong{font-size:15px}
 .exercise span{
-display:block;
-color:#777;
-font-size:11px;
-margin-top:4px;
+ display:block;
+ color:#777;
+ font-size:11px;
+ margin-top:4px;
 }
-
 .exercise:active,
 .mainBtn:active,
 .secondaryBtn:active,
 .nav button:active{
-transform:scale(.97);
+ transform:scale(.97);
 }
-
 .mainBtn{
-width:100%;
-border:0;
-background:white;
-color:black;
-border-radius:17px;
-padding:16px;
-margin-top:10px;
-font-weight:950;
-cursor:pointer;
+ width:100%;
+ border:0;
+ background:#fff;
+ color:#000;
+ border-radius:17px;
+ padding:16px;
+ margin-top:10px;
+ font-weight:950;
+ cursor:pointer;
 }
-
 .secondaryBtn{
-width:100%;
-border:1px solid #292929;
-background:#151515;
-color:white;
-border-radius:17px;
-padding:15px;
-margin-top:10px;
-font-weight:850;
-cursor:pointer;
+ width:100%;
+ border:1px solid #292929;
+ background:#151515;
+ color:#fff;
+ border-radius:17px;
+ padding:15px;
+ margin-top:10px;
+ font-weight:850;
+ cursor:pointer;
 }
-
 .back{
-border:0;
-background:none;
-color:#888;
-font-weight:750;
-padding:0 0 14px;
-cursor:pointer;
+ border:0;
+ background:none;
+ color:#888;
+ font-weight:750;
+ padding:0 0 14px;
+ cursor:pointer;
 }
-
 /* BODY */
-
 .bodyCard{
-background:#111;
-border:1px solid #252525;
-border-radius:25px;
-padding:18px;
+ background:#111;
+ border:1px solid #252525;
+ border-radius:25px;
+ padding:18px;
 }
-
 .bodyWrap{
-height:400px;
-position:relative;
-display:flex;
-justify-content:center;
-overflow:hidden;
+ height:400px;
+ position:relative;
+ display:flex;
+ justify-content:center;
+ overflow:hidden;
 }
-
 .body{
-width:240px;
-height:390px;
-position:relative;
+ width:240px;
+ height:390px;
+ position:relative;
 }
-
 .bodyPart{
-position:absolute;
-background:#454545;
-transition:.3s;
+ position:absolute;
+ background:#454545;
+ transition:.3s;
 }
-
-.bodyPart.low{
-background:#666;
-}
-
-.bodyPart.medium{
-background:#aaa;
-}
-
-.bodyPart.high{
-background:white;
-}
-
+.bodyPart.low{background:#555}
+.bodyPart.medium{background:#aaa}
+.bodyPart.high{background:#fff}
 .head{
-width:58px;
-height:68px;
-border-radius:50%;
-left:91px;
-top:3px;
+ width:58px;
+ height:68px;
+ border-radius:50%;
+ left:91px;
+ top:3px;
 }
-
 .neck{
-width:34px;
-height:35px;
-left:103px;
-top:55px;
-border-radius:9px;
+ width:34px;
+ height:35px;
+ left:103px;
+ top:55px;
+ border-radius:9px;
 }
-
-.shoulderL,
-.shoulderR{
-width:60px;
-height:44px;
-top:79px;
-border-radius:50%;
+.shoulderL,.shoulderR{
+ width:60px;
+ height:44px;
+ top:79px;
+ border-radius:50%;
 }
-
 .shoulderL{
-left:30px;
-transform:rotate(-18deg);
+ left:30px;
+ transform:rotate(-18deg);
 }
-
 .shoulderR{
-right:30px;
-transform:rotate(18deg);
+ right:30px;
+ transform:rotate(18deg);
 }
-
-.chestL,
-.chestR{
-width:68px;
-height:59px;
-top:94px;
-border-radius:45%;
+.chestL,.chestR{
+ width:68px;
+ height:59px;
+ top:94px;
+ border-radius:45%;
 }
-
-.chestL{
-left:49px;
+.chestL{left:49px}
+.chestR{right:49px}
+.armL,.armR{
+ width:37px;
+ height:85px;
+ top:114px;
+ border-radius:25px;
 }
-
-.chestR{
-right:49px;
-}
-
-.armL,
-.armR{
-width:37px;
-height:85px;
-top:114px;
-border-radius:25px;
-}
-
 .armL{
-left:15px;
-transform:rotate(9deg);
+ left:15px;
+ transform:rotate(9deg);
 }
-
 .armR{
-right:15px;
-transform:rotate(-9deg);
+ right:15px;
+ transform:rotate(-9deg);
 }
-
 .abs{
-width:80px;
-height:118px;
-left:80px;
-top:150px;
-border-radius:20px;
+ width:80px;
+ height:118px;
+ left:80px;
+ top:150px;
+ border-radius:20px;
 }
-
 .waist{
-width:96px;
-height:58px;
-left:72px;
-top:243px;
-border-radius:0 0 35px 35px;
+ width:96px;
+ height:58px;
+ left:72px;
+ top:243px;
+ border-radius:0 0 35px 35px;
 }
-
-.legL,
-.legR{
-width:63px;
-height:128px;
-top:260px;
-border-radius:28px;
+.legL,.legR{
+ width:63px;
+ height:128px;
+ top:260px;
+ border-radius:28px;
 }
-
-.legL{
-left:55px;
+.legL{left:55px}
+.legR{right:55px}
+.bodyLegend{
+ display:flex;
+ justify-content:center;
+ gap:15px;
+ font-size:10px;
+ color:#777;
 }
-
-.legR{
-right:55px;
+.legendDot{
+ width:8px;
+ height:8px;
+ border-radius:50%;
+ background:#444;
+ display:inline-block;
+ margin-right:4px;
 }
-
-/* CAMERA */
-
+.legendDot.active{background:#fff}
+/* WORKOUT */
 .camera{
-height:510px;
-background:#000;
-border-radius:25px;
-overflow:hidden;
-position:relative;
-border:1px solid #292929;
+ height:510px;
+ background:#000;
+ border-radius:25px;
+ overflow:hidden;
+ position:relative;
+ border:1px solid #292929;
 }
-
 #video{
-position:absolute;
-width:100%;
-height:100%;
-object-fit:cover;
-transform:scaleX(-1);
+ position:absolute;
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ transform:scaleX(-1);
 }
-
 #poseCanvas{
-position:absolute;
-inset:0;
-width:100%;
-height:100%;
-transform:scaleX(-1);
-pointer-events:none;
+ position:absolute;
+ inset:0;
+ width:100%;
+ height:100%;
+ transform:scaleX(-1);
 }
-
 .cameraTop{
-position:absolute;
-top:14px;
-left:14px;
-right:14px;
-display:flex;
-justify-content:space-between;
-z-index:5;
+ position:absolute;
+ top:14px;
+ left:14px;
+ right:14px;
+ display:flex;
+ justify-content:space-between;
+ z-index:5;
 }
-
 .status{
-padding:9px 12px;
-background:rgba(0,0,0,.75);
-border-radius:14px;
-font-size:10px;
-font-weight:900;
+ padding:9px 12px;
+ background:rgba(0,0,0,.75);
+ border-radius:14px;
+ font-size:11px;
+ font-weight:900;
 }
-
 .cameraBottom{
-position:absolute;
-left:14px;
-right:14px;
-bottom:14px;
-padding:15px;
-background:rgba(0,0,0,.78);
-border-radius:19px;
-z-index:5;
+ position:absolute;
+ left:14px;
+ right:14px;
+ bottom:14px;
+ padding:15px;
+ background:rgba(0,0,0,.78);
+ border-radius:19px;
+ z-index:10;
 }
-
 .repBig{
-font-size:45px;
-font-weight:950;
-line-height:1;
+ font-size:45px;
+ font-weight:950;
+ line-height:1;
 }
-
 .formText{
-font-size:12px;
-font-weight:850;
-margin-top:5px;
+ font-size:12px;
+ font-weight:850;
+ margin-top:5px;
 }
-
-.good{
-color:#fff;
-}
-
-.warn{
-color:#aaa;
-}
-
+.good{color:#fff}
+.warn{color:#aaa}
 .workoutStats{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-margin-top:12px;
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:10px;
+ margin-top:12px;
 }
-
 .smallStat{
-background:#131313;
-border:1px solid #252525;
-border-radius:18px;
-padding:15px;
+ background:#131313;
+ border:1px solid #252525;
+ border-radius:18px;
+ padding:15px;
 }
-
 .smallStat b{
-display:block;
-font-size:10px;
-color:#777;
+ display:block;
+ font-size:10px;
+ color:#777;
 }
-
 .smallStat strong{
-font-size:22px;
-display:block;
-margin-top:4px;
+ font-size:22px;
+ display:block;
+ margin-top:4px;
 }
-
-/* PET */
-
+/* PET OVERLAY */
 .petLayer{
-position:absolute;
-inset:0;
-z-index:8;
-pointer-events:none;
-overflow:hidden;
+ position:absolute;
+ inset:0;
+ z-index:8;
+ pointer-events:none;
+ overflow:hidden;
 }
-
-.wildPet{
-position:absolute;
-font-size:52px;
-filter:drop-shadow(0 5px 12px rgba(255,255,255,.2));
-transition:left .8s linear,top .8s linear;
-animation:petBob .8s infinite alternate ease-in-out;
+#petCanvas{
+ width:100%;
+ height:100%;
 }
-
-@keyframes petBob{
-from{
-transform:translateY(0) rotate(-4deg);
+.petInfo{
+ position:absolute;
+ left:14px;
+ top:58px;
+ background:rgba(0,0,0,.8);
+ padding:10px 13px;
+ border-radius:15px;
+ font-size:11px;
+ font-weight:900;
+ display:none;
 }
-to{
-transform:translateY(-9px) rotate(4deg);
+.petInfo.show{display:block}
+.mutationBox{
+ position:absolute;
+ left:14px;
+ right:14px;
+ top:105px;
+ background:rgba(0,0,0,.88);
+ border:1px solid #333;
+ border-radius:20px;
+ padding:15px;
+ display:none;
+ z-index:30;
 }
+.mutationBox.show{display:block}
+.mutationName{
+ font-size:20px;
+ font-weight:950;
 }
-
-.petNotice{
-position:absolute;
-left:12px;
-right:12px;
-top:70px;
-z-index:10;
-background:rgba(0,0,0,.88);
-border:1px solid #333;
-border-radius:18px;
-padding:13px;
-text-align:center;
-display:none;
+.mutationReq{
+ color:#aaa;
+ font-size:11px;
+ margin-top:4px;
 }
-
-.petNotice.show{
-display:block;
+.captureBar{
+ height:7px;
+ background:#292929;
+ border-radius:20px;
+ margin-top:10px;
+ overflow:hidden;
 }
-
-.petName{
-font-weight:950;
-font-size:16px;
+.captureFill{
+ height:100%;
+ width:0;
+ background:#fff;
+ transition:.2s;
 }
-
-.petMutation{
-font-size:11px;
-color:#aaa;
-margin-top:3px;
+/* GRAPH */
+.chart{
+ height:220px;
+ background:#101010;
+ border:1px solid #252525;
+ border-radius:22px;
+ padding:15px;
 }
-
-.petProgress{
-margin-top:8px;
-font-size:11px;
-font-weight:850;
+canvas.chartCanvas{
+ width:100%;
+ height:100%;
 }
-
-/* PLANK */
-
-.plankTimer{
-font-size:42px;
-font-weight:950;
-margin-top:10px;
-}
-
 /* RANK */
-
 .rankCard{
-border-radius:25px;
-padding:25px;
-background:linear-gradient(145deg,#191919,#0d0d0d);
-border:1px solid #292929;
-text-align:center;
+ border-radius:25px;
+ padding:25px;
+ background:linear-gradient(145deg,#191919,#0d0d0d);
+ border:1px solid #292929;
+ text-align:center;
 }
-
 .rankName{
-font-size:32px;
-font-weight:950;
+ font-size:32px;
+ font-weight:950;
 }
-
 .rankNumber{
-font-size:12px;
-color:#777;
-margin-top:5px;
-font-weight:800;
+ font-size:12px;
+ color:#777;
+ margin-top:5px;
+ font-weight:800;
 }
-
-/* PETDEX */
-
+/* PET MENU */
 .petGrid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px;
 }
-
 .petCard{
-background:#121212;
-border:1px solid #282828;
-border-radius:22px;
-padding:18px;
-text-align:center;
-min-height:170px;
+ background:#111;
+ border:1px solid #292929;
+ border-radius:22px;
+ padding:15px;
+ text-align:center;
 }
-
-.petEmoji{
-font-size:60px;
+.petVisual{
+ height:120px;
+ position:relative;
 }
-
-.petCard strong{
-display:block;
-margin-top:8px;
+.petVisual canvas{
+ width:120px;
+ height:120px;
 }
-
-.petCard small{
-color:#777;
-font-weight:800;
+.petName{
+ font-size:14px;
+ font-weight:950;
 }
-
-.petCard.equipped{
-border-color:white;
+.petMeta{
+ color:#777;
+ font-size:10px;
+ margin-top:4px;
+ line-height:1.5;
 }
-
+.extractBtn{
+ width:100%;
+ border:0;
+ background:#fff;
+ color:#000;
+ border-radius:13px;
+ padding:10px;
+ margin-top:10px;
+ font-size:11px;
+ font-weight:950;
+}
+.emptyPets{
+ background:#111;
+ border:1px solid #252525;
+ border-radius:22px;
+ padding:25px;
+ text-align:center;
+ color:#777;
+ font-size:12px;
+}
 /* NAV */
-
 .nav{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-height:76px;
-background:rgba(8,8,8,.96);
-backdrop-filter:blur(18px);
-border-top:1px solid #222;
-display:flex;
-justify-content:space-around;
-z-index:50;
-padding-bottom:env(safe-area-inset-bottom);
+ position:fixed;
+ bottom:0;
+ left:0;
+ right:0;
+ height:76px;
+ background:rgba(8,8,8,.96);
+ backdrop-filter:blur(18px);
+ border-top:1px solid #222;
+ display:flex;
+ justify-content:space-around;
+ z-index:50;
+ padding-bottom:env(safe-area-inset-bottom);
 }
-
 .nav button{
-background:none;
-border:0;
-color:#666;
-font-size:9px;
-font-weight:850;
-cursor:pointer;
-width:25%;
+ background:none;
+ border:0;
+ color:#666;
+ font-size:9px;
+ font-weight:850;
+ cursor:pointer;
+ width:20%;
 }
-
-.nav button.active{
-color:white;
-}
-
+.nav button.active{color:#fff}
 .navIcon{
-display:block;
-font-size:20px;
-margin-bottom:3px;
+ display:block;
+ font-size:20px;
+ margin-bottom:3px;
 }
-
 /* POPUP */
-
 .popup{
-position:fixed;
-left:18px;
-right:18px;
-bottom:90px;
-background:white;
-color:black;
-border-radius:20px;
-padding:18px;
-z-index:100;
-display:none;
-box-shadow:0 15px 50px rgba(0,0,0,.5);
+ position:fixed;
+ left:18px;
+ right:18px;
+ bottom:90px;
+ background:#fff;
+ color:#000;
+ border-radius:20px;
+ padding:18px;
+ z-index:100;
+ display:none;
+ box-shadow:0 15px 50px rgba(0,0,0,.5);
 }
-
-.popup.show{
-display:block;
-}
-
+.popup.show{display:block}
 .popupTitle{
-font-weight:950;
-font-size:17px;
+ font-weight:950;
+ font-size:17px;
 }
-
 .popupText{
-font-size:12px;
-margin-top:5px;
+ font-size:12px;
+ margin-top:5px;
 }
-
 </style>
 </head>
-
 <body>
-
 <div class="app">
-
 <!-- HOME -->
-
 <div id="home" class="screen active">
-
 <div class="top">
-
-<div class="logo">
-REP//RANK
+<div class="logo">REP//RANK</div>
+<div class="rankBadge" id="rankBadge">ROOKIE I</div>
 </div>
-
-<div class="rankBadge" id="rankBadge">
-ROOKIE I
-</div>
-
-</div>
-
 <div class="hero">
-
+<div class="muted">CURRENT LEVEL</div>
+<div class="level" id="level">1</div>
 <div class="muted">
-CURRENT LEVEL
+<span id="xp">0</span> / 100 XP
 </div>
-
-<div class="level" id="level">
-1
-</div>
-
-<div class="muted">
-<span id="xp">0</span> / <span id="nextXP">100</span> XP
-</div>
-
 <div class="xpbar">
 <div class="xpfill" id="xpFill"></div>
 </div>
-
 </div>
-
 <div class="grid">
-
 <div class="card">
 <h3>TOTAL REPS</h3>
 <p id="totalReps">0</p>
 </div>
-
 <div class="card">
 <h3>🔥 STREAK</h3>
 <p id="streak">0</p>
 </div>
-
 </div>
-
 <div class="section">
-
 <h2>Train</h2>
-
 <button class="exercise" onclick="openWorkout('Push-ups')">
 <div>
 <strong>Push-ups</strong>
@@ -714,7 +595,6 @@ CURRENT LEVEL
 </div>
 <strong>›</strong>
 </button>
-
 <button class="exercise" onclick="openWorkout('Squats')">
 <div>
 <strong>Squats</strong>
@@ -722,7 +602,6 @@ CURRENT LEVEL
 </div>
 <strong>›</strong>
 </button>
-
 <button class="exercise" onclick="openWorkout('Sit-ups')">
 <div>
 <strong>Sit-ups</strong>
@@ -730,7 +609,6 @@ CURRENT LEVEL
 </div>
 <strong>›</strong>
 </button>
-
 <button class="exercise" onclick="openWorkout('Lunges')">
 <div>
 <strong>Lunges</strong>
@@ -738,7 +616,6 @@ CURRENT LEVEL
 </div>
 <strong>›</strong>
 </button>
-
 <button class="exercise" onclick="openWorkout('Plank')">
 <div>
 <strong>Plank</strong>
@@ -746,1071 +623,1036 @@ CURRENT LEVEL
 </div>
 <strong>›</strong>
 </button>
-
 </div>
-
 <div class="section">
-
-<h2>Your Body</h2>
-
+<h2>Body</h2>
 <div class="bodyCard">
-
 <div class="bodyWrap">
-
 <div class="body">
-
 <div class="bodyPart head"></div>
 <div class="bodyPart neck"></div>
-
 <div id="bodyShoulderL" class="bodyPart shoulderL"></div>
 <div id="bodyShoulderR" class="bodyPart shoulderR"></div>
-
 <div id="bodyChestL" class="bodyPart chestL"></div>
 <div id="bodyChestR" class="bodyPart chestR"></div>
-
 <div id="bodyArmL" class="bodyPart armL"></div>
 <div id="bodyArmR" class="bodyPart armR"></div>
-
 <div id="bodyCore" class="bodyPart abs"></div>
-
 <div class="bodyPart waist"></div>
-
 <div id="bodyLegL" class="bodyPart legL"></div>
 <div id="bodyLegR" class="bodyPart legR"></div>
-
 </div>
-
 </div>
-
+<div class="bodyLegend">
+<span><i class="legendDot"></i>Low</span>
+<span><i class="legendDot active"></i>Trained</span>
 </div>
-
 </div>
-
 </div>
-
-
+</div>
 <!-- WORKOUT -->
-
 <div id="workout" class="screen">
-
-<button class="back" onclick="endWorkout();show('home')">
+<button class="back" onclick="stopCamera();show('home')">
 ‹ Back
 </button>
-
-<h1 id="workoutTitle">
-Push-ups
-</h1>
-
+<h1 id="workoutTitle">Push-ups</h1>
 <div id="cameraArea">
-
 <div class="camera">
-
 <video id="video" autoplay playsinline muted></video>
-
 <canvas id="poseCanvas"></canvas>
-
-<div id="petLayer" class="petLayer"></div>
-
-<div id="petNotice" class="petNotice">
-
-<div class="petName" id="petNoticeName">
-A WILD PET APPEARED!
+<div class="petLayer">
+<canvas id="petCanvas"></canvas>
+<div class="petInfo" id="petInfo">
+CREATURE FOUND
 </div>
-
-<div class="petMutation" id="petNoticeMutation">
-Do extra reps to mutate it
+<div class="mutationBox" id="mutationBox">
+<div class="mutationName" id="mutationName">
+BASE
 </div>
-
-<div class="petProgress">
-EXTRA REPS:
-<span id="petExtra">0</span>/10
+<div class="mutationReq">
+Complete <span id="mutationRequired">4</span> extra reps
 </div>
-
+<div class="captureBar">
+<div class="captureFill" id="captureFill"></div>
 </div>
-
+</div>
+</div>
 <div class="cameraTop">
-
 <div class="status" id="cameraStatus">
 CAMERA OFF
 </div>
-
 <div class="status">
 REP <span id="cameraReps">0</span>
 </div>
-
 </div>
-
 <div class="cameraBottom">
-
 <div class="repBig" id="sessionReps">
 0
 </div>
-
 <div class="formText" id="formStatus">
 Start camera to begin
 </div>
-
-<div id="plankTimer" class="plankTimer" style="display:none">
-0s
 </div>
-
 </div>
-
-</div>
-
 <div class="workoutStats">
-
 <div class="smallStat">
 <b>FORM</b>
 <strong id="formScore">--</strong>
 </div>
-
 <div class="smallStat">
 <b>XP EARNED</b>
 <strong id="sessionXP">0</strong>
 </div>
-
 </div>
-
 <button class="mainBtn" onclick="startPoseCamera()">
 START CAMERA
 </button>
-
 <button class="secondaryBtn" onclick="manualRep()">
 + ADD REP
 </button>
-
 </div>
-
+<div id="genericWorkout" style="display:none">
+<div class="rankCard">
+<div class="muted">WORKOUT</div>
+<div class="rankName" id="genericName">
+Squats
 </div>
-
-
+<div class="rankNumber">
+Automatic form tracking
+</div>
+</div>
+<div class="workoutStats">
+<div class="smallStat">
+<b>REPS</b>
+<strong id="genericReps">0</strong>
+</div>
+<div class="smallStat">
+<b>FORM</b>
+<strong id="genericForm">--</strong>
+</div>
+</div>
+<button class="mainBtn" onclick="startPoseCamera()">
+START CAMERA
+</button>
+<button class="secondaryBtn" onclick="manualRep()">
++ ADD REP
+</button>
+</div>
+</div>
 <!-- PROGRESS -->
-
 <div id="progress" class="screen">
-
 <h1>Progress</h1>
-
 <div class="grid">
-
 <div class="card">
 <h3>TOTAL REPS</h3>
 <p id="progressReps">0</p>
 </div>
-
 <div class="card">
 <h3>LEVEL</h3>
 <p id="progressLevel">1</p>
 </div>
-
 </div>
-
 <div class="section">
-
 <h2>Weekly Reps</h2>
-
-<div class="rankCard">
-
-<div style="font-size:42px;font-weight:950" id="progressTotalXP">
-0 XP
+<div class="chart">
+<canvas id="chartCanvas" class="chartCanvas"></canvas>
 </div>
-
-<div class="rankNumber">
-1,000 XP = GOAT
 </div>
-
-</div>
-
-</div>
-
 <div class="section">
-
 <h2>Current Rank</h2>
-
 <div class="rankCard">
-
 <div class="rankName" id="progressRank">
 ROOKIE I
 </div>
-
 <div class="rankNumber">
-<span id="rankXPProgress">0</span> / 1000 XP
+Keep training to rank up
 </div>
-
 </div>
-
 </div>
-
 </div>
-
-
-<!-- PETDEX -->
-
+<!-- PETS -->
 <div id="pets" class="screen">
-
-<h1>Petdex</h1>
-
-<div class="muted">
-CAUGHT PETS
+<h1>Pets</h1>
+<div class="muted" style="margin-bottom:18px">
+Captured creatures can be extracted for permanent muscle XP.
 </div>
-
-<div class="petGrid" id="petGrid">
+<div id="petGrid" class="petGrid"></div>
 </div>
-
-</div>
-
-
 <!-- PROFILE -->
-
 <div id="profile" class="screen">
-
 <h1>Profile</h1>
-
 <div class="rankCard">
-
-<div class="muted">
-CURRENT RANK
-</div>
-
+<div class="muted">CURRENT RANK</div>
 <div class="rankName" id="profileRank">
 ROOKIE I
 </div>
-
 <div class="rankNumber" id="profileRankNumber">
 Rank 1
 </div>
-
 </div>
-
 <div class="section">
-
 <div class="grid">
-
 <div class="card">
 <h3>WORKOUTS</h3>
 <p id="workouts">0</p>
 </div>
-
 <div class="card">
 <h3>BEST STREAK</h3>
 <p id="bestStreak">0</p>
 </div>
-
 </div>
-
 </div>
-
 <div class="section">
-
 <button class="secondaryBtn" onclick="resetProgress()">
 RESET PROGRESS
 </button>
-
 </div>
-
 </div>
-
-
+</div>
 <!-- NAV -->
-
 <div class="nav">
-
 <button id="navHome" class="active"
-onclick="endWorkout();show('home')">
-
+onclick="stopCamera();show('home')">
 <span class="navIcon">⌂</span>
 Home
-
 </button>
-
 <button id="navWorkout"
 onclick="show('workout')">
-
 <span class="navIcon">🏋️</span>
 Train
-
 </button>
-
 <button id="navProgress"
-onclick="endWorkout();show('progress')">
-
+onclick="stopCamera();show('progress')">
 <span class="navIcon">↗</span>
 Progress
-
 </button>
-
 <button id="navPets"
-onclick="endWorkout();show('pets')">
-
-<span class="navIcon">🐾</span>
+onclick="stopCamera();show('pets')">
+<span class="navIcon">◆</span>
 Pets
-
 </button>
-
+<button id="navProfile"
+onclick="stopCamera();show('profile')">
+<span class="navIcon">●</span>
+Profile
+</button>
 </div>
-
-
 <div class="popup" id="popup">
-
 <div class="popupTitle" id="popupTitle">
 LEVEL UP!
 </div>
-
 <div class="popupText" id="popupText">
-You're getting stronger.
+You ranked up.
 </div>
-
 </div>
-
-</div>
-
-
 <script>
-
 /* =========================
 DATA
 ========================= */
-
 const defaultData={
-xp:0,
 reps:0,
+xp:0,
 level:1,
 streak:0,
 bestStreak:0,
 workouts:0,
-totalXP:0,
 history:[],
-pets:[],
-equippedPet:null,
 muscles:{
-chest:0,
-shoulders:0,
-arms:0,
-core:0,
-legs:0
-}
+ chest:0,
+ shoulders:0,
+ arms:0,
+ core:0,
+ legs:0
+},
+pets:[]
 };
-
-let data=
-JSON.parse(localStorage.getItem("reprank"))||defaultData;
-
+let data=JSON.parse(localStorage.getItem("reprank"))||defaultData;
+data.muscles=data.muscles||defaultData.muscles;
+data.pets=data.pets||[];
 let currentWorkout="Push-ups";
-
 let sessionReps=0;
 let sessionXP=0;
-let sessionStartReps=0;
-
-let pose=null;
-let cameraStream=null;
-let cameraRunning=false;
-
-let lastRepTime=0;
-
-let movementState="UP";
-
-let downFrames=0;
-let upFrames=0;
-
-let plankSeconds=0;
-let plankTimer=null;
-
-let wildPet=null;
-let petMoveTimer=null;
-
-
 /* =========================
 RANKS
 ========================= */
-
 const ranks=[
 {name:"ROOKIE I",xp:0},
-{name:"ROOKIE II",xp:50},
-{name:"ROOKIE III",xp:100},
-{name:"GRINDER I",xp:200},
-{name:"GRINDER II",xp:300},
-{name:"ATHLETE I",xp:400},
-{name:"ATHLETE II",xp:500},
-{name:"BEAST I",xp:600},
-{name:"BEAST II",xp:700},
-{name:"ELITE I",xp:800},
-{name:"ELITE II",xp:900},
-{name:"CHAMPION",xp:950},
+{name:"ROOKIE II",xp:100},
+{name:"ROOKIE III",xp:200},
+{name:"GRINDER I",xp:300},
+{name:"GRINDER II",xp:400},
+{name:"ATHLETE",xp:500},
+{name:"BEAST",xp:600},
+{name:"ELITE",xp:700},
+{name:"CHAMPION",xp:800},
+{name:"LEGEND",xp:900},
 {name:"GOAT",xp:1000}
 ];
-
+function totalXP(){
+return Object.values(data.muscles)
+.reduce((a,b)=>a+b,0)+data.reps;
+}
 function getRank(){
-
-let rank=0;
-
-for(let i=0;i<ranks.length;i++){
-
-if(data.totalXP>=ranks[i].xp){
-rank=i;
+return Math.min(
+Math.floor(totalXP()/100),
+ranks.length-1
+);
 }
-
-}
-
-return rank;
-
-}
-
-
 /* =========================
-PETS
+CAMERA
 ========================= */
-
-const petTypes=[
+let pose=null;
+let cameraStream=null;
+let cameraRunning=false;
+let exerciseState="UP";
+let downFrames=0;
+let upFrames=0;
+let plankTimer=null;
+let plankSeconds=0;
+let lastRepTime=0;
+/* =========================
+PET SYSTEM
+========================= */
+const species=[
+"DRAGON",
+"WOLF",
+"TIGER",
+"GOLEM",
+"FOX",
+"RAPTOR",
+"SERPENT",
+"PHANTOM"
+];
+const rarities=[
 {
-id:"fluff",
-name:"Fluff",
-normal:"🐾"
+name:"COMMON",
+multiplier:1,
+chance:.55
 },
 {
-id:"bolt",
-name:"Bolt",
-normal:"🐺"
+name:"UNCOMMON",
+multiplier:1.5,
+chance:.25
 },
 {
-id:"munch",
-name:"Munch",
-normal:"🐻"
+name:"RARE",
+multiplier:2.5,
+chance:.12
 },
 {
-id:"wing",
-name:"Wing",
-normal:"🦅"
+name:"EPIC",
+multiplier:4,
+chance:.055
 },
 {
-id:"drake",
-name:"Drake",
-normal:"🐉"
+name:"LEGENDARY",
+multiplier:7,
+chance:.02
 },
 {
-id:"blob",
-name:"Blob",
-normal:"👾"
+name:"MYTHIC",
+multiplier:12,
+chance:.005
 }
 ];
-
-const mutations={
-normal:{
-name:"NORMAL",
-emoji:null
+const mutations=[
+{
+name:"BASE",
+required:4,
+multiplier:1
 },
-ice:{
+{
 name:"ICE",
-emoji:"❄️"
+required:6,
+multiplier:1.6
 },
-fire:{
+{
 name:"FIRE",
-emoji:"🔥"
+required:8,
+multiplier:2.5
 },
-lightning:{
+{
 name:"LIGHTNING",
-emoji:"⚡"
+required:10,
+multiplier:4
 },
-beast:{
+{
 name:"BEAST",
-emoji:"👹"
+required:15,
+multiplier:8
 }
+];
+let wildPet=null;
+let petX=100;
+let petY=120;
+let petVX=1.2;
+let petVY=.8;
+let petAnimation=0;
+let mutationProgress=0;
+let mutationActive=false;
+/* =========================
+PET RANDOMNESS
+========================= */
+function randomSpecies(){
+return species[
+Math.floor(Math.random()*species.length)
+];
+}
+function randomRarity(){
+let r=Math.random();
+let total=0;
+for(const rarity of rarities){
+total+=rarity.chance;
+if(r<=total){
+return rarity;
+}
+}
+return rarities[0];
+}
+function randomMutation(){
+let r=Math.random();
+if(r<.50)return mutations[0];
+if(r<.72)return mutations[1];
+if(r<.88)return mutations[2];
+if(r<.97)return mutations[3];
+return mutations[4];
+}
+/* =========================
+SPRITE DRAWING
+========================= */
+function drawCreature(ctx,x,y,scale,type,rarity,mutation){
+ctx.save();
+ctx.translate(x,y);
+ctx.scale(scale,scale);
+petAnimation+=.04;
+let bounce=Math.sin(petAnimation*3)*4;
+ctx.translate(0,bounce);
+/* shadow */
+ctx.beginPath();
+ctx.ellipse(0,30,27,7,0,0,Math.PI*2);
+ctx.fillStyle="rgba(0,0,0,.45)";
+ctx.fill();
+/* body */
+ctx.beginPath();
+ctx.ellipse(0,0,28,30,0,0,Math.PI*2);
+let grad=ctx.createLinearGradient(-25,-25,25,25);
+if(mutation==="ICE"){
+grad.addColorStop(0,"#dfffff");
+grad.addColorStop(1,"#5edfff");
+}
+else if(mutation==="FIRE"){
+grad.addColorStop(0,"#fff0a0");
+grad.addColorStop(1,"#ff3b18");
+}
+else if(mutation==="LIGHTNING"){
+grad.addColorStop(0,"#fff");
+grad.addColorStop(1,"#7c6cff");
+}
+else if(mutation==="BEAST"){
+grad.addColorStop(0,"#ff8");
+grad.addColorStop(1,"#b000ff");
+}
+else{
+grad.addColorStop(0,"#aaa");
+grad.addColorStop(1,"#444");
+}
+ctx.fillStyle=grad;
+ctx.fill();
+ctx.strokeStyle="#fff";
+ctx.lineWidth=2;
+ctx.stroke();
+/* ears */
+ctx.beginPath();
+ctx.moveTo(-18,-20);
+ctx.lineTo(-30,-42);
+ctx.lineTo(-6,-28);
+ctx.fillStyle=grad;
+ctx.fill();
+ctx.stroke();
+ctx.beginPath();
+ctx.moveTo(18,-20);
+ctx.lineTo(30,-42);
+ctx.lineTo(6,-28);
+ctx.fill();
+ctx.stroke();
+/* eyes */
+ctx.fillStyle="#050505";
+ctx.beginPath();
+ctx.arc(-9,-5,4,0,Math.PI*2);
+ctx.fill();
+ctx.beginPath();
+ctx.arc(9,-5,4,0,Math.PI*2);
+ctx.fill();
+/* rarity ring */
+ctx.beginPath();
+ctx.arc(0,0,39,0,Math.PI*2);
+ctx.strokeStyle=
+rarity==="MYTHIC"?"#fff":
+rarity==="LEGENDARY"?"#ddd":
+rarity==="EPIC"?"#bbb":
+rarity==="RARE"?"#999":
+rarity==="UNCOMMON"?"#777":
+"#444";
+ctx.lineWidth=3;
+ctx.stroke();
+/* mutation effects */
+if(mutation==="LIGHTNING"){
+for(let i=0;i<3;i++){
+ctx.beginPath();
+ctx.moveTo(
+Math.random()*50-25,
+Math.random()*50-25
+);
+ctx.lineTo(
+Math.random()*70-35,
+Math.random()*70-35
+);
+ctx.strokeStyle="#fff";
+ctx.lineWidth=2;
+ctx.stroke();
+}
+}
+if(mutation==="FIRE"){
+ctx.beginPath();
+ctx.arc(0,30,10+Math.sin(petAnimation*4)*3,0,Math.PI*2);
+ctx.fillStyle="#ff5";
+ctx.fill();
+}
+if(mutation==="ICE"){
+for(let i=0;i<5;i++){
+ctx.fillStyle="#fff";
+ctx.fillRect(
+Math.sin(i*3+petAnimation)*35,
+Math.cos(i*4+petAnimation)*35,
+3,
+3
+);
+}
+}
+if(mutation==="BEAST"){
+ctx.strokeStyle="#fff";
+ctx.lineWidth=4;
+ctx.beginPath();
+ctx.arc(0,0,47,0,Math.PI*2);
+ctx.stroke();
+}
+ctx.restore();
+}
+/* =========================
+PET SPAWN
+========================= */
+function spawnWildPet(){
+if(wildPet)return;
+const rarity=randomRarity();
+const mutation=randomMutation();
+wildPet={
+species:randomSpecies(),
+rarity:rarity.name,
+rarityMultiplier:rarity.multiplier,
+mutation:mutation.name,
+required:mutation.required,
+baseXP:Math.round(
+10*
+rarity.multiplier*
+mutation.multiplier
+)
 };
-
-function getPetEmoji(pet){
-
-if(pet.mutation==="beast"){
-
-return "👹";
-
+mutationProgress=0;
+mutationActive=true;
+petX=70+Math.random()*180;
+petY=80+Math.random()*250;
+document.getElementById("petInfo").classList.add("show");
+document.getElementById("petInfo").textContent=
+wildPet.rarity+" "+wildPet.species+
+" • "+wildPet.mutation;
+document.getElementById("mutationBox").classList.add("show");
+document.getElementById("mutationName").textContent=
+wildPet.mutation;
+document.getElementById("mutationRequired").textContent=
+wildPet.required;
+document.getElementById("captureFill").style.width="0%";
+showPopup(
+"CREATURE SPAWNED!",
+wildPet.rarity+" "+wildPet.species+" appeared!"
+);
 }
-
-if(pet.mutation==="lightning"){
-
-return "⚡";
-
+/* =========================
+PET LOOP
+========================= */
+function petLoop(){
+const canvas=document.getElementById("petCanvas");
+if(!canvas)return;
+const rect=canvas.getBoundingClientRect();
+const ratio=devicePixelRatio||1;
+canvas.width=rect.width*ratio;
+canvas.height=rect.height*ratio;
+const ctx=canvas.getContext("2d");
+ctx.setTransform(ratio,0,0,ratio,0,0);
+ctx.clearRect(0,0,rect.width,rect.height);
+if(wildPet){
+petX+=petVX;
+petY+=petVY;
+if(petX<50||petX>rect.width-50)
+petVX*=-1;
+if(petY<80||petY>rect.height-150)
+petVY*=-1;
+drawCreature(
+ctx,
+petX,
+petY,
+.72,
+wildPet.species,
+wildPet.rarity,
+wildPet.mutation
+);
 }
-
-if(pet.mutation==="fire"){
-
-return "🔥";
-
+requestAnimationFrame(petLoop);
 }
-
-if(pet.mutation==="ice"){
-
-return "❄️";
-
+/* =========================
+CAPTURE
+========================= */
+function petRep(){
+if(!wildPet)return;
+mutationProgress++;
+const percent=
+Math.min(
+100,
+mutationProgress/wildPet.required*100
+);
+document.getElementById("captureFill")
+.style.width=percent+"%";
+if(mutationProgress>=wildPet.required){
+capturePet();
 }
-
-const type=
-petTypes.find(x=>x.id===pet.type);
-
-return type?type.normal:"🐾";
-
 }
-
-
+function capturePet(){
+const pet={
+id:Date.now()+Math.random(),
+species:wildPet.species,
+rarity:wildPet.rarity,
+mutation:wildPet.mutation,
+xp:wildPet.baseXP
+};
+data.pets.push(pet);
+showPopup(
+"PET CAPTURED!",
+wildPet.rarity+" "+wildPet.mutation+" "+wildPet.species
+);
+wildPet=null;
+mutationActive=false;
+mutationProgress=0;
+document.getElementById("petInfo").classList.remove("show");
+document.getElementById("mutationBox").classList.remove("show");
+save();
+renderPets();
+}
+/* =========================
+EXTRACT PET
+========================= */
+function extractPet(id){
+const index=data.pets.findIndex(
+p=>p.id===id
+);
+if(index===-1)return;
+const pet=data.pets[index];
+const muscles=[
+"chest",
+"shoulders",
+"arms",
+"core",
+"legs"
+];
+const randomMuscle=
+muscles[
+Math.floor(Math.random()*muscles.length)
+];
+if(!confirm(
+"Extract "+pet.mutation+" "+pet.species+
+"?\n\nThis permanently removes the pet and gives +"+
+pet.xp+" XP to "+randomMuscle+"."
+)){
+return;
+}
+data.muscles[randomMuscle]+=pet.xp;
+data.pets.splice(index,1);
+showPopup(
+"PET EXTRACTED",
+"+"+pet.xp+" XP → "+randomMuscle.toUpperCase()
+);
+save();
+renderPets();
+}
+/* =========================
+PET MENU
+========================= */
+function renderPets(){
+const grid=document.getElementById("petGrid");
+if(!grid)return;
+grid.innerHTML="";
+if(data.pets.length===0){
+grid.innerHTML=
+'<div class="emptyPets" style="grid-column:1/-1">'+
+'No captured pets yet.<br><br>'+
+'Find creatures during workouts.'+
+'</div>';
+return;
+}
+data.pets.forEach(pet=>{
+const card=document.createElement("div");
+card.className="petCard";
+card.innerHTML=`
+<div class="petVisual">
+<canvas width="120" height="120"></canvas>
+</div>
+<div class="petName">
+${pet.mutation} ${pet.species}
+</div>
+<div class="petMeta">
+${pet.rarity}<br>
+Extraction: +${pet.xp} XP
+</div>
+<button class="extractBtn">
+EXTRACT
+</button>
+`;
+const canvas=card.querySelector("canvas");
+const ctx=canvas.getContext("2d");
+drawCreature(
+ctx,
+60,
+60,
+.9,
+pet.species,
+pet.rarity,
+pet.mutation
+);
+card.querySelector(".extractBtn")
+.onclick=()=>extractPet(pet.id);
+grid.appendChild(card);
+});
+}
 /* =========================
 SAVE
 ========================= */
-
 function save(){
-
 localStorage.setItem(
 "reprank",
 JSON.stringify(data)
 );
-
 updateUI();
-
 }
-
-
 /* =========================
 XP
 ========================= */
-
 function gainXP(amount){
-
-const oldRank=getRank();
-
+let oldRank=getRank();
 data.xp+=amount;
-data.totalXP+=amount;
-
 while(data.xp>=100){
-
 data.xp-=100;
 data.level++;
-
 }
-
-const newRank=getRank();
-
+let newRank=getRank();
 if(newRank>oldRank){
-
 showPopup(
-"RANK UP 🔥",
-ranks[newRank].name
+"RANK UP!",
+ranks[newRank].name+" 🔥"
 );
-
 }
-
 }
-
-
 /* =========================
-RECORD
+WORKOUT RECORD
 ========================= */
-
 function recordWorkout(){
-
 const today=
 new Date().toISOString().slice(0,10);
-
 let last=
 data.history[data.history.length-1];
-
 if(!last||last.date!==today){
-
 data.history.push({
 date:today,
 reps:0
 });
-
 }
-
-data.history[
-data.history.length-1
-].reps++;
-
+data.history[data.history.length-1].reps++;
 data.workouts++;
-
 data.streak++;
-
-if(data.streak>data.bestStreak){
-
+if(data.streak>data.bestStreak)
 data.bestStreak=data.streak;
-
 }
-
-}
-
-
 /* =========================
-REP
+ADD REP
 ========================= */
-
 function countRep(){
-
 const now=Date.now();
-
-if(now-lastRepTime<700){
-
-return;
-
-}
-
+if(now-lastRepTime<650)return;
 lastRepTime=now;
-
 sessionReps++;
 sessionXP++;
-
 data.reps++;
-
 gainXP(1);
-
 recordWorkout();
-
-applyMuscles();
-
-updateSession();
-
-checkPetMutation();
-
-save();
-
-}
-
-
-/* =========================
-MUSCLES
-========================= */
-
-function applyMuscles(){
-
 if(currentWorkout==="Push-ups"){
-
 data.muscles.chest++;
 data.muscles.shoulders++;
 data.muscles.arms++;
-
 }
-
 if(currentWorkout==="Squats"){
-
 data.muscles.legs++;
 data.muscles.core++;
-
 }
-
 if(currentWorkout==="Sit-ups"){
-
 data.muscles.core++;
-
 }
-
 if(currentWorkout==="Lunges"){
-
 data.muscles.legs++;
-data.muscles.core++;
-
 }
-
 if(currentWorkout==="Plank"){
-
 data.muscles.core++;
 data.muscles.shoulders++;
-
 }
-
+document.getElementById("sessionReps")
+.textContent=sessionReps;
+document.getElementById("cameraReps")
+.textContent=sessionReps;
+document.getElementById("sessionXP")
+.textContent=sessionXP;
+document.getElementById("genericReps")
+.textContent=sessionReps;
+document.getElementById("formStatus")
+.textContent="REP COMPLETE ✓";
+document.getElementById("formStatus")
+.className="formText good";
+petRep();
+save();
 }
-
-
-/* =========================
-SESSION UI
-========================= */
-
-function updateSession(){
-
-document.getElementById("sessionReps").textContent=
-sessionReps;
-
-document.getElementById("cameraReps").textContent=
-sessionReps;
-
-document.getElementById("sessionXP").textContent=
-sessionXP;
-
-}
-
-
 /* =========================
 MANUAL
 ========================= */
-
 function manualRep(){
-
-if(currentWorkout==="Plank"){
-
-plankSeconds+=3;
-
-sessionReps++;
-
-sessionXP++;
-
-data.reps++;
-
-gainXP(1);
-
-recordWorkout();
-
-applyMuscles();
-
-updateSession();
-
-checkPetMutation();
-
-save();
-
-return;
-
-}
-
 countRep();
-
 }
-
-
 /* =========================
 OPEN WORKOUT
 ========================= */
-
 function openWorkout(name){
-
-endWorkout();
-
+stopCamera();
 currentWorkout=name;
-
 sessionReps=0;
 sessionXP=0;
-sessionStartReps=data.reps;
-
 document.getElementById("workoutTitle")
 .textContent=name;
-
 document.getElementById("sessionReps")
 .textContent="0";
-
 document.getElementById("cameraReps")
 .textContent="0";
-
+document.getElementById("genericReps")
+.textContent="0";
 document.getElementById("sessionXP")
 .textContent="0";
-
 document.getElementById("formScore")
 .textContent="--";
-
-document.getElementById("formStatus")
-.textContent="Start camera to begin";
-
-document.getElementById("plankTimer")
-.style.display=
-name==="Plank"?"block":"none";
-
-show("workout");
-
+document.getElementById("genericForm")
+.textContent="--";
+if(name==="Push-ups"||
+name==="Squats"||
+name==="Sit-ups"||
+name==="Lunges"||
+name==="Plank"){
+document.getElementById("cameraArea")
+.style.display="block";
+document.getElementById("genericWorkout")
+.style.display="none";
 }
-
-
+show("workout");
+}
+/* =========================
+BODY
+========================= */
+function bodyLevel(value){
+if(value>=50)return"high";
+if(value>=20)return"medium";
+if(value>=5)return"low";
+return"";
+}
+function updateBody(){
+const mapping={
+chest:["bodyChestL","bodyChestR"],
+shoulders:["bodyShoulderL","bodyShoulderR"],
+arms:["bodyArmL","bodyArmR"],
+core:["bodyCore"],
+legs:["bodyLegL","bodyLegR"]
+};
+Object.keys(mapping).forEach(muscle=>{
+mapping[muscle].forEach(id=>{
+const el=document.getElementById(id);
+if(!el)return;
+el.classList.remove(
+"low",
+"medium",
+"high"
+);
+const level=
+bodyLevel(data.muscles[muscle]);
+if(level)el.classList.add(level);
+});
+});
+}
 /* =========================
 CAMERA
 ========================= */
-
 async function startPoseCamera(){
-
 if(cameraRunning)return;
-
-const video=
-document.getElementById("video");
-
-const canvas=
-document.getElementById("poseCanvas");
-
+const video=document.getElementById("video");
 document.getElementById("cameraStatus")
 .textContent="STARTING...";
-
 try{
-
 cameraStream=
 await navigator.mediaDevices.getUserMedia({
-
 video:{
 facingMode:"user",
 width:{ideal:720},
 height:{ideal:720}
 },
-
 audio:false
-
 });
-
 video.srcObject=cameraStream;
-
 await video.play();
-
 pose=new Pose({
-
-locateFile:function(file){
-
-return "https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5.1675469404/"+file;
-
-}
-
+locateFile:(file)=>
+"https://cdn.jsdelivr.net/npm/@mediapipe/pose/"+file
 });
-
 pose.setOptions({
-
 modelComplexity:1,
 smoothLandmarks:true,
 enableSegmentation:false,
 minDetectionConfidence:.55,
 minTrackingConfidence:.55
-
 });
-
-pose.onResults(function(results){
-
+pose.onResults(results=>{
 processPose(
 results,
-canvas.getContext("2d"),
-canvas
+document.getElementById("poseCanvas")
+.getContext("2d"),
+document.getElementById("poseCanvas")
 );
-
 });
-
 cameraRunning=true;
-
 document.getElementById("cameraStatus")
 .textContent="LOOKING FOR BODY";
-
-requestAnimationFrame(poseLoop);
-
-startPetSystem();
-
 if(currentWorkout==="Plank"){
-
 startPlankTimer();
-
 }
-
+requestAnimationFrame(poseLoop);
 }catch(error){
-
 console.log(error);
-
 document.getElementById("cameraStatus")
 .textContent="CAMERA ERROR";
-
 document.getElementById("formStatus")
-.textContent=
-"Allow camera access.";
-
+.textContent="Allow camera access.";
 }
-
 }
-
-
 /* =========================
 POSE LOOP
 ========================= */
-
 async function poseLoop(){
-
 if(!cameraRunning)return;
-
-const video=
-document.getElementById("video");
-
+const video=document.getElementById("video");
 if(video.readyState>=2&&pose){
-
 try{
-
 await pose.send({
 image:video
 });
-
 }catch(e){
-
 console.log(e);
-
 }
-
 }
-
 requestAnimationFrame(poseLoop);
-
 }
-
-
 /* =========================
 POSE PROCESS
 ========================= */
-
 function processPose(results,ctx,canvas){
-
-if(!cameraRunning)return;
-
-canvas.width=
-document.getElementById("video").videoWidth;
-
-canvas.height=
-document.getElementById("video").videoHeight;
-
+canvas.width=document.getElementById("video").videoWidth;
+canvas.height=document.getElementById("video").videoHeight;
 ctx.clearRect(
 0,
 0,
 canvas.width,
 canvas.height
 );
-
 if(!results.poseLandmarks){
-
 document.getElementById("cameraStatus")
 .textContent="NO BODY";
-
 return;
-
 }
-
 document.getElementById("cameraStatus")
 .textContent="BODY DETECTED";
-
 drawSkeleton(
 ctx,
 results.poseLandmarks,
 canvas.width,
 canvas.height
 );
-
-if(currentWorkout==="Push-ups"){
-
-detectPushup(results.poseLandmarks);
-
+detectExercise(
+results.poseLandmarks
+);
 }
-
-if(currentWorkout==="Squats"){
-
-detectSquat(results.poseLandmarks);
-
-}
-
-if(currentWorkout==="Lunges"){
-
-detectLunge(results.poseLandmarks);
-
-}
-
-if(currentWorkout==="Sit-ups"){
-
-detectSitup(results.poseLandmarks);
-
-}
-
-if(currentWorkout==="Plank"){
-
-detectPlank(results.poseLandmarks);
-
-}
-
-}
-
-
 /* =========================
 SKELETON
 ========================= */
-
 function drawSkeleton(ctx,l,w,h){
-
 const connections=[
-
-[11,12],
-
 [11,13],
 [13,15],
-
 [12,14],
 [14,16],
-
+[11,12],
 [11,23],
 [12,24],
-
 [23,24],
-
 [23,25],
 [25,27],
-[27,29],
-[29,31],
-
 [24,26],
-[26,28],
-[28,30],
-[30,32]
-
+[26,28]
 ];
-
 ctx.lineWidth=5;
 ctx.lineCap="round";
-ctx.strokeStyle="white";
-
+ctx.strokeStyle="#fff";
 connections.forEach(pair=>{
-
 const a=l[pair[0]];
 const b=l[pair[1]];
-
-if(
-a &&
-b &&
-a.visibility>.5 &&
-b.visibility>.5
-){
-
+if(a.visibility>.5&&b.visibility>.5){
 ctx.beginPath();
-
 ctx.moveTo(
 a.x*w,
 a.y*h
 );
-
 ctx.lineTo(
 b.x*w,
 b.y*h
 );
-
 ctx.stroke();
-
 }
-
 });
-
 l.forEach(p=>{
-
 if(p.visibility>.5){
-
 ctx.beginPath();
-
 ctx.arc(
 p.x*w,
 p.y*h,
-6,
+7,
 0,
 Math.PI*2
 );
-
-ctx.fillStyle="white";
-
+ctx.fillStyle="#fff";
 ctx.fill();
-
 }
-
 });
-
 }
-
-
 /* =========================
 ANGLE
 ========================= */
-
 function angle(a,b,c){
-
 const radians=
 Math.atan2(
 c.y-b.y,
@@ -1820,1057 +1662,439 @@ Math.atan2(
 a.y-b.y,
 a.x-b.x
 );
-
 let degrees=
 Math.abs(
 radians*180/Math.PI
 );
-
-if(degrees>180){
-
+if(degrees>180)
 degrees=360-degrees;
-
-}
-
 return degrees;
-
 }
-
-
 /* =========================
-PUSHUP
+EXERCISE DETECTION
 ========================= */
-
+function detectExercise(l){
+if(currentWorkout==="Push-ups")
+detectPushup(l);
+if(currentWorkout==="Squats")
+detectSquat(l);
+if(currentWorkout==="Sit-ups")
+detectSitup(l);
+if(currentWorkout==="Lunges")
+detectLunge(l);
+if(currentWorkout==="Plank")
+detectPlank(l);
+}
+/* =========================
+PUSHUPS
+========================= */
 function detectPushup(l){
-
 const ls=l[11];
 const rs=l[12];
-
 const le=l[13];
 const re=l[14];
-
 const lw=l[15];
 const rw=l[16];
-
 if(!ls||!rs||!le||!re||!lw||!rw)return;
-
-const left=
-angle(ls,le,lw);
-
-const right=
-angle(rs,re,rw);
-
-const elbow=
-(left+right)/2;
-
-const score=
-Math.round(
-Math.max(
-0,
+if(
+ls.visibility<.5||
+rs.visibility<.5||
+le.visibility<.5||
+re.visibility<.5
+)return;
+const left=angle(ls,le,lw);
+const right=angle(rs,re,rw);
+const elbow=(left+right)/2;
+const score=Math.round(
 Math.min(
 100,
+Math.max(
+0,
 (elbow-60)/1.2
 )
 )
 );
-
 document.getElementById("formScore")
 .textContent=score+"%";
-
+document.getElementById("genericForm")
+.textContent=score+"%";
 if(elbow<80){
-
 downFrames++;
-
 document.getElementById("formStatus")
 .textContent="DOWN — push!";
-
-if(downFrames>=3){
-
-movementState="DOWN";
-
-}
-
+if(downFrames>=3)
+exerciseState="DOWN";
 }else{
-
 downFrames=0;
-
 }
-
 if(elbow>155){
-
 upFrames++;
-
-document.getElementById("formStatus")
-.textContent="UP";
-
-if(
-upFrames>=3 &&
-movementState==="DOWN"
-){
-
+if(upFrames>=3&&exerciseState==="DOWN"){
 countRep();
-
-movementState="UP";
-
+exerciseState="UP";
 upFrames=0;
-
 }
-
 }else{
-
 upFrames=0;
-
 }
-
 }
-
-
 /* =========================
-SQUAT
+SQUATS
 ========================= */
-
 function detectSquat(l){
-
 const lh=l[23];
 const rh=l[24];
-
 const lk=l[25];
 const rk=l[26];
-
 const la=l[27];
 const ra=l[28];
-
 if(!lh||!rh||!lk||!rk||!la||!ra)return;
-
-const left=
-angle(lh,lk,la);
-
-const right=
-angle(rh,rk,ra);
-
-const knee=
-(left+right)/2;
-
-document.getElementById("formScore")
-.textContent=
-Math.round(Math.min(100,Math.max(0,100-Math.abs(90-knee))))+"%";
-
-if(knee<100){
-
-movementState="DOWN";
-
-document.getElementById("formStatus")
-.textContent="LOW — drive up!";
-
-}
-
-if(knee>160&&movementState==="DOWN"){
-
-countRep();
-
-movementState="UP";
-
-document.getElementById("formStatus")
-.textContent="REP COMPLETE ✓";
-
-}
-
-}
-
-
-/* =========================
-LUNGE
-========================= */
-
-function detectLunge(l){
-
-const lh=l[23];
-const rh=l[24];
-
-const lk=l[25];
-const rk=l[26];
-
-const la=l[27];
-const ra=l[28];
-
-if(!lh||!rh||!lk||!rk||!la||!ra)return;
-
-const left=
-angle(lh,lk,la);
-
-const right=
-angle(rh,rk,ra);
-
-const knee=Math.min(left,right);
-
-const score=
-Math.round(
-Math.max(
-0,
-Math.min(
-100,
-100-Math.abs(90-knee)
-)
-)
+const left=angle(lh,lk,la);
+const right=angle(rh,rk,ra);
+const knee=(left+right)/2;
+const score=Math.round(
+Math.min(100,Math.max(0,(180-Math.abs(150-knee))*2))
 );
-
 document.getElementById("formScore")
 .textContent=score+"%";
-
+document.getElementById("genericForm")
+.textContent=score+"%";
 if(knee<105){
-
-movementState="DOWN";
-
-document.getElementById("formStatus")
-.textContent="DOWN — push back!";
-
+downFrames++;
+if(downFrames>=3)
+exerciseState="DOWN";
+}else{
+downFrames=0;
 }
-
-if(knee>155&&movementState==="DOWN"){
-
+if(knee>155){
+upFrames++;
+if(upFrames>=3&&exerciseState==="DOWN"){
 countRep();
-
-movementState="UP";
-
-document.getElementById("formStatus")
-.textContent="REP COMPLETE ✓";
-
+exerciseState="UP";
+upFrames=0;
 }
-
+}else{
+upFrames=0;
 }
-
-
+}
 /* =========================
-SIT-UP
+SITUPS
 ========================= */
-
 function detectSitup(l){
-
-const shoulder={
-x:(l[11].x+l[12].x)/2,
-y:(l[11].y+l[12].y)/2,
-visibility:Math.min(l[11].visibility,l[12].visibility)
-};
-
-const hip={
-x:(l[23].x+l[24].x)/2,
-y:(l[23].y+l[24].y)/2,
-visibility:Math.min(l[23].visibility,l[24].visibility)
-};
-
-const knee={
-x:(l[25].x+l[26].x)/2,
-y:(l[25].y+l[26].y)/2,
-visibility:Math.min(l[25].visibility,l[26].visibility)
-};
-
-if(
-shoulder.visibility<.5||
-hip.visibility<.5||
-knee.visibility<.5
-)return;
-
-const torso=
-angle(
-shoulder,
-hip,
-knee
-);
-
-const score=
-Math.round(
-Math.max(
-0,
-Math.min(
-100,
-torso
-)
-)
-);
-
-document.getElementById("formScore")
-.textContent=score+"%";
-
-if(torso<75){
-
-movementState="DOWN";
-
-document.getElementById("formStatus")
-.textContent="UP — sit up!";
-
-}
-
-if(torso>100&&movementState==="DOWN"){
-
-countRep();
-
-movementState="UP";
-
-document.getElementById("formStatus")
-.textContent="REP COMPLETE ✓";
-
-}
-
-}
-
-
-/* =========================
-PLANK
-========================= */
-
-function detectPlank(l){
-
 const shoulder=l[11];
 const hip=l[23];
 const knee=l[25];
-
 if(!shoulder||!hip||!knee)return;
-
-const bodyAngle=
-angle(
+const torso=angle(
 shoulder,
 hip,
 knee
 );
-
-const score=
-Math.round(
-Math.max(
-0,
-100-Math.abs(180-bodyAngle)*3
-)
+const score=Math.round(
+Math.min(100,Math.max(0,torso))
 );
-
 document.getElementById("formScore")
 .textContent=score+"%";
-
-if(score>=80){
-
-document.getElementById("formStatus")
-.textContent="PERFECT PLANK 🔥";
-
+document.getElementById("genericForm")
+.textContent=score+"%";
+if(torso<65){
+downFrames++;
+if(downFrames>=3)
+exerciseState="DOWN";
 }else{
-
+downFrames=0;
+}
+if(torso>105){
+upFrames++;
+if(upFrames>=3&&exerciseState==="DOWN"){
+countRep();
+exerciseState="UP";
+upFrames=0;
+}
+}else{
+upFrames=0;
+}
+}
+/* =========================
+LUNGES
+========================= */
+function detectLunge(l){
+const lh=l[23];
+const rh=l[24];
+const lk=l[25];
+const rk=l[26];
+const la=l[27];
+const ra=l[28];
+if(!lh||!rh||!lk||!rk||!la||!ra)return;
+const left=angle(lh,lk,la);
+const right=angle(rh,rk,ra);
+const knee=Math.min(left,right);
+const score=Math.round(
+Math.min(
+100,
+Math.max(
+0,
+(knee<100?knee:180-knee)
+)
+);
+document.getElementById("formScore")
+.textContent=score+"%";
+document.getElementById("genericForm")
+.textContent=score+"%";
+if(knee<105){
+downFrames++;
+if(downFrames>=3)
+exerciseState="DOWN";
+}else{
+downFrames=0;
+}
+if(knee>155){
+upFrames++;
+if(upFrames>=3&&exerciseState==="DOWN"){
+countRep();
+exerciseState="UP";
+upFrames=0;
+}
+}else{
+upFrames=0;
+}
+}
+/* =========================
+PLANK
+========================= */
+function detectPlank(l){
+const shoulder=l[11];
+const hip=l[23];
+const ankle=l[27];
+if(!shoulder||!hip||!ankle)return;
+const torsoAngle=angle(
+shoulder,
+hip,
+ankle
+);
+const score=Math.round(
+Math.max(
+0,
+100-Math.abs(180-torsoAngle)*4
+)
+);
+document.getElementById("formScore")
+.textContent=score+"%";
+document.getElementById("genericForm")
+.textContent=score+"%";
+if(score>=75){
 document.getElementById("formStatus")
-.textContent="FIX YOUR FORM";
-
+.textContent="PLANK HOLD ✓";
+}else{
+document.getElementById("formStatus")
+.textContent="Fix your form";
 }
-
 }
-
-
 /* =========================
-PLANK TIMER
+PLANK XP
+1 XP / 3 SECONDS
 ========================= */
-
 function startPlankTimer(){
-
 clearInterval(plankTimer);
-
 plankSeconds=0;
-
-plankTimer=
-setInterval(()=>{
-
-if(!cameraRunning)return;
-
+plankTimer=setInterval(()=>{
+if(!cameraRunning||
+currentWorkout!=="Plank")
+return;
+const score=
+document.getElementById("formScore")
+.textContent;
+if(score!=="--"&&parseInt(score)>=75){
 plankSeconds++;
-
-document.getElementById("plankTimer")
-.textContent=
-plankSeconds+"s";
-
-if(plankSeconds%3===0){
-
-sessionReps++;
-
+if(plankSeconds>=3){
+plankSeconds=0;
 sessionXP++;
-
-data.reps++;
-
-gainXP(1);
-
-recordWorkout();
-
-applyMuscles();
-
-updateSession();
-
-checkPetMutation();
-
-save();
-
+data.xp++;
+if(data.xp>=100){
+data.xp-=100;
+data.level++;
 }
-
+data.muscles.core++;
+document.getElementById("sessionXP")
+.textContent=sessionXP;
+petRep();
+save();
+}
+}
 },1000);
-
 }
-
-
-/* =========================
-PET SPAWN
-========================= */
-
-function startPetSystem(){
-
-if(wildPet)return;
-
-setTimeout(()=>{
-
-if(
-cameraRunning &&
-Math.random()<0.85
-){
-
-spawnWildPet();
-
-}
-
-},5000+Math.random()*12000);
-
-}
-
-
-/* =========================
-SPAWN PET
-========================= */
-
-function spawnWildPet(){
-
-const type=
-petTypes[
-Math.floor(Math.random()*petTypes.length)
-];
-
-wildPet={
-type:type.id,
-mutation:"normal",
-extra:0
-};
-
-const layer=
-document.getElementById("petLayer");
-
-layer.innerHTML="";
-
-const pet=
-document.createElement("div");
-
-pet.className="wildPet";
-
-pet.id="wildPet";
-
-pet.textContent=type.normal;
-
-pet.style.left=
-(10+Math.random()*70)+"%";
-
-pet.style.top=
-(15+Math.random()*60)+"%";
-
-layer.appendChild(pet);
-
-document.getElementById("petNotice")
-.classList.add("show");
-
-document.getElementById("petNoticeName")
-.textContent=
-"A WILD "+type.name.toUpperCase()+" APPEARED!";
-
-document.getElementById("petNoticeMutation")
-.textContent=
-"Push further to mutate it";
-
-moveWildPet();
-
-petMoveTimer=
-setInterval(moveWildPet,1000);
-
-showPopup(
-"WILD PET! 🐾",
-type.name+" appeared!"
-);
-
-}
-
-
-/* =========================
-MOVE PET
-========================= */
-
-function moveWildPet(){
-
-const pet=
-document.getElementById("wildPet");
-
-if(!pet)return;
-
-pet.style.left=
-(5+Math.random()*78)+"%";
-
-pet.style.top=
-(10+Math.random()*70)+"%";
-
-}
-
-
-/* =========================
-PET MUTATIONS
-========================= */
-
-function checkPetMutation(){
-
-if(!wildPet)return;
-
-wildPet.extra++;
-
-let mutation="normal";
-
-if(wildPet.extra>=10){
-
-mutation="beast";
-
-}else if(wildPet.extra>=7){
-
-mutation="lightning";
-
-}else if(wildPet.extra>=5){
-
-mutation="fire";
-
-}else if(wildPet.extra>=2){
-
-mutation="ice";
-
-}
-
-wildPet.mutation=mutation;
-
-const emoji=
-getPetEmoji(wildPet);
-
-const pet=
-document.getElementById("wildPet");
-
-if(pet){
-
-pet.textContent=emoji;
-
-}
-
-document.getElementById("petExtra")
-.textContent=
-Math.min(wildPet.extra,10);
-
-document.getElementById("petNoticeMutation")
-.textContent=
-mutations[mutation].name+
-" • "+
-Math.min(wildPet.extra,10)+
-"/10 EXTRA REPS";
-
-if(wildPet.extra>=10){
-
-catchPet();
-
-}
-
-}
-
-
-/* =========================
-CATCH PET
-========================= */
-
-function catchPet(){
-
-if(!wildPet)return;
-
-clearInterval(petMoveTimer);
-
-const already=
-data.pets.some(
-p=>
-p.type===wildPet.type &&
-p.mutation===wildPet.mutation
-);
-
-if(!already){
-
-data.pets.push({
-
-type:wildPet.type,
-mutation:wildPet.mutation,
-caught:Date.now()
-
-});
-
-}
-
-showPopup(
-"PET CAUGHT! 🐾",
-mutations[wildPet.mutation].name+" "+wildPet.type
-);
-
-document.getElementById("petNotice")
-.classList.remove("show");
-
-document.getElementById("petLayer")
-.innerHTML="";
-
-wildPet=null;
-
-save();
-
-}
-
-
-/* =========================
-END WORKOUT
-========================= */
-
-function endWorkout(){
-
-stopCamera();
-
-clearInterval(plankTimer);
-clearInterval(petMoveTimer);
-
-wildPet=null;
-
-const notice=
-document.getElementById("petNotice");
-
-if(notice){
-
-notice.classList.remove("show");
-
-}
-
-const layer=
-document.getElementById("petLayer");
-
-if(layer){
-
-layer.innerHTML="";
-
-}
-
-}
-
-
 /* =========================
 STOP CAMERA
 ========================= */
-
 function stopCamera(){
-
 cameraRunning=false;
-
 clearInterval(plankTimer);
-
 if(cameraStream){
-
-cameraStream
-.getTracks()
-.forEach(track=>{
-track.stop();
-});
-
+cameraStream.getTracks()
+.forEach(track=>track.stop());
 cameraStream=null;
-
 }
-
-const video=
-document.getElementById("video");
-
-if(video){
-
-video.pause();
+const video=document.getElementById("video");
+if(video)
 video.srcObject=null;
-}
-
-const canvas=
-document.getElementById("poseCanvas");
-
-if(canvas){
-
-const ctx=canvas.getContext("2d");
-
-ctx.clearRect(
-0,
-0,
-canvas.width,
-canvas.height
-);
-
-canvas.width=1;
-canvas.height=1;
-
-}
-
 document.getElementById("cameraStatus")
 .textContent="CAMERA OFF";
-
-document.getElementById("formStatus")
-.textContent="Start camera to begin";
-
 }
-
-
-/* =========================
-BODY
-========================= */
-
-function bodyLevel(value){
-
-if(value>=50)return"high";
-if(value>=20)return"medium";
-if(value>=5)return"low";
-
-return"";
-
-}
-
-function updateBody(){
-
-const mapping={
-
-chest:[
-"bodyChestL",
-"bodyChestR"
-],
-
-shoulders:[
-"bodyShoulderL",
-"bodyShoulderR"
-],
-
-arms:[
-"bodyArmL",
-"bodyArmR"
-],
-
-core:[
-"bodyCore"
-],
-
-legs:[
-"bodyLegL",
-"bodyLegR"
-]
-
-};
-
-Object.keys(mapping).forEach(muscle=>{
-
-mapping[muscle].forEach(id=>{
-
-const el=
-document.getElementById(id);
-
-if(!el)return;
-
-el.classList.remove(
-"low",
-"medium",
-"high"
-);
-
-const level=
-bodyLevel(
-data.muscles[muscle]
-);
-
-if(level){
-
-el.classList.add(level);
-
-}
-
-});
-
-});
-
-}
-
-
 /* =========================
 NAV
 ========================= */
-
 function show(id){
-
-document
-.querySelectorAll(".screen")
-.forEach(x=>{
-x.classList.remove("active");
-});
-
-document
-.getElementById(id)
+document.querySelectorAll(".screen")
+.forEach(x=>x.classList.remove("active"));
+document.getElementById(id)
 .classList.add("active");
-
-document
-.querySelectorAll(".nav button")
-.forEach(x=>{
-x.classList.remove("active");
-});
-
+document.querySelectorAll(".nav button")
+.forEach(x=>x.classList.remove("active"));
 const nav={
-
 home:"navHome",
 workout:"navWorkout",
 progress:"navProgress",
-pets:"navPets"
-
+pets:"navPets",
+profile:"navProfile"
 };
-
-if(nav[id]){
-
-document
-.getElementById(nav[id])
+document.getElementById(nav[id])
 .classList.add("active");
-
-}
-
-if(id==="pets"){
-
+if(id==="progress")
+setTimeout(drawChart,50);
+if(id==="pets")
 renderPets();
-
 }
-
-}
-
-
 /* =========================
-PETDEX
+CHART
 ========================= */
-
-function renderPets(){
-
-const grid=
-document.getElementById("petGrid");
-
-grid.innerHTML="";
-
-if(data.pets.length===0){
-
-grid.innerHTML=`
-
-<div class="petCard">
-
-<div class="petEmoji">🥚</div>
-
-<strong>No pets yet</strong>
-
-<small>
-Train until one appears.
-</small>
-
-</div>
-
-`;
-
+function drawChart(){
+const canvas=document.getElementById("chartCanvas");
+if(!canvas)return;
+const rect=canvas.getBoundingClientRect();
+const ratio=devicePixelRatio||1;
+canvas.width=rect.width*ratio;
+canvas.height=rect.height*ratio;
+const ctx=canvas.getContext("2d");
+ctx.scale(ratio,ratio);
+const w=rect.width;
+const h=rect.height;
+ctx.clearRect(0,0,w,h);
+const history=data.history.slice(-7);
+if(history.length===0){
+ctx.fillStyle="#666";
+ctx.font="12px Arial";
+ctx.textAlign="center";
+ctx.fillText(
+"No workouts yet",
+w/2,
+h/2
+);
 return;
-
 }
-
-data.pets.forEach((pet,index)=>{
-
-const type=
-petTypes.find(
-x=>x.id===pet.type
+const max=Math.max(
+1,
+...history.map(x=>x.reps)
 );
-
-const card=
-document.createElement("div");
-
-card.className="petCard";
-
-if(
-data.equippedPet &&
-data.equippedPet.type===pet.type &&
-data.equippedPet.mutation===pet.mutation
-){
-
-card.classList.add("equipped");
-
+ctx.strokeStyle="#333";
+ctx.lineWidth=1;
+for(let i=0;i<4;i++){
+const y=20+i*((h-40)/3);
+ctx.beginPath();
+ctx.moveTo(10,y);
+ctx.lineTo(w-10,y);
+ctx.stroke();
 }
-
-card.innerHTML=`
-
-<div class="petEmoji">
-${getPetEmoji(pet)}
-</div>
-
-<strong>
-${type?type.name:"Unknown"}
-</strong>
-
-<small>
-${mutations[pet.mutation].name}
-</small>
-
-<button
-class="secondaryBtn"
-onclick="equipPet(${index})">
-${isEquipped(pet)?"EQUIPPED":"EQUIP"}
-</button>
-
-`;
-
-grid.appendChild(card);
-
+ctx.strokeStyle="#fff";
+ctx.lineWidth=3;
+ctx.beginPath();
+history.forEach((item,i)=>{
+const x=
+10+
+(i/Math.max(1,history.length-1))*
+(w-20);
+const y=
+h-20-
+(item.reps/max)*(h-45);
+if(i===0)
+ctx.moveTo(x,y);
+else
+ctx.lineTo(x,y);
 });
-
+ctx.stroke();
 }
-
-function isEquipped(pet){
-
-return data.equippedPet &&
-data.equippedPet.type===pet.type &&
-data.equippedPet.mutation===pet.mutation;
-
-}
-
-function equipPet(index){
-
-data.equippedPet=
-data.pets[index];
-
-save();
-
-renderPets();
-
-showPopup(
-"PET EQUIPPED 🐾",
-"Your companion is ready."
-);
-
-}
-
-
 /* =========================
-UPDATE UI
+UI
 ========================= */
-
 function updateUI(){
-
 document.getElementById("totalReps")
 .textContent=data.reps;
-
 document.getElementById("progressReps")
 .textContent=data.reps;
-
 document.getElementById("level")
 .textContent=data.level;
-
 document.getElementById("progressLevel")
 .textContent=data.level;
-
 document.getElementById("xp")
 .textContent=data.xp;
-
 document.getElementById("xpFill")
 .style.width=data.xp+"%";
-
 document.getElementById("streak")
 .textContent=data.streak;
-
 document.getElementById("workouts")
 .textContent=data.workouts;
-
 document.getElementById("bestStreak")
 .textContent=data.bestStreak;
-
-document.getElementById("progressTotalXP")
-.textContent=data.totalXP+" XP";
-
-document.getElementById("rankXPProgress")
-.textContent=data.totalXP;
-
-const rank=
-ranks[getRank()];
-
+const rank=ranks[getRank()];
 document.getElementById("rankBadge")
 .textContent=rank.name;
-
 document.getElementById("progressRank")
 .textContent=rank.name;
-
 document.getElementById("profileRank")
 .textContent=rank.name;
-
 document.getElementById("profileRankNumber")
 .textContent=
 "Rank "+(getRank()+1);
-
 updateBody();
-
+drawChart();
 }
-
-
 /* =========================
 POPUP
 ========================= */
-
 function showPopup(title,text){
-
-const popup=
-document.getElementById("popup");
-
+const popup=document.getElementById("popup");
 document.getElementById("popupTitle")
 .textContent=title;
-
 document.getElementById("popupText")
 .textContent=text;
-
 popup.classList.add("show");
-
 setTimeout(()=>{
-
 popup.classList.remove("show");
-
 },2500);
-
 }
-
-
 /* =========================
 RESET
 ========================= */
-
 function resetProgress(){
-
 if(!confirm(
 "Reset all REP//RANK progress?"
-))return;
-
-data=
-JSON.parse(
+))
+return;
+data=JSON.parse(
 JSON.stringify(defaultData)
 );
-
 sessionReps=0;
 sessionXP=0;
-
-localStorage.removeItem("reprank");
-
+wildPet=null;
 save();
-
+renderPets();
 show("home");
-
 }
-
-
 /* =========================
 START
 ========================= */
-
 updateUI();
-
+renderPets();
+requestAnimationFrame(petLoop);
 </script>
-
 </body>
 </html>
