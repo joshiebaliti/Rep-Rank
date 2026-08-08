@@ -8,36 +8,45 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="REP//RANK">
 <title>REP//RANK</title>
+
 <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"></script>
+
 <style>
 *{
  box-sizing:border-box;
  -webkit-tap-highlight-color:transparent;
 }
+
 body{
  margin:0;
  background:#070707;
  color:#fff;
  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Arial,sans-serif;
 }
+
 button{font:inherit}
+
 .app{
  max-width:540px;
  margin:auto;
  padding:22px 18px 110px;
 }
+
 .screen{display:none}
 .screen.active{display:block}
+
 .top{
  display:flex;
  align-items:center;
  justify-content:space-between;
 }
+
 .logo{
  font-size:25px;
  font-weight:950;
  letter-spacing:-1.6px;
 }
+
 .rankBadge{
  padding:8px 12px;
  border-radius:20px;
@@ -45,20 +54,24 @@ button{font:inherit}
  font-size:11px;
  font-weight:950;
 }
+
 h1{
  font-size:32px;
  letter-spacing:-1.5px;
  margin:8px 0 22px;
 }
+
 h2{
  font-size:20px;
  margin:0 0 12px;
 }
+
 .muted{
  color:#777;
  font-size:12px;
  font-weight:700;
 }
+
 .hero{
  margin-top:24px;
  padding:23px;
@@ -66,12 +79,14 @@ h2{
  background:linear-gradient(145deg,#191919,#0c0c0c);
  border:1px solid #292929;
 }
+
 .level{
  font-size:60px;
  font-weight:950;
  line-height:1;
  margin:5px 0;
 }
+
 .xpbar{
  height:9px;
  background:#292929;
@@ -79,35 +94,42 @@ h2{
  overflow:hidden;
  margin-top:14px;
 }
+
 .xpfill{
  height:100%;
  width:0;
  background:#fff;
  transition:.3s;
 }
+
 .grid{
  display:grid;
  grid-template-columns:1fr 1fr;
  gap:12px;
  margin-top:13px;
 }
+
 .card{
  background:#121212;
  border:1px solid #252525;
  border-radius:20px;
  padding:18px;
 }
+
 .card h3{
  margin:0;
  font-size:10px;
  color:#777;
 }
+
 .card p{
  margin:6px 0 0;
  font-size:28px;
  font-weight:950;
 }
+
 .section{margin-top:28px}
+
 .exercise{
  width:100%;
  border:1px solid #292929;
@@ -122,19 +144,23 @@ h2{
  text-align:left;
  cursor:pointer;
 }
+
 .exercise strong{font-size:15px}
+
 .exercise span{
  display:block;
  color:#777;
  font-size:11px;
  margin-top:4px;
 }
+
 .exercise:active,
 .mainBtn:active,
 .secondaryBtn:active,
 .nav button:active{
  transform:scale(.97);
 }
+
 .mainBtn{
  width:100%;
  border:0;
@@ -146,6 +172,7 @@ h2{
  font-weight:950;
  cursor:pointer;
 }
+
 .secondaryBtn{
  width:100%;
  border:1px solid #292929;
@@ -157,6 +184,7 @@ h2{
  font-weight:850;
  cursor:pointer;
 }
+
 .back{
  border:0;
  background:none;
@@ -165,13 +193,16 @@ h2{
  padding:0 0 14px;
  cursor:pointer;
 }
+
 /* BODY */
+
 .bodyCard{
  background:#111;
  border:1px solid #252525;
  border-radius:25px;
  padding:18px;
 }
+
 .bodyWrap{
  height:400px;
  position:relative;
@@ -179,19 +210,23 @@ h2{
  justify-content:center;
  overflow:hidden;
 }
+
 .body{
  width:240px;
  height:390px;
  position:relative;
 }
+
 .bodyPart{
  position:absolute;
  background:#454545;
  transition:.3s;
 }
+
 .bodyPart.low{background:#555}
 .bodyPart.medium{background:#aaa}
 .bodyPart.high{background:#fff}
+
 .head{
  width:58px;
  height:68px;
@@ -199,6 +234,7 @@ h2{
  left:91px;
  top:3px;
 }
+
 .neck{
  width:34px;
  height:35px;
@@ -206,42 +242,51 @@ h2{
  top:55px;
  border-radius:9px;
 }
+
 .shoulderL,.shoulderR{
  width:60px;
  height:44px;
  top:79px;
  border-radius:50%;
 }
+
 .shoulderL{
  left:30px;
  transform:rotate(-18deg);
 }
+
 .shoulderR{
  right:30px;
  transform:rotate(18deg);
 }
+
 .chestL,.chestR{
  width:68px;
  height:59px;
  top:94px;
  border-radius:45%;
 }
+
 .chestL{left:49px}
 .chestR{right:49px}
+
 .armL,.armR{
  width:37px;
  height:85px;
  top:114px;
  border-radius:25px;
 }
+
 .armL{
  left:15px;
  transform:rotate(9deg);
 }
+
 .armR{
  right:15px;
  transform:rotate(-9deg);
 }
+
 .abs{
  width:80px;
  height:118px;
@@ -249,6 +294,7 @@ h2{
  top:150px;
  border-radius:20px;
 }
+
 .waist{
  width:96px;
  height:58px;
@@ -256,14 +302,17 @@ h2{
  top:243px;
  border-radius:0 0 35px 35px;
 }
+
 .legL,.legR{
  width:63px;
  height:128px;
  top:260px;
  border-radius:28px;
 }
+
 .legL{left:55px}
 .legR{right:55px}
+
 .bodyLegend{
  display:flex;
  justify-content:center;
@@ -271,6 +320,7 @@ h2{
  font-size:10px;
  color:#777;
 }
+
 .legendDot{
  width:8px;
  height:8px;
@@ -279,8 +329,11 @@ h2{
  display:inline-block;
  margin-right:4px;
 }
+
 .legendDot.active{background:#fff}
+
 /* WORKOUT */
+
 .camera{
  height:510px;
  background:#000;
@@ -289,6 +342,7 @@ h2{
  position:relative;
  border:1px solid #292929;
 }
+
 #video{
  position:absolute;
  width:100%;
@@ -296,13 +350,16 @@ h2{
  object-fit:cover;
  transform:scaleX(-1);
 }
+
 #poseCanvas{
  position:absolute;
  inset:0;
  width:100%;
  height:100%;
  transform:scaleX(-1);
+ pointer-events:none;
 }
+
 .cameraTop{
  position:absolute;
  top:14px;
@@ -310,8 +367,9 @@ h2{
  right:14px;
  display:flex;
  justify-content:space-between;
- z-index:5;
+ z-index:15;
 }
+
 .status{
  padding:9px 12px;
  background:rgba(0,0,0,.75);
@@ -319,6 +377,7 @@ h2{
  font-size:11px;
  font-weight:900;
 }
+
 .cameraBottom{
  position:absolute;
  left:14px;
@@ -327,43 +386,52 @@ h2{
  padding:15px;
  background:rgba(0,0,0,.78);
  border-radius:19px;
- z-index:10;
+ z-index:15;
 }
+
 .repBig{
  font-size:45px;
  font-weight:950;
  line-height:1;
 }
+
 .formText{
  font-size:12px;
  font-weight:850;
  margin-top:5px;
 }
+
 .good{color:#fff}
 .warn{color:#aaa}
+
 .workoutStats{
  display:grid;
  grid-template-columns:1fr 1fr;
  gap:10px;
  margin-top:12px;
 }
+
 .smallStat{
  background:#131313;
  border:1px solid #252525;
  border-radius:18px;
  padding:15px;
 }
+
 .smallStat b{
  display:block;
  font-size:10px;
  color:#777;
 }
+
 .smallStat strong{
  font-size:22px;
  display:block;
  margin-top:4px;
 }
-/* PET OVERLAY */
+
+/* PET */
+
 .petLayer{
  position:absolute;
  inset:0;
@@ -371,10 +439,16 @@ h2{
  pointer-events:none;
  overflow:hidden;
 }
+
+.petLayer.hidden{
+ display:none;
+}
+
 #petCanvas{
  width:100%;
  height:100%;
 }
+
 .petInfo{
  position:absolute;
  left:14px;
@@ -386,7 +460,9 @@ h2{
  font-weight:900;
  display:none;
 }
+
 .petInfo.show{display:block}
+
 .mutationBox{
  position:absolute;
  left:14px;
@@ -399,16 +475,20 @@ h2{
  display:none;
  z-index:30;
 }
+
 .mutationBox.show{display:block}
+
 .mutationName{
  font-size:20px;
  font-weight:950;
 }
+
 .mutationReq{
  color:#aaa;
  font-size:11px;
  margin-top:4px;
 }
+
 .captureBar{
  height:7px;
  background:#292929;
@@ -416,13 +496,16 @@ h2{
  margin-top:10px;
  overflow:hidden;
 }
+
 .captureFill{
  height:100%;
  width:0;
  background:#fff;
  transition:.2s;
 }
+
 /* GRAPH */
+
 .chart{
  height:220px;
  background:#101010;
@@ -430,11 +513,14 @@ h2{
  border-radius:22px;
  padding:15px;
 }
+
 canvas.chartCanvas{
  width:100%;
  height:100%;
 }
+
 /* RANK */
+
 .rankCard{
  border-radius:25px;
  padding:25px;
@@ -442,22 +528,27 @@ canvas.chartCanvas{
  border:1px solid #292929;
  text-align:center;
 }
+
 .rankName{
  font-size:32px;
  font-weight:950;
 }
+
 .rankNumber{
  font-size:12px;
  color:#777;
  margin-top:5px;
  font-weight:800;
 }
+
 /* PET MENU */
+
 .petGrid{
  display:grid;
  grid-template-columns:1fr 1fr;
  gap:12px;
 }
+
 .petCard{
  background:#111;
  border:1px solid #292929;
@@ -465,24 +556,29 @@ canvas.chartCanvas{
  padding:15px;
  text-align:center;
 }
+
 .petVisual{
  height:120px;
  position:relative;
 }
+
 .petVisual canvas{
  width:120px;
  height:120px;
 }
+
 .petName{
  font-size:14px;
  font-weight:950;
 }
+
 .petMeta{
  color:#777;
  font-size:10px;
  margin-top:4px;
  line-height:1.5;
 }
+
 .extractBtn{
  width:100%;
  border:0;
@@ -493,7 +589,9 @@ canvas.chartCanvas{
  margin-top:10px;
  font-size:11px;
  font-weight:950;
+ cursor:pointer;
 }
+
 .emptyPets{
  background:#111;
  border:1px solid #252525;
@@ -503,7 +601,9 @@ canvas.chartCanvas{
  color:#777;
  font-size:12px;
 }
+
 /* NAV */
+
 .nav{
  position:fixed;
  bottom:0;
@@ -518,6 +618,7 @@ canvas.chartCanvas{
  z-index:50;
  padding-bottom:env(safe-area-inset-bottom);
 }
+
 .nav button{
  background:none;
  border:0;
@@ -527,13 +628,17 @@ canvas.chartCanvas{
  cursor:pointer;
  width:20%;
 }
+
 .nav button.active{color:#fff}
+
 .navIcon{
  display:block;
  font-size:20px;
  margin-bottom:3px;
 }
+
 /* POPUP */
+
 .popup{
  position:fixed;
  left:18px;
@@ -547,47 +652,68 @@ canvas.chartCanvas{
  display:none;
  box-shadow:0 15px 50px rgba(0,0,0,.5);
 }
+
 .popup.show{display:block}
+
 .popupTitle{
  font-weight:950;
  font-size:17px;
 }
+
 .popupText{
  font-size:12px;
  margin-top:5px;
 }
 </style>
 </head>
+
 <body>
+
 <div class="app">
+
 <!-- HOME -->
+
 <div id="home" class="screen active">
+
 <div class="top">
 <div class="logo">REP//RANK</div>
 <div class="rankBadge" id="rankBadge">ROOKIE I</div>
 </div>
+
 <div class="hero">
+
 <div class="muted">CURRENT LEVEL</div>
+
 <div class="level" id="level">1</div>
+
 <div class="muted">
 <span id="xp">0</span> / 100 XP
 </div>
+
 <div class="xpbar">
 <div class="xpfill" id="xpFill"></div>
 </div>
+
 </div>
+
 <div class="grid">
+
 <div class="card">
 <h3>TOTAL REPS</h3>
 <p id="totalReps">0</p>
 </div>
+
 <div class="card">
 <h3>🔥 STREAK</h3>
 <p id="streak">0</p>
 </div>
+
 </div>
+
 <div class="section">
+
 <h2>Train</h2>
+
 <button class="exercise" onclick="openWorkout('Push-ups')">
 <div>
 <strong>Push-ups</strong>
@@ -595,6 +721,7 @@ canvas.chartCanvas{
 </div>
 <strong>›</strong>
 </button>
+
 <button class="exercise" onclick="openWorkout('Squats')">
 <div>
 <strong>Squats</strong>
@@ -602,6 +729,7 @@ canvas.chartCanvas{
 </div>
 <strong>›</strong>
 </button>
+
 <button class="exercise" onclick="openWorkout('Sit-ups')">
 <div>
 <strong>Sit-ups</strong>
@@ -609,6 +737,7 @@ canvas.chartCanvas{
 </div>
 <strong>›</strong>
 </button>
+
 <button class="exercise" onclick="openWorkout('Lunges')">
 <div>
 <strong>Lunges</strong>
@@ -616,6 +745,7 @@ canvas.chartCanvas{
 </div>
 <strong>›</strong>
 </button>
+
 <button class="exercise" onclick="openWorkout('Plank')">
 <div>
 <strong>Plank</strong>
@@ -623,296 +753,427 @@ canvas.chartCanvas{
 </div>
 <strong>›</strong>
 </button>
+
 </div>
+
 <div class="section">
+
 <h2>Body</h2>
+
 <div class="bodyCard">
+
 <div class="bodyWrap">
+
 <div class="body">
+
 <div class="bodyPart head"></div>
 <div class="bodyPart neck"></div>
+
 <div id="bodyShoulderL" class="bodyPart shoulderL"></div>
 <div id="bodyShoulderR" class="bodyPart shoulderR"></div>
+
 <div id="bodyChestL" class="bodyPart chestL"></div>
 <div id="bodyChestR" class="bodyPart chestR"></div>
+
 <div id="bodyArmL" class="bodyPart armL"></div>
 <div id="bodyArmR" class="bodyPart armR"></div>
+
 <div id="bodyCore" class="bodyPart abs"></div>
+
 <div class="bodyPart waist"></div>
+
 <div id="bodyLegL" class="bodyPart legL"></div>
 <div id="bodyLegR" class="bodyPart legR"></div>
+
 </div>
+
 </div>
+
 <div class="bodyLegend">
 <span><i class="legendDot"></i>Low</span>
 <span><i class="legendDot active"></i>Trained</span>
 </div>
+
 </div>
 </div>
 </div>
+
+
 <!-- WORKOUT -->
+
 <div id="workout" class="screen">
+
 <button class="back" onclick="stopCamera();show('home')">
 ‹ Back
 </button>
+
 <h1 id="workoutTitle">Push-ups</h1>
-<div id="cameraArea">
+
 <div class="camera">
+
 <video id="video" autoplay playsinline muted></video>
+
 <canvas id="poseCanvas"></canvas>
-<div class="petLayer">
+
+<div id="petLayer" class="petLayer hidden">
+
 <canvas id="petCanvas"></canvas>
+
 <div class="petInfo" id="petInfo">
 CREATURE FOUND
 </div>
+
 <div class="mutationBox" id="mutationBox">
+
 <div class="mutationName" id="mutationName">
 BASE
 </div>
+
 <div class="mutationReq">
-Complete <span id="mutationRequired">4</span> extra reps
+Complete <span id="mutationRequired">4</span> reps
 </div>
+
 <div class="captureBar">
 <div class="captureFill" id="captureFill"></div>
 </div>
+
 </div>
+
 </div>
+
 <div class="cameraTop">
+
 <div class="status" id="cameraStatus">
 CAMERA OFF
 </div>
+
 <div class="status">
 REP <span id="cameraReps">0</span>
 </div>
+
 </div>
+
 <div class="cameraBottom">
+
 <div class="repBig" id="sessionReps">
 0
 </div>
+
 <div class="formText" id="formStatus">
 Start camera to begin
 </div>
+
 </div>
+
 </div>
+
 <div class="workoutStats">
+
 <div class="smallStat">
 <b>FORM</b>
 <strong id="formScore">--</strong>
 </div>
+
 <div class="smallStat">
 <b>XP EARNED</b>
 <strong id="sessionXP">0</strong>
 </div>
+
 </div>
+
 <button class="mainBtn" onclick="startPoseCamera()">
 START CAMERA
 </button>
+
 <button class="secondaryBtn" onclick="manualRep()">
 + ADD REP
 </button>
+
 </div>
-<div id="genericWorkout" style="display:none">
-<div class="rankCard">
-<div class="muted">WORKOUT</div>
-<div class="rankName" id="genericName">
-Squats
-</div>
-<div class="rankNumber">
-Automatic form tracking
-</div>
-</div>
-<div class="workoutStats">
-<div class="smallStat">
-<b>REPS</b>
-<strong id="genericReps">0</strong>
-</div>
-<div class="smallStat">
-<b>FORM</b>
-<strong id="genericForm">--</strong>
-</div>
-</div>
-<button class="mainBtn" onclick="startPoseCamera()">
-START CAMERA
-</button>
-<button class="secondaryBtn" onclick="manualRep()">
-+ ADD REP
-</button>
-</div>
-</div>
+
+
 <!-- PROGRESS -->
+
 <div id="progress" class="screen">
+
 <h1>Progress</h1>
+
 <div class="grid">
+
 <div class="card">
 <h3>TOTAL REPS</h3>
 <p id="progressReps">0</p>
 </div>
+
 <div class="card">
 <h3>LEVEL</h3>
 <p id="progressLevel">1</p>
 </div>
+
 </div>
+
 <div class="section">
+
 <h2>Weekly Reps</h2>
+
 <div class="chart">
 <canvas id="chartCanvas" class="chartCanvas"></canvas>
 </div>
+
 </div>
+
 <div class="section">
+
 <h2>Current Rank</h2>
+
 <div class="rankCard">
+
 <div class="rankName" id="progressRank">
 ROOKIE I
 </div>
+
 <div class="rankNumber">
 Keep training to rank up
 </div>
+
 </div>
+
 </div>
+
 </div>
+
+
 <!-- PETS -->
+
 <div id="pets" class="screen">
+
 <h1>Pets</h1>
+
 <div class="muted" style="margin-bottom:18px">
 Captured creatures can be extracted for permanent muscle XP.
 </div>
+
 <div id="petGrid" class="petGrid"></div>
+
 </div>
+
+
 <!-- PROFILE -->
+
 <div id="profile" class="screen">
+
 <h1>Profile</h1>
+
 <div class="rankCard">
+
 <div class="muted">CURRENT RANK</div>
+
 <div class="rankName" id="profileRank">
 ROOKIE I
 </div>
+
 <div class="rankNumber" id="profileRankNumber">
 Rank 1
 </div>
+
 </div>
+
 <div class="section">
+
 <div class="grid">
+
 <div class="card">
 <h3>WORKOUTS</h3>
 <p id="workouts">0</p>
 </div>
+
 <div class="card">
 <h3>BEST STREAK</h3>
 <p id="bestStreak">0</p>
 </div>
+
 </div>
+
 </div>
+
 <div class="section">
+
 <button class="secondaryBtn" onclick="resetProgress()">
 RESET PROGRESS
 </button>
+
 </div>
+
 </div>
+
 </div>
+
+
 <!-- NAV -->
+
 <div class="nav">
-<button id="navHome" class="active"
+
+<button id="navHome"
+class="active"
 onclick="stopCamera();show('home')">
 <span class="navIcon">⌂</span>
 Home
 </button>
+
 <button id="navWorkout"
 onclick="show('workout')">
 <span class="navIcon">🏋️</span>
 Train
 </button>
+
 <button id="navProgress"
 onclick="stopCamera();show('progress')">
 <span class="navIcon">↗</span>
 Progress
 </button>
+
 <button id="navPets"
 onclick="stopCamera();show('pets')">
 <span class="navIcon">◆</span>
 Pets
 </button>
+
 <button id="navProfile"
 onclick="stopCamera();show('profile')">
 <span class="navIcon">●</span>
 Profile
 </button>
+
 </div>
+
+
 <div class="popup" id="popup">
+
 <div class="popupTitle" id="popupTitle">
 LEVEL UP!
 </div>
+
 <div class="popupText" id="popupText">
 You ranked up.
 </div>
+
 </div>
+
+
 <script>
-/* =========================
+
+/* =====================================================
 DATA
-========================= */
+===================================================== */
+
 const defaultData={
-reps:0,
-xp:0,
-level:1,
-streak:0,
-bestStreak:0,
-workouts:0,
-history:[],
-muscles:{
- chest:0,
- shoulders:0,
- arms:0,
- core:0,
- legs:0
-},
-pets:[]
+ reps:0,
+ xp:0,
+ level:1,
+ streak:0,
+ bestStreak:0,
+ workouts:0,
+ history:[],
+ muscles:{
+  chest:0,
+  shoulders:0,
+  arms:0,
+  core:0,
+  legs:0
+ },
+ pets:[]
 };
-let data=JSON.parse(localStorage.getItem("reprank"))||defaultData;
-data.muscles=data.muscles||defaultData.muscles;
+
+let data;
+
+try{
+ data=JSON.parse(localStorage.getItem("reprank"));
+}catch(e){
+ data=null;
+}
+
+if(!data){
+ data=JSON.parse(JSON.stringify(defaultData));
+}
+
+data.muscles=data.muscles||JSON.parse(JSON.stringify(defaultData.muscles));
 data.pets=data.pets||[];
+data.history=data.history||[];
+
 let currentWorkout="Push-ups";
 let sessionReps=0;
 let sessionXP=0;
-/* =========================
+
+
+/* =====================================================
 RANKS
-========================= */
+===================================================== */
+
 const ranks=[
-{name:"ROOKIE I",xp:0},
-{name:"ROOKIE II",xp:100},
-{name:"ROOKIE III",xp:200},
-{name:"GRINDER I",xp:300},
-{name:"GRINDER II",xp:400},
-{name:"ATHLETE",xp:500},
-{name:"BEAST",xp:600},
-{name:"ELITE",xp:700},
-{name:"CHAMPION",xp:800},
-{name:"LEGEND",xp:900},
-{name:"GOAT",xp:1000}
+ {name:"ROOKIE I",xp:0},
+ {name:"ROOKIE II",xp:100},
+ {name:"ROOKIE III",xp:200},
+ {name:"GRINDER I",xp:300},
+ {name:"GRINDER II",xp:400},
+ {name:"ATHLETE",xp:500},
+ {name:"BEAST",xp:600},
+ {name:"ELITE",xp:700},
+ {name:"CHAMPION",xp:800},
+ {name:"LEGEND",xp:900},
+ {name:"GOAT",xp:1000}
 ];
-function totalXP(){
-return Object.values(data.muscles)
-.reduce((a,b)=>a+b,0)+data.reps;
+
+
+/* =====================================================
+XP / RANK
+===================================================== */
+
+function getTotalXP(){
+
+ return data.reps +
+ Object.values(data.muscles).reduce(
+  (a,b)=>a+b,
+  0
+ ) +
+ data.pets.reduce(
+  (a,p)=>a+(p.xp||0),
+  0
+ );
+
 }
+
 function getRank(){
-return Math.min(
-Math.floor(totalXP()/100),
-ranks.length-1
-);
+
+ return Math.min(
+  Math.floor(getTotalXP()/100),
+  ranks.length-1
+ );
+
 }
-/* =========================
+
+
+/* =====================================================
 CAMERA
-========================= */
+===================================================== */
+
 let pose=null;
 let cameraStream=null;
 let cameraRunning=false;
+
 let exerciseState="UP";
 let downFrames=0;
 let upFrames=0;
+
 let plankTimer=null;
 let plankSeconds=0;
+
 let lastRepTime=0;
-/* =========================
-PET SYSTEM
-========================= */
+
+
+/* =====================================================
+PET DATA
+===================================================== */
+
 const species=[
 "DRAGON",
 "WOLF",
@@ -923,1178 +1184,2571 @@ const species=[
 "SERPENT",
 "PHANTOM"
 ];
+
 const rarities=[
-{
-name:"COMMON",
-multiplier:1,
-chance:.55
-},
-{
-name:"UNCOMMON",
-multiplier:1.5,
-chance:.25
-},
-{
-name:"RARE",
-multiplier:2.5,
-chance:.12
-},
-{
-name:"EPIC",
-multiplier:4,
-chance:.055
-},
-{
-name:"LEGENDARY",
-multiplier:7,
-chance:.02
-},
-{
-name:"MYTHIC",
-multiplier:12,
-chance:.005
-}
+ {
+  name:"COMMON",
+  multiplier:1,
+  chance:.55
+ },
+ {
+  name:"UNCOMMON",
+  multiplier:1.5,
+  chance:.25
+ },
+ {
+  name:"RARE",
+  multiplier:2.5,
+  chance:.12
+ },
+ {
+  name:"EPIC",
+  multiplier:4,
+  chance:.055
+ },
+ {
+  name:"LEGENDARY",
+  multiplier:7,
+  chance:.02
+ },
+ {
+  name:"MYTHIC",
+  multiplier:12,
+  chance:.005
+ }
 ];
+
+
+/*
+BASE  = 4
+ICE   = 6
+FIRE  = 8
+LIGHT  = 10
+BEAST = 15
+*/
+
 const mutations=[
-{
-name:"BASE",
-required:4,
-multiplier:1
-},
-{
-name:"ICE",
-required:6,
-multiplier:1.6
-},
-{
-name:"FIRE",
-required:8,
-multiplier:2.5
-},
-{
-name:"LIGHTNING",
-required:10,
-multiplier:4
-},
-{
-name:"BEAST",
-required:15,
-multiplier:8
-}
+ {
+  name:"BASE",
+  required:4,
+  multiplier:1
+ },
+ {
+  name:"ICE",
+  required:6,
+  multiplier:1.6
+ },
+ {
+  name:"FIRE",
+  required:8,
+  multiplier:2.5
+ },
+ {
+  name:"LIGHTNING",
+  required:10,
+  multiplier:4
+ },
+ {
+  name:"BEAST",
+  required:15,
+  multiplier:8
+ }
 ];
+
 let wildPet=null;
+
 let petX=100;
 let petY=120;
+
 let petVX=1.2;
 let petVY=.8;
+
 let petAnimation=0;
+
 let mutationProgress=0;
-let mutationActive=false;
-/* =========================
+
+
+/* =====================================================
 PET RANDOMNESS
-========================= */
+===================================================== */
+
 function randomSpecies(){
-return species[
-Math.floor(Math.random()*species.length)
-];
+
+ return species[
+  Math.floor(
+   Math.random()*species.length
+  )
+ ];
+
 }
+
 function randomRarity(){
-let r=Math.random();
-let total=0;
-for(const rarity of rarities){
-total+=rarity.chance;
-if(r<=total){
-return rarity;
+
+ let r=Math.random();
+ let total=0;
+
+ for(const rarity of rarities){
+
+  total+=rarity.chance;
+
+  if(r<=total){
+   return rarity;
+  }
+
+ }
+
+ return rarities[0];
+
 }
-}
-return rarities[0];
-}
+
 function randomMutation(){
-let r=Math.random();
-if(r<.50)return mutations[0];
-if(r<.72)return mutations[1];
-if(r<.88)return mutations[2];
-if(r<.97)return mutations[3];
-return mutations[4];
+
+ const r=Math.random();
+
+ if(r<.50)return mutations[0];
+ if(r<.72)return mutations[1];
+ if(r<.88)return mutations[2];
+ if(r<.97)return mutations[3];
+
+ return mutations[4];
+
 }
-/* =========================
-SPRITE DRAWING
-========================= */
-function drawCreature(ctx,x,y,scale,type,rarity,mutation){
-ctx.save();
-ctx.translate(x,y);
-ctx.scale(scale,scale);
-petAnimation+=.04;
-let bounce=Math.sin(petAnimation*3)*4;
-ctx.translate(0,bounce);
-/* shadow */
-ctx.beginPath();
-ctx.ellipse(0,30,27,7,0,0,Math.PI*2);
-ctx.fillStyle="rgba(0,0,0,.45)";
-ctx.fill();
-/* body */
-ctx.beginPath();
-ctx.ellipse(0,0,28,30,0,0,Math.PI*2);
-let grad=ctx.createLinearGradient(-25,-25,25,25);
-if(mutation==="ICE"){
-grad.addColorStop(0,"#dfffff");
-grad.addColorStop(1,"#5edfff");
+
+
+/* =====================================================
+PET SPRITE
+===================================================== */
+
+function drawCreature(
+ ctx,
+ x,
+ y,
+ scale,
+ speciesName,
+ rarity,
+ mutation
+){
+
+ ctx.save();
+
+ ctx.translate(x,y);
+
+ ctx.scale(scale,scale);
+
+ const bounce=
+ Math.sin(petAnimation*3)*4;
+
+ ctx.translate(0,bounce);
+
+ /* shadow */
+
+ ctx.beginPath();
+
+ ctx.ellipse(
+  0,
+  32,
+  28,
+  7,
+  0,
+  0,
+  Math.PI*2
+ );
+
+ ctx.fillStyle="rgba(0,0,0,.45)";
+ ctx.fill();
+
+ /* body */
+
+ ctx.beginPath();
+
+ ctx.ellipse(
+  0,
+  0,
+  28,
+  30,
+  0,
+  0,
+  Math.PI*2
+ );
+
+ let grad=
+ ctx.createLinearGradient(
+  -25,
+  -25,
+  25,
+  25
+ );
+
+ if(mutation==="ICE"){
+
+  grad.addColorStop(0,"#ffffff");
+  grad.addColorStop(1,"#35bfff");
+
+ }
+
+ else if(mutation==="FIRE"){
+
+  grad.addColorStop(0,"#fff8a0");
+  grad.addColorStop(1,"#ff2500");
+
+ }
+
+ else if(mutation==="LIGHTNING"){
+
+  grad.addColorStop(0,"#ffffff");
+  grad.addColorStop(1,"#554cff");
+
+ }
+
+ else if(mutation==="BEAST"){
+
+  grad.addColorStop(0,"#ffff80");
+  grad.addColorStop(1,"#a000ff");
+
+ }
+
+ else{
+
+  grad.addColorStop(0,"#aaa");
+  grad.addColorStop(1,"#444");
+
+ }
+
+ ctx.fillStyle=grad;
+ ctx.fill();
+
+ ctx.strokeStyle="#fff";
+ ctx.lineWidth=2;
+ ctx.stroke();
+
+
+ /* ears */
+
+ ctx.beginPath();
+
+ ctx.moveTo(-18,-20);
+ ctx.lineTo(-30,-42);
+ ctx.lineTo(-6,-28);
+
+ ctx.fillStyle=grad;
+ ctx.fill();
+
+ ctx.stroke();
+
+
+ ctx.beginPath();
+
+ ctx.moveTo(18,-20);
+ ctx.lineTo(30,-42);
+ ctx.lineTo(6,-28);
+
+ ctx.fill();
+ ctx.stroke();
+
+
+ /* eyes */
+
+ ctx.fillStyle="#050505";
+
+ ctx.beginPath();
+ ctx.arc(-9,-5,4,0,Math.PI*2);
+ ctx.fill();
+
+ ctx.beginPath();
+ ctx.arc(9,-5,4,0,Math.PI*2);
+ ctx.fill();
+
+
+ /* rarity ring */
+
+ ctx.beginPath();
+
+ ctx.arc(
+  0,
+  0,
+  39,
+  0,
+  Math.PI*2
+ );
+
+ const rarityColors={
+  COMMON:"#444",
+  UNCOMMON:"#777",
+  RARE:"#aaa",
+  EPIC:"#ccc",
+  LEGENDARY:"#fff",
+  MYTHIC:"#fff"
+ };
+
+ ctx.strokeStyle=
+ rarityColors[rarity]||"#444";
+
+ ctx.lineWidth=
+ rarity==="MYTHIC"?5:3;
+
+ ctx.stroke();
+
+
+ /* ICE */
+
+ if(mutation==="ICE"){
+
+  for(let i=0;i<6;i++){
+
+   ctx.fillStyle="#fff";
+
+   ctx.fillRect(
+    Math.sin(
+     i*3+petAnimation
+    )*35,
+    Math.cos(
+     i*4+petAnimation
+    )*35,
+    4,
+    4
+   );
+
+  }
+
+ }
+
+
+ /* FIRE */
+
+ if(mutation==="FIRE"){
+
+  ctx.beginPath();
+
+  ctx.arc(
+   0,
+   30,
+   10+
+   Math.sin(petAnimation*4)*3,
+   0,
+   Math.PI*2
+  );
+
+  ctx.fillStyle="#ffdf00";
+  ctx.fill();
+
+ }
+
+
+ /* LIGHTNING */
+
+ if(mutation==="LIGHTNING"){
+
+  for(let i=0;i<3;i++){
+
+   ctx.beginPath();
+
+   ctx.moveTo(
+    Math.random()*50-25,
+    Math.random()*50-25
+   );
+
+   ctx.lineTo(
+    Math.random()*70-35,
+    Math.random()*70-35
+   );
+
+   ctx.strokeStyle="#fff";
+   ctx.lineWidth=3;
+   ctx.stroke();
+
+  }
+
+ }
+
+
+ /* BEAST */
+
+ if(mutation==="BEAST"){
+
+  ctx.strokeStyle="#fff";
+  ctx.lineWidth=5;
+
+  ctx.beginPath();
+
+  ctx.arc(
+   0,
+   0,
+   48+
+   Math.sin(petAnimation*3)*3,
+   0,
+   Math.PI*2
+  );
+
+  ctx.stroke();
+
+ }
+
+ ctx.restore();
+
 }
-else if(mutation==="FIRE"){
-grad.addColorStop(0,"#fff0a0");
-grad.addColorStop(1,"#ff3b18");
-}
-else if(mutation==="LIGHTNING"){
-grad.addColorStop(0,"#fff");
-grad.addColorStop(1,"#7c6cff");
-}
-else if(mutation==="BEAST"){
-grad.addColorStop(0,"#ff8");
-grad.addColorStop(1,"#b000ff");
-}
-else{
-grad.addColorStop(0,"#aaa");
-grad.addColorStop(1,"#444");
-}
-ctx.fillStyle=grad;
-ctx.fill();
-ctx.strokeStyle="#fff";
-ctx.lineWidth=2;
-ctx.stroke();
-/* ears */
-ctx.beginPath();
-ctx.moveTo(-18,-20);
-ctx.lineTo(-30,-42);
-ctx.lineTo(-6,-28);
-ctx.fillStyle=grad;
-ctx.fill();
-ctx.stroke();
-ctx.beginPath();
-ctx.moveTo(18,-20);
-ctx.lineTo(30,-42);
-ctx.lineTo(6,-28);
-ctx.fill();
-ctx.stroke();
-/* eyes */
-ctx.fillStyle="#050505";
-ctx.beginPath();
-ctx.arc(-9,-5,4,0,Math.PI*2);
-ctx.fill();
-ctx.beginPath();
-ctx.arc(9,-5,4,0,Math.PI*2);
-ctx.fill();
-/* rarity ring */
-ctx.beginPath();
-ctx.arc(0,0,39,0,Math.PI*2);
-ctx.strokeStyle=
-rarity==="MYTHIC"?"#fff":
-rarity==="LEGENDARY"?"#ddd":
-rarity==="EPIC"?"#bbb":
-rarity==="RARE"?"#999":
-rarity==="UNCOMMON"?"#777":
-"#444";
-ctx.lineWidth=3;
-ctx.stroke();
-/* mutation effects */
-if(mutation==="LIGHTNING"){
-for(let i=0;i<3;i++){
-ctx.beginPath();
-ctx.moveTo(
-Math.random()*50-25,
-Math.random()*50-25
-);
-ctx.lineTo(
-Math.random()*70-35,
-Math.random()*70-35
-);
-ctx.strokeStyle="#fff";
-ctx.lineWidth=2;
-ctx.stroke();
-}
-}
-if(mutation==="FIRE"){
-ctx.beginPath();
-ctx.arc(0,30,10+Math.sin(petAnimation*4)*3,0,Math.PI*2);
-ctx.fillStyle="#ff5";
-ctx.fill();
-}
-if(mutation==="ICE"){
-for(let i=0;i<5;i++){
-ctx.fillStyle="#fff";
-ctx.fillRect(
-Math.sin(i*3+petAnimation)*35,
-Math.cos(i*4+petAnimation)*35,
-3,
-3
-);
-}
-}
-if(mutation==="BEAST"){
-ctx.strokeStyle="#fff";
-ctx.lineWidth=4;
-ctx.beginPath();
-ctx.arc(0,0,47,0,Math.PI*2);
-ctx.stroke();
-}
-ctx.restore();
-}
-/* =========================
+
+
+/* =====================================================
 PET SPAWN
-========================= */
+===================================================== */
+
 function spawnWildPet(){
-if(wildPet)return;
-const rarity=randomRarity();
-const mutation=randomMutation();
-wildPet={
-species:randomSpecies(),
-rarity:rarity.name,
-rarityMultiplier:rarity.multiplier,
-mutation:mutation.name,
-required:mutation.required,
-baseXP:Math.round(
-10*
-rarity.multiplier*
-mutation.multiplier
-)
-};
-mutationProgress=0;
-mutationActive=true;
-petX=70+Math.random()*180;
-petY=80+Math.random()*250;
-document.getElementById("petInfo").classList.add("show");
-document.getElementById("petInfo").textContent=
-wildPet.rarity+" "+wildPet.species+
-" • "+wildPet.mutation;
-document.getElementById("mutationBox").classList.add("show");
-document.getElementById("mutationName").textContent=
-wildPet.mutation;
-document.getElementById("mutationRequired").textContent=
-wildPet.required;
-document.getElementById("captureFill").style.width="0%";
-showPopup(
-"CREATURE SPAWNED!",
-wildPet.rarity+" "+wildPet.species+" appeared!"
-);
+
+ if(wildPet)return;
+
+ const rarity=randomRarity();
+
+ const mutation=randomMutation();
+
+ wildPet={
+
+  species:randomSpecies(),
+
+  rarity:rarity.name,
+
+  rarityMultiplier:
+  rarity.multiplier,
+
+  mutation:mutation.name,
+
+  required:mutation.required,
+
+  baseXP:Math.round(
+   10*
+   rarity.multiplier*
+   mutation.multiplier
+  )
+
+ };
+
+ mutationProgress=0;
+
+ petX=
+ 70+
+ Math.random()*180;
+
+ petY=
+ 100+
+ Math.random()*240;
+
+ document
+ .getElementById("petInfo")
+ .classList
+ .add("show");
+
+ document
+ .getElementById("petInfo")
+ .textContent=
+ wildPet.rarity+
+ " "+
+ wildPet.species+
+ " • "+
+ wildPet.mutation;
+
+ document
+ .getElementById("mutationBox")
+ .classList
+ .add("show");
+
+ document
+ .getElementById("mutationName")
+ .textContent=
+ wildPet.mutation;
+
+ document
+ .getElementById("mutationRequired")
+ .textContent=
+ wildPet.required;
+
+ document
+ .getElementById("captureFill")
+ .style.width="0%";
+
+ showPopup(
+  "CREATURE SPAWNED!",
+  wildPet.rarity+
+  " "+
+  wildPet.species+
+  " appeared!"
+ );
+
 }
-/* =========================
-PET LOOP
-========================= */
+
+
+/* =====================================================
+RANDOM SPAWN TIMER
+===================================================== */
+
+let petSpawnTimer=null;
+
+function startPetSpawns(){
+
+ clearInterval(petSpawnTimer);
+
+ petSpawnTimer=setInterval(()=>{
+
+  if(
+   cameraRunning &&
+   !wildPet &&
+   Math.random()<.35
+  ){
+   spawnWildPet();
+  }
+
+ },12000);
+
+}
+
+function stopPetSpawns(){
+
+ clearInterval(petSpawnTimer);
+ petSpawnTimer=null;
+
+}
+
+
+/* =====================================================
+PET ANIMATION LOOP
+===================================================== */
+
 function petLoop(){
-const canvas=document.getElementById("petCanvas");
-if(!canvas)return;
-const rect=canvas.getBoundingClientRect();
-const ratio=devicePixelRatio||1;
-canvas.width=rect.width*ratio;
-canvas.height=rect.height*ratio;
-const ctx=canvas.getContext("2d");
-ctx.setTransform(ratio,0,0,ratio,0,0);
-ctx.clearRect(0,0,rect.width,rect.height);
-if(wildPet){
-petX+=petVX;
-petY+=petVY;
-if(petX<50||petX>rect.width-50)
-petVX*=-1;
-if(petY<80||petY>rect.height-150)
-petVY*=-1;
-drawCreature(
-ctx,
-petX,
-petY,
-.72,
-wildPet.species,
-wildPet.rarity,
-wildPet.mutation
-);
+
+ const canvas=
+ document.getElementById("petCanvas");
+
+ if(!canvas){
+  requestAnimationFrame(petLoop);
+  return;
+ }
+
+ const rect=
+ canvas.getBoundingClientRect();
+
+ const ratio=
+ window.devicePixelRatio||1;
+
+ if(
+  canvas.width!==rect.width*ratio ||
+  canvas.height!==rect.height*ratio
+ ){
+
+  canvas.width=
+  rect.width*ratio;
+
+  canvas.height=
+  rect.height*ratio;
+
+ }
+
+ const ctx=
+ canvas.getContext("2d");
+
+ ctx.setTransform(
+  ratio,
+  0,
+  0,
+  ratio,
+  0,
+  0
+ );
+
+ ctx.clearRect(
+  0,
+  0,
+  rect.width,
+  rect.height
+ );
+
+ petAnimation+=.04;
+
+ if(wildPet){
+
+  petX+=petVX;
+  petY+=petVY;
+
+  if(
+   petX<55 ||
+   petX>rect.width-55
+  ){
+   petVX*=-1;
+  }
+
+  if(
+   petY<100 ||
+   petY>rect.height-160
+  ){
+   petVY*=-1;
+  }
+
+  drawCreature(
+   ctx,
+   petX,
+   petY,
+   .72,
+   wildPet.species,
+   wildPet.rarity,
+   wildPet.mutation
+  );
+
+ }
+
+ requestAnimationFrame(petLoop);
+
 }
-requestAnimationFrame(petLoop);
-}
-/* =========================
-CAPTURE
-========================= */
+
+
+/* =====================================================
+CAPTURE PET
+===================================================== */
+
 function petRep(){
-if(!wildPet)return;
-mutationProgress++;
-const percent=
-Math.min(
-100,
-mutationProgress/wildPet.required*100
-);
-document.getElementById("captureFill")
-.style.width=percent+"%";
-if(mutationProgress>=wildPet.required){
-capturePet();
+
+ if(!wildPet)return;
+
+ mutationProgress++;
+
+ const percent=
+ Math.min(
+  100,
+  mutationProgress/
+  wildPet.required*
+  100
+ );
+
+ document
+ .getElementById("captureFill")
+ .style.width=
+ percent+"%";
+
+ if(
+  mutationProgress>=
+  wildPet.required
+ ){
+
+  capturePet();
+
+ }
+
 }
-}
+
+
+/* =====================================================
+CAPTURE
+===================================================== */
+
 function capturePet(){
-const pet={
-id:Date.now()+Math.random(),
-species:wildPet.species,
-rarity:wildPet.rarity,
-mutation:wildPet.mutation,
-xp:wildPet.baseXP
-};
-data.pets.push(pet);
-showPopup(
-"PET CAPTURED!",
-wildPet.rarity+" "+wildPet.mutation+" "+wildPet.species
-);
-wildPet=null;
-mutationActive=false;
-mutationProgress=0;
-document.getElementById("petInfo").classList.remove("show");
-document.getElementById("mutationBox").classList.remove("show");
-save();
-renderPets();
+
+ const pet={
+
+  id:
+  Date.now()+
+  Math.random(),
+
+  species:
+  wildPet.species,
+
+  rarity:
+  wildPet.rarity,
+
+  mutation:
+  wildPet.mutation,
+
+  xp:
+  wildPet.baseXP
+
+ };
+
+ data.pets.push(pet);
+
+ showPopup(
+  "PET CAPTURED!",
+  wildPet.rarity+
+  " "+
+  wildPet.mutation+
+  " "+
+  wildPet.species
+ );
+
+ wildPet=null;
+
+ mutationProgress=0;
+
+ hidePetOverlay();
+
+ save();
+
+ renderPets();
+
 }
-/* =========================
-EXTRACT PET
-========================= */
-function extractPet(id){
-const index=data.pets.findIndex(
-p=>p.id===id
-);
-if(index===-1)return;
-const pet=data.pets[index];
-const muscles=[
-"chest",
-"shoulders",
-"arms",
-"core",
-"legs"
-];
-const randomMuscle=
-muscles[
-Math.floor(Math.random()*muscles.length)
-];
-if(!confirm(
-"Extract "+pet.mutation+" "+pet.species+
-"?\n\nThis permanently removes the pet and gives +"+
-pet.xp+" XP to "+randomMuscle+"."
-)){
-return;
+
+
+/* =====================================================
+HIDE PET OVERLAY
+===================================================== */
+
+function hidePetOverlay(){
+
+ document
+ .getElementById("petInfo")
+ .classList
+ .remove("show");
+
+ document
+ .getElementById("mutationBox")
+ .classList
+ .remove("show");
+
+ document
+ .getElementById("captureFill")
+ .style.width="0%";
+
 }
-data.muscles[randomMuscle]+=pet.xp;
-data.pets.splice(index,1);
-showPopup(
-"PET EXTRACTED",
-"+"+pet.xp+" XP → "+randomMuscle.toUpperCase()
-);
-save();
-renderPets();
-}
-/* =========================
-PET MENU
-========================= */
-function renderPets(){
-const grid=document.getElementById("petGrid");
-if(!grid)return;
-grid.innerHTML="";
-if(data.pets.length===0){
-grid.innerHTML=
-'<div class="emptyPets" style="grid-column:1/-1">'+
-'No captured pets yet.<br><br>'+
-'Find creatures during workouts.'+
-'</div>';
-return;
-}
-data.pets.forEach(pet=>{
-const card=document.createElement("div");
-card.className="petCard";
-card.innerHTML=`
-<div class="petVisual">
-<canvas width="120" height="120"></canvas>
-</div>
-<div class="petName">
-${pet.mutation} ${pet.species}
-</div>
-<div class="petMeta">
-${pet.rarity}<br>
-Extraction: +${pet.xp} XP
-</div>
-<button class="extractBtn">
+
+
+/* =====================================================
 EXTRACT
-</button>
-`;
-const canvas=card.querySelector("canvas");
-const ctx=canvas.getContext("2d");
-drawCreature(
-ctx,
-60,
-60,
-.9,
-pet.species,
-pet.rarity,
-pet.mutation
-);
-card.querySelector(".extractBtn")
-.onclick=()=>extractPet(pet.id);
-grid.appendChild(card);
-});
+===================================================== */
+
+function extractPet(id){
+
+ const index=
+ data.pets.findIndex(
+  p=>p.id===id
+ );
+
+ if(index===-1)return;
+
+ const pet=
+ data.pets[index];
+
+ const muscles=[
+  "chest",
+  "shoulders",
+  "arms",
+  "core",
+  "legs"
+ ];
+
+ const randomMuscle=
+ muscles[
+  Math.floor(
+   Math.random()*muscles.length
+  )
+ ];
+
+ if(
+  !confirm(
+   "Extract "+
+   pet.mutation+
+   " "+
+   pet.species+
+   "?\n\n"+
+   "The pet will be permanently LOST."
+  )
+ ){
+  return;
+ }
+
+ data.muscles[randomMuscle]+=
+ pet.xp;
+
+ data.pets.splice(index,1);
+
+ showPopup(
+  "PET EXTRACTED",
+  "+"+
+  pet.xp+
+  " XP → "+
+  randomMuscle.toUpperCase()
+ );
+
+ save();
+
+ renderPets();
+
 }
-/* =========================
+
+
+/* =====================================================
+PET MENU
+===================================================== */
+
+function renderPets(){
+
+ const grid=
+ document.getElementById("petGrid");
+
+ if(!grid)return;
+
+ grid.innerHTML="";
+
+ if(data.pets.length===0){
+
+  grid.innerHTML=
+  `
+  <div class="emptyPets"
+  style="grid-column:1/-1">
+  No captured pets yet.<br><br>
+  Find creatures during workouts.
+  </div>
+  `;
+
+  return;
+
+ }
+
+ data.pets.forEach(pet=>{
+
+  const card=
+  document.createElement("div");
+
+  card.className="petCard";
+
+  card.innerHTML=`
+
+  <div class="petVisual">
+   <canvas width="120" height="120"></canvas>
+  </div>
+
+  <div class="petName">
+   ${pet.mutation}
+   ${pet.species}
+  </div>
+
+  <div class="petMeta">
+   ${pet.rarity}<br>
+   Extraction: +${pet.xp} XP
+  </div>
+
+  <button class="extractBtn">
+   EXTRACT
+  </button>
+  `;
+
+  const canvas=
+  card.querySelector("canvas");
+
+  const ctx=
+  canvas.getContext("2d");
+
+  drawCreature(
+   ctx,
+   60,
+   60,
+   .9,
+   pet.species,
+   pet.rarity,
+   pet.mutation
+  );
+
+  card
+  .querySelector(".extractBtn")
+  .addEventListener(
+   "click",
+   ()=>{
+    extractPet(pet.id);
+   }
+  );
+
+  grid.appendChild(card);
+
+ });
+
+}
+
+
+/* =====================================================
 SAVE
-========================= */
+===================================================== */
+
 function save(){
-localStorage.setItem(
-"reprank",
-JSON.stringify(data)
-);
-updateUI();
+
+ localStorage.setItem(
+  "reprank",
+  JSON.stringify(data)
+ );
+
+ updateUI();
+
 }
-/* =========================
-XP
-========================= */
+
+
+/* =====================================================
+GAIN XP
+===================================================== */
+
 function gainXP(amount){
-let oldRank=getRank();
-data.xp+=amount;
-while(data.xp>=100){
-data.xp-=100;
-data.level++;
+
+ const oldRank=
+ getRank();
+
+ data.xp+=amount;
+
+ while(data.xp>=100){
+
+  data.xp-=100;
+
+  data.level++;
+
+ }
+
+ const newRank=
+ getRank();
+
+ if(newRank>oldRank){
+
+  showPopup(
+   "RANK UP!",
+   ranks[newRank].name+" 🔥"
+  );
+
+ }
+
 }
-let newRank=getRank();
-if(newRank>oldRank){
-showPopup(
-"RANK UP!",
-ranks[newRank].name+" 🔥"
-);
-}
-}
-/* =========================
+
+
+/* =====================================================
 WORKOUT RECORD
-========================= */
+===================================================== */
+
 function recordWorkout(){
-const today=
-new Date().toISOString().slice(0,10);
-let last=
-data.history[data.history.length-1];
-if(!last||last.date!==today){
-data.history.push({
-date:today,
-reps:0
-});
+
+ const today=
+ new Date()
+ .toISOString()
+ .slice(0,10);
+
+ let last=
+ data.history[
+  data.history.length-1
+ ];
+
+ if(
+  !last ||
+  last.date!==today
+ ){
+
+  data.history.push({
+   date:today,
+   reps:0
+  });
+
+ }
+
+ data.history[
+  data.history.length-1
+ ].reps++;
+
+ data.workouts++;
+
+ data.streak++;
+
+ if(
+  data.streak>
+  data.bestStreak
+ ){
+  data.bestStreak=
+  data.streak;
+ }
+
 }
-data.history[data.history.length-1].reps++;
-data.workouts++;
-data.streak++;
-if(data.streak>data.bestStreak)
-data.bestStreak=data.streak;
-}
-/* =========================
+
+
+/* =====================================================
 ADD REP
-========================= */
+===================================================== */
+
 function countRep(){
-const now=Date.now();
-if(now-lastRepTime<650)return;
-lastRepTime=now;
-sessionReps++;
-sessionXP++;
-data.reps++;
-gainXP(1);
-recordWorkout();
-if(currentWorkout==="Push-ups"){
-data.muscles.chest++;
-data.muscles.shoulders++;
-data.muscles.arms++;
+
+ const now=Date.now();
+
+ if(
+  now-lastRepTime<
+  650
+ ){
+  return;
+ }
+
+ lastRepTime=now;
+
+ sessionReps++;
+
+ sessionXP++;
+
+ data.reps++;
+
+ gainXP(1);
+
+ recordWorkout();
+
+
+ /* MUSCLES */
+
+ if(
+  currentWorkout==="Push-ups"
+ ){
+
+  data.muscles.chest++;
+  data.muscles.shoulders++;
+  data.muscles.arms++;
+
+ }
+
+ if(
+  currentWorkout==="Squats"
+ ){
+
+  data.muscles.legs++;
+  data.muscles.core++;
+
+ }
+
+ if(
+  currentWorkout==="Sit-ups"
+ ){
+
+  data.muscles.core++;
+
+ }
+
+ if(
+  currentWorkout==="Lunges"
+ ){
+
+  data.muscles.legs++;
+
+ }
+
+ if(
+  currentWorkout==="Plank"
+ ){
+
+  data.muscles.core++;
+  data.muscles.shoulders++;
+
+ }
+
+
+ /* UI */
+
+ document
+ .getElementById("sessionReps")
+ .textContent=
+ sessionReps;
+
+ document
+ .getElementById("cameraReps")
+ .textContent=
+ sessionReps;
+
+ document
+ .getElementById("sessionXP")
+ .textContent=
+ sessionXP;
+
+ document
+ .getElementById("formStatus")
+ .textContent=
+ "REP COMPLETE ✓";
+
+ document
+ .getElementById("formStatus")
+ .className=
+ "formText good";
+
+
+ /* PET */
+
+ petRep();
+
+ save();
+
 }
-if(currentWorkout==="Squats"){
-data.muscles.legs++;
-data.muscles.core++;
-}
-if(currentWorkout==="Sit-ups"){
-data.muscles.core++;
-}
-if(currentWorkout==="Lunges"){
-data.muscles.legs++;
-}
-if(currentWorkout==="Plank"){
-data.muscles.core++;
-data.muscles.shoulders++;
-}
-document.getElementById("sessionReps")
-.textContent=sessionReps;
-document.getElementById("cameraReps")
-.textContent=sessionReps;
-document.getElementById("sessionXP")
-.textContent=sessionXP;
-document.getElementById("genericReps")
-.textContent=sessionReps;
-document.getElementById("formStatus")
-.textContent="REP COMPLETE ✓";
-document.getElementById("formStatus")
-.className="formText good";
-petRep();
-save();
-}
-/* =========================
-MANUAL
-========================= */
+
+
+/* =====================================================
+MANUAL REP
+===================================================== */
+
 function manualRep(){
-countRep();
+
+ countRep();
+
 }
-/* =========================
+
+
+/* =====================================================
 OPEN WORKOUT
-========================= */
+===================================================== */
+
 function openWorkout(name){
-stopCamera();
-currentWorkout=name;
-sessionReps=0;
-sessionXP=0;
-document.getElementById("workoutTitle")
-.textContent=name;
-document.getElementById("sessionReps")
-.textContent="0";
-document.getElementById("cameraReps")
-.textContent="0";
-document.getElementById("genericReps")
-.textContent="0";
-document.getElementById("sessionXP")
-.textContent="0";
-document.getElementById("formScore")
-.textContent="--";
-document.getElementById("genericForm")
-.textContent="--";
-if(name==="Push-ups"||
-name==="Squats"||
-name==="Sit-ups"||
-name==="Lunges"||
-name==="Plank"){
-document.getElementById("cameraArea")
-.style.display="block";
-document.getElementById("genericWorkout")
-.style.display="none";
+
+ stopCamera();
+
+ currentWorkout=name;
+
+ sessionReps=0;
+
+ sessionXP=0;
+
+ exerciseState="UP";
+
+ downFrames=0;
+
+ upFrames=0;
+
+ plankSeconds=0;
+
+ wildPet=null;
+
+ hidePetOverlay();
+
+ document
+ .getElementById("workoutTitle")
+ .textContent=name;
+
+ document
+ .getElementById("sessionReps")
+ .textContent="0";
+
+ document
+ .getElementById("cameraReps")
+ .textContent="0";
+
+ document
+ .getElementById("sessionXP")
+ .textContent="0";
+
+ document
+ .getElementById("formScore")
+ .textContent="--";
+
+ document
+ .getElementById("formStatus")
+ .textContent=
+ "Start camera to begin";
+
+ show("workout");
+
 }
-show("workout");
-}
-/* =========================
+
+
+/* =====================================================
 BODY
-========================= */
+===================================================== */
+
 function bodyLevel(value){
-if(value>=50)return"high";
-if(value>=20)return"medium";
-if(value>=5)return"low";
-return"";
+
+ if(value>=50)return"high";
+
+ if(value>=20)return"medium";
+
+ if(value>=5)return"low";
+
+ return"";
+
 }
+
 function updateBody(){
-const mapping={
-chest:["bodyChestL","bodyChestR"],
-shoulders:["bodyShoulderL","bodyShoulderR"],
-arms:["bodyArmL","bodyArmR"],
-core:["bodyCore"],
-legs:["bodyLegL","bodyLegR"]
-};
-Object.keys(mapping).forEach(muscle=>{
-mapping[muscle].forEach(id=>{
-const el=document.getElementById(id);
-if(!el)return;
-el.classList.remove(
-"low",
-"medium",
-"high"
-);
-const level=
-bodyLevel(data.muscles[muscle]);
-if(level)el.classList.add(level);
-});
-});
+
+ const mapping={
+
+  chest:[
+   "bodyChestL",
+   "bodyChestR"
+  ],
+
+  shoulders:[
+   "bodyShoulderL",
+   "bodyShoulderR"
+  ],
+
+  arms:[
+   "bodyArmL",
+   "bodyArmR"
+  ],
+
+  core:[
+   "bodyCore"
+  ],
+
+  legs:[
+   "bodyLegL",
+   "bodyLegR"
+  ]
+
+ };
+
+ Object.keys(mapping)
+ .forEach(muscle=>{
+
+  mapping[muscle]
+  .forEach(id=>{
+
+   const el=
+   document.getElementById(id);
+
+   if(!el)return;
+
+   el.classList.remove(
+    "low",
+    "medium",
+    "high"
+   );
+
+   const level=
+   bodyLevel(
+    data.muscles[muscle]
+   );
+
+   if(level)
+   el.classList.add(level);
+
+  });
+
+ });
+
 }
-/* =========================
-CAMERA
-========================= */
+
+
+/* =====================================================
+START CAMERA
+===================================================== */
+
 async function startPoseCamera(){
-if(cameraRunning)return;
-const video=document.getElementById("video");
-document.getElementById("cameraStatus")
-.textContent="STARTING...";
-try{
-cameraStream=
-await navigator.mediaDevices.getUserMedia({
-video:{
-facingMode:"user",
-width:{ideal:720},
-height:{ideal:720}
-},
-audio:false
-});
-video.srcObject=cameraStream;
-await video.play();
-pose=new Pose({
-locateFile:(file)=>
-"https://cdn.jsdelivr.net/npm/@mediapipe/pose/"+file
-});
-pose.setOptions({
-modelComplexity:1,
-smoothLandmarks:true,
-enableSegmentation:false,
-minDetectionConfidence:.55,
-minTrackingConfidence:.55
-});
-pose.onResults(results=>{
-processPose(
-results,
-document.getElementById("poseCanvas")
-.getContext("2d"),
-document.getElementById("poseCanvas")
-);
-});
-cameraRunning=true;
-document.getElementById("cameraStatus")
-.textContent="LOOKING FOR BODY";
-if(currentWorkout==="Plank"){
-startPlankTimer();
+
+ if(cameraRunning)return;
+
+ if(
+  !navigator.mediaDevices ||
+  !navigator.mediaDevices.getUserMedia
+ ){
+
+  document
+  .getElementById("cameraStatus")
+  .textContent=
+  "CAMERA NOT SUPPORTED";
+
+  return;
+
+ }
+
+ const video=
+ document.getElementById("video");
+
+ document
+ .getElementById("cameraStatus")
+ .textContent=
+ "STARTING...";
+
+ document
+ .getElementById("petLayer")
+ .classList
+ .remove("hidden");
+
+ try{
+
+  cameraStream=
+  await navigator.mediaDevices
+  .getUserMedia({
+
+   video:{
+    facingMode:"user",
+    width:{ideal:720},
+    height:{ideal:720}
+   },
+
+   audio:false
+
+  });
+
+  video.srcObject=
+  cameraStream;
+
+  await video.play();
+
+
+  pose=
+  new Pose({
+
+   locateFile:(file)=>
+   "https://cdn.jsdelivr.net/npm/@mediapipe/pose/"+file
+
+  });
+
+
+  pose.setOptions({
+
+   modelComplexity:1,
+
+   smoothLandmarks:true,
+
+   enableSegmentation:false,
+
+   minDetectionConfidence:.55,
+
+   minTrackingConfidence:.55
+
+  });
+
+
+  pose.onResults(results=>{
+
+   processPose(
+    results,
+    document
+    .getElementById("poseCanvas")
+    .getContext("2d"),
+    document
+    .getElementById("poseCanvas")
+   );
+
+  });
+
+
+  cameraRunning=true;
+
+  document
+  .getElementById("cameraStatus")
+  .textContent=
+  "LOOKING FOR BODY";
+
+
+  if(
+   currentWorkout==="Plank"
+  ){
+
+   startPlankTimer();
+
+  }
+
+
+  startPetSpawns();
+
+  requestAnimationFrame(
+   poseLoop
+  );
+
+ }
+ catch(error){
+
+  console.log(error);
+
+  document
+  .getElementById("cameraStatus")
+  .textContent=
+  "CAMERA ERROR";
+
+  document
+  .getElementById("formStatus")
+  .textContent=
+  "Allow camera access.";
+
+  document
+  .getElementById("petLayer")
+  .classList
+  .add("hidden");
+
+ }
+
 }
-requestAnimationFrame(poseLoop);
-}catch(error){
-console.log(error);
-document.getElementById("cameraStatus")
-.textContent="CAMERA ERROR";
-document.getElementById("formStatus")
-.textContent="Allow camera access.";
-}
-}
-/* =========================
+
+
+/* =====================================================
 POSE LOOP
-========================= */
+===================================================== */
+
 async function poseLoop(){
-if(!cameraRunning)return;
-const video=document.getElementById("video");
-if(video.readyState>=2&&pose){
-try{
-await pose.send({
-image:video
-});
-}catch(e){
-console.log(e);
+
+ if(!cameraRunning)return;
+
+ const video=
+ document.getElementById("video");
+
+ if(
+  video.readyState>=2 &&
+  pose
+ ){
+
+  try{
+
+   await pose.send({
+    image:video
+   });
+
+  }
+  catch(e){
+
+   console.log(e);
+
+  }
+
+ }
+
+ requestAnimationFrame(
+  poseLoop
+ );
+
 }
-}
-requestAnimationFrame(poseLoop);
-}
-/* =========================
+
+
+/* =====================================================
 POSE PROCESS
-========================= */
-function processPose(results,ctx,canvas){
-canvas.width=document.getElementById("video").videoWidth;
-canvas.height=document.getElementById("video").videoHeight;
-ctx.clearRect(
-0,
-0,
-canvas.width,
-canvas.height
-);
-if(!results.poseLandmarks){
-document.getElementById("cameraStatus")
-.textContent="NO BODY";
-return;
+===================================================== */
+
+function processPose(
+ results,
+ ctx,
+ canvas
+){
+
+ const video=
+ document.getElementById("video");
+
+ if(!video.videoWidth)return;
+
+ canvas.width=
+ video.videoWidth;
+
+ canvas.height=
+ video.videoHeight;
+
+ ctx.clearRect(
+  0,
+  0,
+  canvas.width,
+  canvas.height
+ );
+
+ if(
+  !results.poseLandmarks
+ ){
+
+  document
+  .getElementById("cameraStatus")
+  .textContent=
+  "NO BODY";
+
+  return;
+
+ }
+
+ document
+ .getElementById("cameraStatus")
+ .textContent=
+ "BODY DETECTED";
+
+ drawSkeleton(
+  ctx,
+  results.poseLandmarks,
+  canvas.width,
+  canvas.height
+ );
+
+ detectExercise(
+  results.poseLandmarks
+ );
+
 }
-document.getElementById("cameraStatus")
-.textContent="BODY DETECTED";
-drawSkeleton(
-ctx,
-results.poseLandmarks,
-canvas.width,
-canvas.height
-);
-detectExercise(
-results.poseLandmarks
-);
-}
-/* =========================
+
+
+/* =====================================================
 SKELETON
-========================= */
-function drawSkeleton(ctx,l,w,h){
-const connections=[
-[11,13],
-[13,15],
-[12,14],
-[14,16],
-[11,12],
-[11,23],
-[12,24],
-[23,24],
-[23,25],
-[25,27],
-[24,26],
-[26,28]
-];
-ctx.lineWidth=5;
-ctx.lineCap="round";
-ctx.strokeStyle="#fff";
-connections.forEach(pair=>{
-const a=l[pair[0]];
-const b=l[pair[1]];
-if(a.visibility>.5&&b.visibility>.5){
-ctx.beginPath();
-ctx.moveTo(
-a.x*w,
-a.y*h
-);
-ctx.lineTo(
-b.x*w,
-b.y*h
-);
-ctx.stroke();
+===================================================== */
+
+function drawSkeleton(
+ ctx,
+ l,
+ w,
+ h
+){
+
+ const connections=[
+
+  [11,13],
+  [13,15],
+
+  [12,14],
+  [14,16],
+
+  [11,12],
+
+  [11,23],
+  [12,24],
+
+  [23,24],
+
+  [23,25],
+  [25,27],
+
+  [24,26],
+  [26,28]
+
+ ];
+
+ ctx.lineWidth=5;
+
+ ctx.lineCap="round";
+
+ ctx.strokeStyle="#fff";
+
+ connections.forEach(pair=>{
+
+  const a=l[pair[0]];
+  const b=l[pair[1]];
+
+  if(
+   a &&
+   b &&
+   a.visibility>.5 &&
+   b.visibility>.5
+  ){
+
+   ctx.beginPath();
+
+   ctx.moveTo(
+    a.x*w,
+    a.y*h
+   );
+
+   ctx.lineTo(
+    b.x*w,
+    b.y*h
+   );
+
+   ctx.stroke();
+
+  }
+
+ });
+
+ l.forEach(p=>{
+
+  if(
+   p &&
+   p.visibility>.5
+  ){
+
+   ctx.beginPath();
+
+   ctx.arc(
+    p.x*w,
+    p.y*h,
+    7,
+    0,
+    Math.PI*2
+   );
+
+   ctx.fillStyle="#fff";
+
+   ctx.fill();
+
+  }
+
+ });
+
 }
-});
-l.forEach(p=>{
-if(p.visibility>.5){
-ctx.beginPath();
-ctx.arc(
-p.x*w,
-p.y*h,
-7,
-0,
-Math.PI*2
-);
-ctx.fillStyle="#fff";
-ctx.fill();
-}
-});
-}
-/* =========================
+
+
+/* =====================================================
 ANGLE
-========================= */
+===================================================== */
+
 function angle(a,b,c){
-const radians=
-Math.atan2(
-c.y-b.y,
-c.x-b.x
-)-
-Math.atan2(
-a.y-b.y,
-a.x-b.x
-);
-let degrees=
-Math.abs(
-radians*180/Math.PI
-);
-if(degrees>180)
-degrees=360-degrees;
-return degrees;
+
+ const radians=
+
+ Math.atan2(
+  c.y-b.y,
+  c.x-b.x
+ )
+
+ -
+
+ Math.atan2(
+  a.y-b.y,
+  a.x-b.x
+ );
+
+ let degrees=
+ Math.abs(
+  radians*180/Math.PI
+ );
+
+ if(degrees>180){
+  degrees=360-degrees;
+ }
+
+ return degrees;
+
 }
-/* =========================
+
+
+/* =====================================================
 EXERCISE DETECTION
-========================= */
+===================================================== */
+
 function detectExercise(l){
-if(currentWorkout==="Push-ups")
-detectPushup(l);
-if(currentWorkout==="Squats")
-detectSquat(l);
-if(currentWorkout==="Sit-ups")
-detectSitup(l);
-if(currentWorkout==="Lunges")
-detectLunge(l);
-if(currentWorkout==="Plank")
-detectPlank(l);
+
+ if(currentWorkout==="Push-ups")
+ detectPushup(l);
+
+ else if(currentWorkout==="Squats")
+ detectSquat(l);
+
+ else if(currentWorkout==="Sit-ups")
+ detectSitup(l);
+
+ else if(currentWorkout==="Lunges")
+ detectLunge(l);
+
+ else if(currentWorkout==="Plank")
+ detectPlank(l);
+
 }
-/* =========================
+
+
+/* =====================================================
 PUSHUPS
-========================= */
+===================================================== */
+
 function detectPushup(l){
-const ls=l[11];
-const rs=l[12];
-const le=l[13];
-const re=l[14];
-const lw=l[15];
-const rw=l[16];
-if(!ls||!rs||!le||!re||!lw||!rw)return;
-if(
-ls.visibility<.5||
-rs.visibility<.5||
-le.visibility<.5||
-re.visibility<.5
-)return;
-const left=angle(ls,le,lw);
-const right=angle(rs,re,rw);
-const elbow=(left+right)/2;
-const score=Math.round(
-Math.min(
-100,
-Math.max(
-0,
-(elbow-60)/1.2
-)
-)
-);
-document.getElementById("formScore")
-.textContent=score+"%";
-document.getElementById("genericForm")
-.textContent=score+"%";
-if(elbow<80){
-downFrames++;
-document.getElementById("formStatus")
-.textContent="DOWN — push!";
-if(downFrames>=3)
-exerciseState="DOWN";
-}else{
-downFrames=0;
+
+ const ls=l[11];
+ const rs=l[12];
+
+ const le=l[13];
+ const re=l[14];
+
+ const lw=l[15];
+ const rw=l[16];
+
+ if(
+  !ls||!rs||
+  !le||!re||
+  !lw||!rw
+ )return;
+
+ if(
+  ls.visibility<.5||
+  rs.visibility<.5||
+  le.visibility<.5||
+  re.visibility<.5
+ )return;
+
+ const left=
+ angle(ls,le,lw);
+
+ const right=
+ angle(rs,re,rw);
+
+ const elbow=
+ (left+right)/2;
+
+ const score=
+ Math.round(
+  Math.min(
+   100,
+   Math.max(
+    0,
+    (elbow-60)/1.2
+   )
+  )
+ );
+
+ document
+ .getElementById("formScore")
+ .textContent=
+ score+"%";
+
+ if(elbow<80){
+
+  downFrames++;
+
+  document
+  .getElementById("formStatus")
+  .textContent=
+  "DOWN — push!";
+
+  if(downFrames>=3)
+  exerciseState="DOWN";
+
+ }
+ else{
+
+  downFrames=0;
+
+ }
+
+ if(elbow>155){
+
+  upFrames++;
+
+  if(
+   upFrames>=3 &&
+   exerciseState==="DOWN"
+  ){
+
+   countRep();
+
+   exerciseState="UP";
+
+   upFrames=0;
+
+  }
+
+ }
+ else{
+
+  upFrames=0;
+
+ }
+
 }
-if(elbow>155){
-upFrames++;
-if(upFrames>=3&&exerciseState==="DOWN"){
-countRep();
-exerciseState="UP";
-upFrames=0;
-}
-}else{
-upFrames=0;
-}
-}
-/* =========================
+
+
+/* =====================================================
 SQUATS
-========================= */
+===================================================== */
+
 function detectSquat(l){
-const lh=l[23];
-const rh=l[24];
-const lk=l[25];
-const rk=l[26];
-const la=l[27];
-const ra=l[28];
-if(!lh||!rh||!lk||!rk||!la||!ra)return;
-const left=angle(lh,lk,la);
-const right=angle(rh,rk,ra);
-const knee=(left+right)/2;
-const score=Math.round(
-Math.min(100,Math.max(0,(180-Math.abs(150-knee))*2))
-);
-document.getElementById("formScore")
-.textContent=score+"%";
-document.getElementById("genericForm")
-.textContent=score+"%";
-if(knee<105){
-downFrames++;
-if(downFrames>=3)
-exerciseState="DOWN";
-}else{
-downFrames=0;
+
+ const lh=l[23];
+ const rh=l[24];
+
+ const lk=l[25];
+ const rk=l[26];
+
+ const la=l[27];
+ const ra=l[28];
+
+ if(
+  !lh||!rh||
+  !lk||!rk||
+  !la||!ra
+ )return;
+
+ const left=
+ angle(lh,lk,la);
+
+ const right=
+ angle(rh,rk,ra);
+
+ const knee=
+ (left+right)/2;
+
+ const score=
+ Math.round(
+  Math.min(
+   100,
+   Math.max(
+    0,
+    100-
+    Math.abs(
+     160-knee
+    )*2
+   )
+  )
+ );
+
+ document
+ .getElementById("formScore")
+ .textContent=
+ score+"%";
+
+ if(knee<105){
+
+  downFrames++;
+
+  if(downFrames>=3)
+  exerciseState="DOWN";
+
+ }
+ else{
+
+  downFrames=0;
+
+ }
+
+ if(knee>155){
+
+  upFrames++;
+
+  if(
+   upFrames>=3 &&
+   exerciseState==="DOWN"
+  ){
+
+   countRep();
+
+   exerciseState="UP";
+
+   upFrames=0;
+
+  }
+
+ }
+ else{
+
+  upFrames=0;
+
+ }
+
 }
-if(knee>155){
-upFrames++;
-if(upFrames>=3&&exerciseState==="DOWN"){
-countRep();
-exerciseState="UP";
-upFrames=0;
-}
-}else{
-upFrames=0;
-}
-}
-/* =========================
+
+
+/* =====================================================
 SITUPS
-========================= */
+===================================================== */
+
 function detectSitup(l){
-const shoulder=l[11];
-const hip=l[23];
-const knee=l[25];
-if(!shoulder||!hip||!knee)return;
-const torso=angle(
-shoulder,
-hip,
-knee
-);
-const score=Math.round(
-Math.min(100,Math.max(0,torso))
-);
-document.getElementById("formScore")
-.textContent=score+"%";
-document.getElementById("genericForm")
-.textContent=score+"%";
-if(torso<65){
-downFrames++;
-if(downFrames>=3)
-exerciseState="DOWN";
-}else{
-downFrames=0;
+
+ const shoulder=l[11];
+ const hip=l[23];
+ const knee=l[25];
+
+ if(
+  !shoulder||
+  !hip||
+  !knee
+ )return;
+
+ const torso=
+ angle(
+  shoulder,
+  hip,
+  knee
+ );
+
+ const score=
+ Math.round(
+  Math.min(
+   100,
+   Math.max(
+    0,
+    torso
+   )
+  )
+ );
+
+ document
+ .getElementById("formScore")
+ .textContent=
+ score+"%";
+
+ if(torso<65){
+
+  downFrames++;
+
+  if(downFrames>=3)
+  exerciseState="DOWN";
+
+ }
+ else{
+
+  downFrames=0;
+
+ }
+
+ if(torso>105){
+
+  upFrames++;
+
+  if(
+   upFrames>=3 &&
+   exerciseState==="DOWN"
+  ){
+
+   countRep();
+
+   exerciseState="UP";
+
+   upFrames=0;
+
+  }
+
+ }
+ else{
+
+  upFrames=0;
+
+ }
+
 }
-if(torso>105){
-upFrames++;
-if(upFrames>=3&&exerciseState==="DOWN"){
-countRep();
-exerciseState="UP";
-upFrames=0;
-}
-}else{
-upFrames=0;
-}
-}
-/* =========================
-LUNGES
-========================= */
+
+
+/* =====================================================
+LUNGES — FIXED
+===================================================== */
+
 function detectLunge(l){
-const lh=l[23];
-const rh=l[24];
-const lk=l[25];
-const rk=l[26];
-const la=l[27];
-const ra=l[28];
-if(!lh||!rh||!lk||!rk||!la||!ra)return;
-const left=angle(lh,lk,la);
-const right=angle(rh,rk,ra);
-const knee=Math.min(left,right);
-const score=Math.round(
-Math.min(
-100,
-Math.max(
-0,
-(knee<100?knee:180-knee)
-)
-);
-document.getElementById("formScore")
-.textContent=score+"%";
-document.getElementById("genericForm")
-.textContent=score+"%";
-if(knee<105){
-downFrames++;
-if(downFrames>=3)
-exerciseState="DOWN";
-}else{
-downFrames=0;
+
+ const lh=l[23];
+ const rh=l[24];
+
+ const lk=l[25];
+ const rk=l[26];
+
+ const la=l[27];
+ const ra=l[28];
+
+ if(
+  !lh||!rh||
+  !lk||!rk||
+  !la||!ra
+ )return;
+
+ const left=
+ angle(lh,lk,la);
+
+ const right=
+ angle(rh,rk,ra);
+
+ const knee=
+ Math.min(
+  left,
+  right
+ );
+
+ const score=
+ Math.round(
+  Math.min(
+   100,
+   Math.max(
+    0,
+    knee<100
+    ? knee
+    : 180-knee
+   )
+  )
+ );
+
+ document
+ .getElementById("formScore")
+ .textContent=
+ score+"%";
+
+ if(knee<105){
+
+  downFrames++;
+
+  if(downFrames>=3)
+  exerciseState="DOWN";
+
+ }
+ else{
+
+  downFrames=0;
+
+ }
+
+ if(knee>155){
+
+  upFrames++;
+
+  if(
+   upFrames>=3 &&
+   exerciseState==="DOWN"
+  ){
+
+   countRep();
+
+   exerciseState="UP";
+
+   upFrames=0;
+
+  }
+
+ }
+ else{
+
+  upFrames=0;
+
+ }
+
 }
-if(knee>155){
-upFrames++;
-if(upFrames>=3&&exerciseState==="DOWN"){
-countRep();
-exerciseState="UP";
-upFrames=0;
-}
-}else{
-upFrames=0;
-}
-}
-/* =========================
+
+
+/* =====================================================
 PLANK
-========================= */
+===================================================== */
+
 function detectPlank(l){
-const shoulder=l[11];
-const hip=l[23];
-const ankle=l[27];
-if(!shoulder||!hip||!ankle)return;
-const torsoAngle=angle(
-shoulder,
-hip,
-ankle
-);
-const score=Math.round(
-Math.max(
-0,
-100-Math.abs(180-torsoAngle)*4
-)
-);
-document.getElementById("formScore")
-.textContent=score+"%";
-document.getElementById("genericForm")
-.textContent=score+"%";
-if(score>=75){
-document.getElementById("formStatus")
-.textContent="PLANK HOLD ✓";
-}else{
-document.getElementById("formStatus")
-.textContent="Fix your form";
+
+ const shoulder=l[11];
+ const hip=l[23];
+ const ankle=l[27];
+
+ if(
+  !shoulder||
+  !hip||
+  !ankle
+ )return;
+
+ const torsoAngle=
+ angle(
+  shoulder,
+  hip,
+  ankle
+ );
+
+ const score=
+ Math.round(
+  Math.max(
+   0,
+   100-
+   Math.abs(
+    180-torsoAngle
+   )*4
+  )
+ );
+
+ document
+ .getElementById("formScore")
+ .textContent=
+ score+"%";
+
+ if(score>=75){
+
+  document
+  .getElementById("formStatus")
+  .textContent=
+  "PLANK HOLD ✓";
+
+ }
+ else{
+
+  document
+  .getElementById("formStatus")
+  .textContent=
+  "Fix your form";
+
+ }
+
 }
-}
-/* =========================
+
+
+/* =====================================================
 PLANK XP
-1 XP / 3 SECONDS
-========================= */
+1 XP EVERY 3 SECONDS
+===================================================== */
+
 function startPlankTimer(){
-clearInterval(plankTimer);
-plankSeconds=0;
-plankTimer=setInterval(()=>{
-if(!cameraRunning||
-currentWorkout!=="Plank")
-return;
-const score=
-document.getElementById("formScore")
-.textContent;
-if(score!=="--"&&parseInt(score)>=75){
-plankSeconds++;
-if(plankSeconds>=3){
-plankSeconds=0;
-sessionXP++;
-data.xp++;
-if(data.xp>=100){
-data.xp-=100;
-data.level++;
+
+ clearInterval(plankTimer);
+
+ plankSeconds=0;
+
+ plankTimer=
+ setInterval(()=>{
+
+  if(
+   !cameraRunning||
+   currentWorkout!=="Plank"
+  )return;
+
+  const score=
+  document
+  .getElementById("formScore")
+  .textContent;
+
+  if(
+   score!=="--" &&
+   parseInt(score)>=75
+  ){
+
+   plankSeconds++;
+
+   if(plankSeconds>=3){
+
+    plankSeconds=0;
+
+    sessionXP++;
+
+    data.reps++;
+
+    gainXP(1);
+
+    recordWorkout();
+
+    data.muscles.core++;
+
+    data.muscles.shoulders++;
+
+    document
+    .getElementById("sessionReps")
+    .textContent=
+    sessionXP;
+
+    document
+    .getElementById("cameraReps")
+    .textContent=
+    sessionXP;
+
+    document
+    .getElementById("sessionXP")
+    .textContent=
+    sessionXP;
+
+    petRep();
+
+    save();
+
+   }
+
+  }
+
+ },1000);
+
 }
-data.muscles.core++;
-document.getElementById("sessionXP")
-.textContent=sessionXP;
-petRep();
-save();
-}
-}
-},1000);
-}
-/* =========================
+
+
+/* =====================================================
 STOP CAMERA
-========================= */
+===================================================== */
+
 function stopCamera(){
-cameraRunning=false;
-clearInterval(plankTimer);
-if(cameraStream){
-cameraStream.getTracks()
-.forEach(track=>track.stop());
-cameraStream=null;
+
+ cameraRunning=false;
+
+ clearInterval(plankTimer);
+
+ stopPetSpawns();
+
+ if(cameraStream){
+
+  cameraStream
+  .getTracks()
+  .forEach(
+   track=>track.stop()
+  );
+
+  cameraStream=null;
+
+ }
+
+ const video=
+ document.getElementById("video");
+
+ if(video)
+ video.srcObject=null;
+
+ const canvas=
+ document.getElementById("poseCanvas");
+
+ if(canvas){
+
+  const ctx=
+  canvas.getContext("2d");
+
+  ctx.clearRect(
+   0,
+   0,
+   canvas.width,
+   canvas.height
+  );
+
+ }
+
+ document
+ .getElementById("cameraStatus")
+ .textContent=
+ "CAMERA OFF";
+
+ document
+ .getElementById("formStatus")
+ .textContent=
+ "Start camera to begin";
+
+ document
+ .getElementById("formScore")
+ .textContent=
+ "--";
+
+ document
+ .getElementById("petLayer")
+ .classList
+ .add("hidden");
+
+ wildPet=null;
+
+ mutationProgress=0;
+
+ hidePetOverlay();
+
 }
-const video=document.getElementById("video");
-if(video)
-video.srcObject=null;
-document.getElementById("cameraStatus")
-.textContent="CAMERA OFF";
-}
-/* =========================
+
+
+/* =====================================================
 NAV
-========================= */
+===================================================== */
+
 function show(id){
-document.querySelectorAll(".screen")
-.forEach(x=>x.classList.remove("active"));
-document.getElementById(id)
-.classList.add("active");
-document.querySelectorAll(".nav button")
-.forEach(x=>x.classList.remove("active"));
-const nav={
-home:"navHome",
-workout:"navWorkout",
-progress:"navProgress",
-pets:"navPets",
-profile:"navProfile"
-};
-document.getElementById(nav[id])
-.classList.add("active");
-if(id==="progress")
-setTimeout(drawChart,50);
-if(id==="pets")
-renderPets();
+
+ document
+ .querySelectorAll(".screen")
+ .forEach(
+  x=>x.classList.remove("active")
+ );
+
+ const screen=
+ document.getElementById(id);
+
+ if(!screen)return;
+
+ screen.classList.add("active");
+
+ document
+ .querySelectorAll(".nav button")
+ .forEach(
+  x=>x.classList.remove("active")
+ );
+
+ const nav={
+
+  home:"navHome",
+  workout:"navWorkout",
+  progress:"navProgress",
+  pets:"navPets",
+  profile:"navProfile"
+
+ };
+
+ const navButton=
+ document.getElementById(nav[id]);
+
+ if(navButton)
+ navButton.classList.add("active");
+
+ if(id==="progress"){
+
+  setTimeout(
+   drawChart,
+   50
+  );
+
+ }
+
+ if(id==="pets"){
+
+  renderPets();
+
+ }
+
 }
-/* =========================
+
+
+/* =====================================================
 CHART
-========================= */
+===================================================== */
+
 function drawChart(){
-const canvas=document.getElementById("chartCanvas");
-if(!canvas)return;
-const rect=canvas.getBoundingClientRect();
-const ratio=devicePixelRatio||1;
-canvas.width=rect.width*ratio;
-canvas.height=rect.height*ratio;
-const ctx=canvas.getContext("2d");
-ctx.scale(ratio,ratio);
-const w=rect.width;
-const h=rect.height;
-ctx.clearRect(0,0,w,h);
-const history=data.history.slice(-7);
-if(history.length===0){
-ctx.fillStyle="#666";
-ctx.font="12px Arial";
-ctx.textAlign="center";
-ctx.fillText(
-"No workouts yet",
-w/2,
-h/2
-);
-return;
+
+ const canvas=
+ document.getElementById("chartCanvas");
+
+ if(!canvas)return;
+
+ const rect=
+ canvas.getBoundingClientRect();
+
+ const ratio=
+ window.devicePixelRatio||1;
+
+ canvas.width=
+ rect.width*ratio;
+
+ canvas.height=
+ rect.height*ratio;
+
+ const ctx=
+ canvas.getContext("2d");
+
+ ctx.setTransform(
+  ratio,
+  0,
+  0,
+  ratio,
+  0,
+  0
+ );
+
+ const w=rect.width;
+ const h=rect.height;
+
+ ctx.clearRect(
+  0,
+  0,
+  w,
+  h
+ );
+
+ const history=
+ data.history.slice(-7);
+
+ if(history.length===0){
+
+  ctx.fillStyle="#666";
+
+  ctx.font="12px Arial";
+
+  ctx.textAlign="center";
+
+  ctx.fillText(
+   "No workouts yet",
+   w/2,
+   h/2
+  );
+
+  return;
+
+ }
+
+ const max=
+ Math.max(
+  1,
+  ...history.map(
+   x=>x.reps
+  )
+ );
+
+ ctx.strokeStyle="#333";
+
+ ctx.lineWidth=1;
+
+ for(
+  let i=0;
+  i<4;
+  i++
+ ){
+
+  const y=
+  20+
+  i*((h-40)/3);
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+   10,
+   y
+  );
+
+  ctx.lineTo(
+   w-10,
+   y
+  );
+
+  ctx.stroke();
+
+ }
+
+ ctx.strokeStyle="#fff";
+
+ ctx.lineWidth=3;
+
+ ctx.beginPath();
+
+ history.forEach(
+  (item,i)=>{
+
+   const x=
+   10+
+   (i/
+   Math.max(
+    1,
+    history.length-1
+   ))*
+   (w-20);
+
+   const y=
+   h-
+   20-
+   (item.reps/max)*
+   (h-45);
+
+   if(i===0)
+   ctx.moveTo(x,y);
+   else
+   ctx.lineTo(x,y);
+
+  }
+ );
+
+ ctx.stroke();
+
 }
-const max=Math.max(
-1,
-...history.map(x=>x.reps)
-);
-ctx.strokeStyle="#333";
-ctx.lineWidth=1;
-for(let i=0;i<4;i++){
-const y=20+i*((h-40)/3);
-ctx.beginPath();
-ctx.moveTo(10,y);
-ctx.lineTo(w-10,y);
-ctx.stroke();
-}
-ctx.strokeStyle="#fff";
-ctx.lineWidth=3;
-ctx.beginPath();
-history.forEach((item,i)=>{
-const x=
-10+
-(i/Math.max(1,history.length-1))*
-(w-20);
-const y=
-h-20-
-(item.reps/max)*(h-45);
-if(i===0)
-ctx.moveTo(x,y);
-else
-ctx.lineTo(x,y);
-});
-ctx.stroke();
-}
-/* =========================
+
+
+/* =====================================================
 UI
-========================= */
+===================================================== */
+
 function updateUI(){
-document.getElementById("totalReps")
-.textContent=data.reps;
-document.getElementById("progressReps")
-.textContent=data.reps;
-document.getElementById("level")
-.textContent=data.level;
-document.getElementById("progressLevel")
-.textContent=data.level;
-document.getElementById("xp")
-.textContent=data.xp;
-document.getElementById("xpFill")
-.style.width=data.xp+"%";
-document.getElementById("streak")
-.textContent=data.streak;
-document.getElementById("workouts")
-.textContent=data.workouts;
-document.getElementById("bestStreak")
-.textContent=data.bestStreak;
-const rank=ranks[getRank()];
-document.getElementById("rankBadge")
-.textContent=rank.name;
-document.getElementById("progressRank")
-.textContent=rank.name;
-document.getElementById("profileRank")
-.textContent=rank.name;
-document.getElementById("profileRankNumber")
-.textContent=
-"Rank "+(getRank()+1);
-updateBody();
-drawChart();
+
+ document
+ .getElementById("totalReps")
+ .textContent=
+ data.reps;
+
+ document
+ .getElementById("progressReps")
+ .textContent=
+ data.reps;
+
+ document
+ .getElementById("level")
+ .textContent=
+ data.level;
+
+ document
+ .getElementById("progressLevel")
+ .textContent=
+ data.level;
+
+ document
+ .getElementById("xp")
+ .textContent=
+ data.xp;
+
+ document
+ .getElementById("xpFill")
+ .style.width=
+ data.xp+"%";
+
+ document
+ .getElementById("streak")
+ .textContent=
+ data.streak;
+
+ document
+ .getElementById("workouts")
+ .textContent=
+ data.workouts;
+
+ document
+ .getElementById("bestStreak")
+ .textContent=
+ data.bestStreak;
+
+ const rank=
+ ranks[getRank()];
+
+ document
+ .getElementById("rankBadge")
+ .textContent=
+ rank.name;
+
+ document
+ .getElementById("progressRank")
+ .textContent=
+ rank.name;
+
+ document
+ .getElementById("profileRank")
+ .textContent=
+ rank.name;
+
+ document
+ .getElementById("profileRankNumber")
+ .textContent=
+ "Rank "+
+ (getRank()+1);
+
+ updateBody();
+
 }
-/* =========================
+
+
+/* =====================================================
 POPUP
-========================= */
-function showPopup(title,text){
-const popup=document.getElementById("popup");
-document.getElementById("popupTitle")
-.textContent=title;
-document.getElementById("popupText")
-.textContent=text;
-popup.classList.add("show");
-setTimeout(()=>{
-popup.classList.remove("show");
-},2500);
+===================================================== */
+
+let popupTimeout=null;
+
+function showPopup(
+ title,
+ text
+){
+
+ const popup=
+ document.getElementById("popup");
+
+ document
+ .getElementById("popupTitle")
+ .textContent=
+ title;
+
+ document
+ .getElementById("popupText")
+ .textContent=
+ text;
+
+ popup.classList.add("show");
+
+ clearTimeout(popupTimeout);
+
+ popupTimeout=
+ setTimeout(
+  ()=>{
+   popup.classList.remove("show");
+  },
+  2500
+ );
+
 }
-/* =========================
+
+
+/* =====================================================
 RESET
-========================= */
+===================================================== */
+
 function resetProgress(){
-if(!confirm(
-"Reset all REP//RANK progress?"
-))
-return;
-data=JSON.parse(
-JSON.stringify(defaultData)
-);
-sessionReps=0;
-sessionXP=0;
-wildPet=null;
-save();
-renderPets();
-show("home");
+
+ if(
+  !confirm(
+   "Reset all REP//RANK progress?"
+  )
+ ){
+  return;
+ }
+
+ data=
+ JSON.parse(
+  JSON.stringify(
+   defaultData
+  )
+ );
+
+ sessionReps=0;
+
+ sessionXP=0;
+
+ wildPet=null;
+
+ stopCamera();
+
+ save();
+
+ renderPets();
+
+ show("home");
+
 }
-/* =========================
+
+
+/* =====================================================
 START
-========================= */
+===================================================== */
+
 updateUI();
+
 renderPets();
-requestAnimationFrame(petLoop);
+
+requestAnimationFrame(
+ petLoop
+);
+
 </script>
+
 </body>
 </html>
