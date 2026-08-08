@@ -3,583 +3,649 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
 <meta name="theme-color" content="#070707">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="REP//RANK">
+
 <title>REP//RANK</title>
 
-<script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5.1675469404/pose.js"></script>
 
 <style>
+
 *{
-  box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent;
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent;
 }
 
 body{
-  margin:0;
-  background:#070707;
-  color:#fff;
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Arial,sans-serif;
+margin:0;
+background:#070707;
+color:white;
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Arial,sans-serif;
 }
 
 button{
-  font:inherit;
+font:inherit;
 }
 
 .app{
-  max-width:540px;
-  margin:auto;
-  padding:22px 18px 115px;
+max-width:540px;
+margin:auto;
+padding:22px 18px 110px;
 }
 
 .screen{
-  display:none;
+display:none;
 }
 
 .screen.active{
-  display:block;
+display:block;
 }
 
 .top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+display:flex;
+align-items:center;
+justify-content:space-between;
 }
 
 .logo{
-  font-size:25px;
-  font-weight:950;
-  letter-spacing:-1.6px;
+font-size:25px;
+font-weight:950;
+letter-spacing:-1.6px;
 }
 
 .rankBadge{
-  padding:8px 12px;
-  border-radius:20px;
-  font-size:11px;
-  font-weight:950;
-  background:#222;
+padding:8px 12px;
+border-radius:20px;
+font-size:10px;
+font-weight:950;
+background:#222;
 }
 
 h1{
-  font-size:32px;
-  letter-spacing:-1.5px;
-  margin:8px 0 22px;
+font-size:32px;
+letter-spacing:-1.5px;
+margin:8px 0 22px;
 }
 
 h2{
-  font-size:20px;
-  margin:0 0 12px;
+font-size:20px;
+margin:0 0 12px;
 }
 
 .muted{
-  color:#777;
-  font-size:12px;
-  font-weight:700;
+color:#777;
+font-size:11px;
+font-weight:800;
 }
 
 .hero{
-  margin-top:24px;
-  padding:23px;
-  border-radius:25px;
-  background:linear-gradient(145deg,#191919,#0c0c0c);
-  border:1px solid #292929;
+margin-top:24px;
+padding:23px;
+border-radius:25px;
+background:linear-gradient(145deg,#191919,#0c0c0c);
+border:1px solid #292929;
 }
 
 .level{
-  font-size:60px;
-  font-weight:950;
-  line-height:1;
-  margin:5px 0;
+font-size:60px;
+font-weight:950;
+line-height:1;
+margin:5px 0;
 }
 
 .xpbar{
-  height:9px;
-  background:#292929;
-  border-radius:20px;
-  overflow:hidden;
-  margin-top:14px;
+height:9px;
+background:#292929;
+border-radius:20px;
+overflow:hidden;
+margin-top:14px;
 }
 
 .xpfill{
-  height:100%;
-  width:0;
-  background:#fff;
-  transition:.3s;
+height:100%;
+width:0;
+background:white;
+transition:.3s;
 }
 
 .grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  margin-top:13px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-top:13px;
 }
 
 .card{
-  background:#121212;
-  border:1px solid #252525;
-  border-radius:20px;
-  padding:18px;
+background:#121212;
+border:1px solid #252525;
+border-radius:20px;
+padding:18px;
 }
 
 .card h3{
-  margin:0;
-  font-size:10px;
-  color:#777;
+margin:0;
+font-size:10px;
+color:#777;
 }
 
 .card p{
-  margin:6px 0 0;
-  font-size:28px;
-  font-weight:950;
+margin:6px 0 0;
+font-size:28px;
+font-weight:950;
 }
 
 .section{
-  margin-top:28px;
+margin-top:28px;
 }
 
 .exercise{
-  width:100%;
-  border:1px solid #292929;
-  background:#131313;
-  color:white;
-  border-radius:18px;
-  padding:16px;
-  margin-bottom:10px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  text-align:left;
-  cursor:pointer;
+width:100%;
+border:1px solid #292929;
+background:#131313;
+color:white;
+border-radius:18px;
+padding:16px;
+margin-bottom:10px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+text-align:left;
+cursor:pointer;
 }
 
 .exercise strong{
-  font-size:15px;
+font-size:15px;
 }
 
 .exercise span{
-  display:block;
-  color:#777;
-  font-size:11px;
-  margin-top:4px;
+display:block;
+color:#777;
+font-size:11px;
+margin-top:4px;
 }
 
 .exercise:active,
 .mainBtn:active,
+.secondaryBtn:active,
 .nav button:active{
-  transform:scale(.97);
+transform:scale(.97);
 }
 
 .mainBtn{
-  width:100%;
-  border:0;
-  background:#fff;
-  color:#000;
-  border-radius:17px;
-  padding:16px;
-  margin-top:10px;
-  font-weight:950;
-  cursor:pointer;
+width:100%;
+border:0;
+background:white;
+color:black;
+border-radius:17px;
+padding:16px;
+margin-top:10px;
+font-weight:950;
+cursor:pointer;
 }
 
 .secondaryBtn{
-  width:100%;
-  border:1px solid #292929;
-  background:#151515;
-  color:#fff;
-  border-radius:17px;
-  padding:15px;
-  margin-top:10px;
-  font-weight:850;
-  cursor:pointer;
+width:100%;
+border:1px solid #292929;
+background:#151515;
+color:white;
+border-radius:17px;
+padding:15px;
+margin-top:10px;
+font-weight:850;
+cursor:pointer;
 }
 
 .back{
-  border:0;
-  background:none;
-  color:#888;
-  font-weight:750;
-  padding:0 0 14px;
-  cursor:pointer;
+border:0;
+background:none;
+color:#888;
+font-weight:750;
+padding:0 0 14px;
+cursor:pointer;
 }
 
 /* BODY */
 
 .bodyCard{
-  background:#111;
-  border:1px solid #252525;
-  border-radius:25px;
-  padding:18px;
+background:#111;
+border:1px solid #252525;
+border-radius:25px;
+padding:18px;
 }
 
 .bodyWrap{
-  height:400px;
-  position:relative;
-  display:flex;
-  justify-content:center;
-  overflow:hidden;
+height:400px;
+position:relative;
+display:flex;
+justify-content:center;
+overflow:hidden;
 }
 
 .body{
-  width:240px;
-  height:390px;
-  position:relative;
+width:240px;
+height:390px;
+position:relative;
 }
 
 .bodyPart{
-  position:absolute;
-  background:#303030;
-  transition:.3s;
-  box-shadow:0 0 0 1px #111;
+position:absolute;
+background:#454545;
+transition:.3s;
 }
 
 .bodyPart.low{
-  background:#666;
+background:#666;
 }
 
 .bodyPart.medium{
-  background:#aaa;
+background:#aaa;
 }
 
 .bodyPart.high{
-  background:#fff;
-  box-shadow:0 0 18px rgba(255,255,255,.18);
+background:white;
 }
 
 .head{
-  width:58px;
-  height:68px;
-  border-radius:50%;
-  left:91px;
-  top:3px;
+width:58px;
+height:68px;
+border-radius:50%;
+left:91px;
+top:3px;
 }
 
 .neck{
-  width:34px;
-  height:35px;
-  left:103px;
-  top:55px;
-  border-radius:9px;
+width:34px;
+height:35px;
+left:103px;
+top:55px;
+border-radius:9px;
 }
 
 .shoulderL,
 .shoulderR{
-  width:60px;
-  height:44px;
-  top:79px;
-  border-radius:50%;
+width:60px;
+height:44px;
+top:79px;
+border-radius:50%;
 }
 
 .shoulderL{
-  left:30px;
-  transform:rotate(-18deg);
+left:30px;
+transform:rotate(-18deg);
 }
 
 .shoulderR{
-  right:30px;
-  transform:rotate(18deg);
+right:30px;
+transform:rotate(18deg);
 }
 
 .chestL,
 .chestR{
-  width:68px;
-  height:59px;
-  top:94px;
-  border-radius:45%;
+width:68px;
+height:59px;
+top:94px;
+border-radius:45%;
 }
 
 .chestL{
-  left:49px;
+left:49px;
 }
 
 .chestR{
-  right:49px;
+right:49px;
 }
 
 .armL,
 .armR{
-  width:37px;
-  height:85px;
-  top:114px;
-  border-radius:25px;
+width:37px;
+height:85px;
+top:114px;
+border-radius:25px;
 }
 
 .armL{
-  left:15px;
-  transform:rotate(9deg);
+left:15px;
+transform:rotate(9deg);
 }
 
 .armR{
-  right:15px;
-  transform:rotate(-9deg);
+right:15px;
+transform:rotate(-9deg);
 }
 
 .abs{
-  width:80px;
-  height:118px;
-  left:80px;
-  top:150px;
-  border-radius:20px;
+width:80px;
+height:118px;
+left:80px;
+top:150px;
+border-radius:20px;
 }
 
 .waist{
-  width:96px;
-  height:58px;
-  left:72px;
-  top:243px;
-  border-radius:0 0 35px 35px;
+width:96px;
+height:58px;
+left:72px;
+top:243px;
+border-radius:0 0 35px 35px;
 }
 
 .legL,
 .legR{
-  width:63px;
-  height:128px;
-  top:260px;
-  border-radius:28px;
+width:63px;
+height:128px;
+top:260px;
+border-radius:28px;
 }
 
 .legL{
-  left:55px;
+left:55px;
 }
 
 .legR{
-  right:55px;
+right:55px;
 }
 
-.bodyLegend{
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  font-size:10px;
-  color:#777;
-}
-
-.legendDot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:#444;
-  display:inline-block;
-  margin-right:4px;
-}
-
-.legendDot.active{
-  background:#fff;
-}
-
-/* WORKOUT */
+/* CAMERA */
 
 .camera{
-  height:510px;
-  background:#000;
-  border-radius:25px;
-  overflow:hidden;
-  position:relative;
-  border:1px solid #292929;
+height:510px;
+background:#000;
+border-radius:25px;
+overflow:hidden;
+position:relative;
+border:1px solid #292929;
 }
 
 #video{
-  position:absolute;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transform:scaleX(-1);
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+transform:scaleX(-1);
 }
 
 #poseCanvas{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  transform:scaleX(-1);
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+transform:scaleX(-1);
+pointer-events:none;
 }
 
 .cameraTop{
-  position:absolute;
-  top:14px;
-  left:14px;
-  right:14px;
-  display:flex;
-  justify-content:space-between;
-  z-index:5;
+position:absolute;
+top:14px;
+left:14px;
+right:14px;
+display:flex;
+justify-content:space-between;
+z-index:5;
 }
 
 .status{
-  padding:9px 12px;
-  background:rgba(0,0,0,.75);
-  border-radius:14px;
-  font-size:11px;
-  font-weight:900;
+padding:9px 12px;
+background:rgba(0,0,0,.75);
+border-radius:14px;
+font-size:10px;
+font-weight:900;
 }
 
 .cameraBottom{
-  position:absolute;
-  left:14px;
-  right:14px;
-  bottom:14px;
-  padding:15px;
-  background:rgba(0,0,0,.82);
-  border-radius:19px;
-  z-index:5;
+position:absolute;
+left:14px;
+right:14px;
+bottom:14px;
+padding:15px;
+background:rgba(0,0,0,.78);
+border-radius:19px;
+z-index:5;
 }
 
 .repBig{
-  font-size:45px;
-  font-weight:950;
-  line-height:1;
+font-size:45px;
+font-weight:950;
+line-height:1;
 }
 
 .formText{
-  font-size:12px;
-  font-weight:850;
-  margin-top:5px;
+font-size:12px;
+font-weight:850;
+margin-top:5px;
 }
 
 .good{
-  color:#fff;
+color:#fff;
 }
 
 .warn{
-  color:#aaa;
-}
-
-.plankTimer{
-  font-size:14px;
-  font-weight:900;
-  margin-top:7px;
+color:#aaa;
 }
 
 .workoutStats{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:12px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:12px;
 }
 
 .smallStat{
-  background:#131313;
-  border:1px solid #252525;
-  border-radius:18px;
-  padding:15px;
+background:#131313;
+border:1px solid #252525;
+border-radius:18px;
+padding:15px;
 }
 
 .smallStat b{
-  display:block;
-  font-size:10px;
-  color:#777;
+display:block;
+font-size:10px;
+color:#777;
 }
 
 .smallStat strong{
-  font-size:22px;
-  display:block;
-  margin-top:4px;
+font-size:22px;
+display:block;
+margin-top:4px;
 }
 
-/* GRAPH */
+/* PET */
 
-.chart{
-  height:220px;
-  background:#101010;
-  border:1px solid #252525;
-  border-radius:22px;
-  padding:15px;
-  position:relative;
+.petLayer{
+position:absolute;
+inset:0;
+z-index:8;
+pointer-events:none;
+overflow:hidden;
 }
 
-canvas.chartCanvas{
-  width:100%;
-  height:100%;
+.wildPet{
+position:absolute;
+font-size:52px;
+filter:drop-shadow(0 5px 12px rgba(255,255,255,.2));
+transition:left .8s linear,top .8s linear;
+animation:petBob .8s infinite alternate ease-in-out;
+}
+
+@keyframes petBob{
+from{
+transform:translateY(0) rotate(-4deg);
+}
+to{
+transform:translateY(-9px) rotate(4deg);
+}
+}
+
+.petNotice{
+position:absolute;
+left:12px;
+right:12px;
+top:70px;
+z-index:10;
+background:rgba(0,0,0,.88);
+border:1px solid #333;
+border-radius:18px;
+padding:13px;
+text-align:center;
+display:none;
+}
+
+.petNotice.show{
+display:block;
+}
+
+.petName{
+font-weight:950;
+font-size:16px;
+}
+
+.petMutation{
+font-size:11px;
+color:#aaa;
+margin-top:3px;
+}
+
+.petProgress{
+margin-top:8px;
+font-size:11px;
+font-weight:850;
+}
+
+/* PLANK */
+
+.plankTimer{
+font-size:42px;
+font-weight:950;
+margin-top:10px;
 }
 
 /* RANK */
 
 .rankCard{
-  border-radius:25px;
-  padding:25px;
-  background:linear-gradient(145deg,#191919,#0d0d0d);
-  border:1px solid #292929;
-  text-align:center;
+border-radius:25px;
+padding:25px;
+background:linear-gradient(145deg,#191919,#0d0d0d);
+border:1px solid #292929;
+text-align:center;
 }
 
 .rankName{
-  font-size:32px;
-  font-weight:950;
+font-size:32px;
+font-weight:950;
 }
 
 .rankNumber{
-  font-size:12px;
-  color:#777;
-  margin-top:5px;
-  font-weight:800;
+font-size:12px;
+color:#777;
+margin-top:5px;
+font-weight:800;
+}
+
+/* PETDEX */
+
+.petGrid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+.petCard{
+background:#121212;
+border:1px solid #282828;
+border-radius:22px;
+padding:18px;
+text-align:center;
+min-height:170px;
+}
+
+.petEmoji{
+font-size:60px;
+}
+
+.petCard strong{
+display:block;
+margin-top:8px;
+}
+
+.petCard small{
+color:#777;
+font-weight:800;
+}
+
+.petCard.equipped{
+border-color:white;
 }
 
 /* NAV */
 
 .nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:76px;
-  background:rgba(8,8,8,.96);
-  backdrop-filter:blur(18px);
-  border-top:1px solid #222;
-  display:flex;
-  justify-content:space-around;
-  z-index:50;
-  padding-bottom:env(safe-area-inset-bottom);
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:76px;
+background:rgba(8,8,8,.96);
+backdrop-filter:blur(18px);
+border-top:1px solid #222;
+display:flex;
+justify-content:space-around;
+z-index:50;
+padding-bottom:env(safe-area-inset-bottom);
 }
 
 .nav button{
-  background:none;
-  border:0;
-  color:#666;
-  font-size:9px;
-  font-weight:850;
-  cursor:pointer;
-  width:25%;
+background:none;
+border:0;
+color:#666;
+font-size:9px;
+font-weight:850;
+cursor:pointer;
+width:25%;
 }
 
 .nav button.active{
-  color:#fff;
+color:white;
 }
 
 .navIcon{
-  display:block;
-  font-size:20px;
-  margin-bottom:3px;
+display:block;
+font-size:20px;
+margin-bottom:3px;
 }
 
 /* POPUP */
 
 .popup{
-  position:fixed;
-  left:18px;
-  right:18px;
-  bottom:90px;
-  background:#fff;
-  color:#000;
-  border-radius:20px;
-  padding:18px;
-  z-index:100;
-  display:none;
-  box-shadow:0 15px 50px rgba(0,0,0,.5);
+position:fixed;
+left:18px;
+right:18px;
+bottom:90px;
+background:white;
+color:black;
+border-radius:20px;
+padding:18px;
+z-index:100;
+display:none;
+box-shadow:0 15px 50px rgba(0,0,0,.5);
 }
 
 .popup.show{
-  display:block;
+display:block;
 }
 
 .popupTitle{
-  font-weight:950;
-  font-size:17px;
+font-weight:950;
+font-size:17px;
 }
 
 .popupText{
-  font-size:12px;
-  margin-top:5px;
+font-size:12px;
+margin-top:5px;
 }
+
 </style>
 </head>
 
@@ -592,18 +658,29 @@ canvas.chartCanvas{
 <div id="home" class="screen active">
 
 <div class="top">
-<div class="logo">REP//RANK</div>
-<div class="rankBadge" id="rankBadge">ROOKIE I</div>
+
+<div class="logo">
+REP//RANK
+</div>
+
+<div class="rankBadge" id="rankBadge">
+ROOKIE I
+</div>
+
 </div>
 
 <div class="hero">
 
-<div class="muted">CURRENT LEVEL</div>
+<div class="muted">
+CURRENT LEVEL
+</div>
 
-<div class="level" id="level">1</div>
+<div class="level" id="level">
+1
+</div>
 
 <div class="muted">
-<span id="xp">0</span> / 1000 XP
+<span id="xp">0</span> / <span id="nextXP">100</span> XP
 </div>
 
 <div class="xpbar">
@@ -630,8 +707,7 @@ canvas.chartCanvas{
 
 <h2>Train</h2>
 
-<button class="exercise"
-onclick="openWorkout('Push-ups')">
+<button class="exercise" onclick="openWorkout('Push-ups')">
 <div>
 <strong>Push-ups</strong>
 <span>Chest • Triceps • Shoulders</span>
@@ -639,8 +715,7 @@ onclick="openWorkout('Push-ups')">
 <strong>›</strong>
 </button>
 
-<button class="exercise"
-onclick="openWorkout('Squats')">
+<button class="exercise" onclick="openWorkout('Squats')">
 <div>
 <strong>Squats</strong>
 <span>Quads • Glutes • Core</span>
@@ -648,8 +723,7 @@ onclick="openWorkout('Squats')">
 <strong>›</strong>
 </button>
 
-<button class="exercise"
-onclick="openWorkout('Sit-ups')">
+<button class="exercise" onclick="openWorkout('Sit-ups')">
 <div>
 <strong>Sit-ups</strong>
 <span>Abs • Core</span>
@@ -657,8 +731,7 @@ onclick="openWorkout('Sit-ups')">
 <strong>›</strong>
 </button>
 
-<button class="exercise"
-onclick="openWorkout('Lunges')">
+<button class="exercise" onclick="openWorkout('Lunges')">
 <div>
 <strong>Lunges</strong>
 <span>Quads • Glutes</span>
@@ -666,8 +739,7 @@ onclick="openWorkout('Lunges')">
 <strong>›</strong>
 </button>
 
-<button class="exercise"
-onclick="openWorkout('Plank')">
+<button class="exercise" onclick="openWorkout('Plank')">
 <div>
 <strong>Plank</strong>
 <span>Core • Shoulders</span>
@@ -679,7 +751,7 @@ onclick="openWorkout('Plank')">
 
 <div class="section">
 
-<h2>Body</h2>
+<h2>Your Body</h2>
 
 <div class="bodyCard">
 
@@ -690,50 +762,23 @@ onclick="openWorkout('Plank')">
 <div class="bodyPart head"></div>
 <div class="bodyPart neck"></div>
 
-<div id="bodyShoulderL"
-class="bodyPart shoulderL"></div>
+<div id="bodyShoulderL" class="bodyPart shoulderL"></div>
+<div id="bodyShoulderR" class="bodyPart shoulderR"></div>
 
-<div id="bodyShoulderR"
-class="bodyPart shoulderR"></div>
+<div id="bodyChestL" class="bodyPart chestL"></div>
+<div id="bodyChestR" class="bodyPart chestR"></div>
 
-<div id="bodyChestL"
-class="bodyPart chestL"></div>
+<div id="bodyArmL" class="bodyPart armL"></div>
+<div id="bodyArmR" class="bodyPart armR"></div>
 
-<div id="bodyChestR"
-class="bodyPart chestR"></div>
-
-<div id="bodyArmL"
-class="bodyPart armL"></div>
-
-<div id="bodyArmR"
-class="bodyPart armR"></div>
-
-<div id="bodyCore"
-class="bodyPart abs"></div>
+<div id="bodyCore" class="bodyPart abs"></div>
 
 <div class="bodyPart waist"></div>
 
-<div id="bodyLegL"
-class="bodyPart legL"></div>
-
-<div id="bodyLegR"
-class="bodyPart legR"></div>
+<div id="bodyLegL" class="bodyPart legL"></div>
+<div id="bodyLegR" class="bodyPart legR"></div>
 
 </div>
-
-</div>
-
-<div class="bodyLegend">
-
-<span>
-<i class="legendDot"></i>
-Low
-</span>
-
-<span>
-<i class="legendDot active"></i>
-Trained
-</span>
 
 </div>
 
@@ -748,28 +793,44 @@ Trained
 
 <div id="workout" class="screen">
 
-<button class="back"
-onclick="stopCamera();show('home')">
+<button class="back" onclick="endWorkout();show('home')">
 ‹ Back
 </button>
 
-<h1 id="workoutTitle">Push-ups</h1>
+<h1 id="workoutTitle">
+Push-ups
+</h1>
+
+<div id="cameraArea">
 
 <div class="camera">
 
-<video
-id="video"
-autoplay
-playsinline
-muted>
-</video>
+<video id="video" autoplay playsinline muted></video>
 
 <canvas id="poseCanvas"></canvas>
 
+<div id="petLayer" class="petLayer"></div>
+
+<div id="petNotice" class="petNotice">
+
+<div class="petName" id="petNoticeName">
+A WILD PET APPEARED!
+</div>
+
+<div class="petMutation" id="petNoticeMutation">
+Do extra reps to mutate it
+</div>
+
+<div class="petProgress">
+EXTRA REPS:
+<span id="petExtra">0</span>/10
+</div>
+
+</div>
+
 <div class="cameraTop">
 
-<div class="status"
-id="cameraStatus">
+<div class="status" id="cameraStatus">
 CAMERA OFF
 </div>
 
@@ -781,18 +842,16 @@ REP <span id="cameraReps">0</span>
 
 <div class="cameraBottom">
 
-<div class="repBig"
-id="sessionReps">
+<div class="repBig" id="sessionReps">
 0
 </div>
 
-<div class="formText"
-id="formStatus">
+<div class="formText" id="formStatus">
 Start camera to begin
 </div>
 
-<div class="plankTimer"
-id="plankTimer">
+<div id="plankTimer" class="plankTimer" style="display:none">
+0s
 </div>
 
 </div>
@@ -813,15 +872,15 @@ id="plankTimer">
 
 </div>
 
-<button class="mainBtn"
-onclick="startPoseCamera()">
+<button class="mainBtn" onclick="startPoseCamera()">
 START CAMERA
 </button>
 
-<button class="secondaryBtn"
-onclick="stopCamera()">
-STOP CAMERA
+<button class="secondaryBtn" onclick="manualRep()">
++ ADD REP
 </button>
+
+</div>
 
 </div>
 
@@ -840,8 +899,8 @@ STOP CAMERA
 </div>
 
 <div class="card">
-<h3>XP</h3>
-<p id="progressXP">0</p>
+<h3>LEVEL</h3>
+<p id="progressLevel">1</p>
 </div>
 
 </div>
@@ -850,12 +909,15 @@ STOP CAMERA
 
 <h2>Weekly Reps</h2>
 
-<div class="chart">
+<div class="rankCard">
 
-<canvas
-id="chartCanvas"
-class="chartCanvas">
-</canvas>
+<div style="font-size:42px;font-weight:950" id="progressTotalXP">
+0 XP
+</div>
+
+<div class="rankNumber">
+1,000 XP = GOAT
+</div>
 
 </div>
 
@@ -867,17 +929,32 @@ class="chartCanvas">
 
 <div class="rankCard">
 
-<div class="rankName"
-id="progressRank">
+<div class="rankName" id="progressRank">
 ROOKIE I
 </div>
 
 <div class="rankNumber">
-<span id="rankXP">0</span> / 1000 XP
+<span id="rankXPProgress">0</span> / 1000 XP
 </div>
 
 </div>
 
+</div>
+
+</div>
+
+
+<!-- PETDEX -->
+
+<div id="pets" class="screen">
+
+<h1>Petdex</h1>
+
+<div class="muted">
+CAUGHT PETS
+</div>
+
+<div class="petGrid" id="petGrid">
 </div>
 
 </div>
@@ -895,13 +972,11 @@ ROOKIE I
 CURRENT RANK
 </div>
 
-<div class="rankName"
-id="profileRank">
+<div class="rankName" id="profileRank">
 ROOKIE I
 </div>
 
-<div class="rankNumber"
-id="profileRankNumber">
+<div class="rankNumber" id="profileRankNumber">
 Rank 1
 </div>
 
@@ -927,12 +1002,9 @@ Rank 1
 
 <div class="section">
 
-<button class="secondaryBtn"
-onclick="resetProgress()">
+<button class="secondaryBtn" onclick="resetProgress()">
 RESET PROGRESS
 </button>
-
-</div>
 
 </div>
 
@@ -943,18 +1015,15 @@ RESET PROGRESS
 
 <div class="nav">
 
-<button
-id="navHome"
-class="active"
-onclick="stopCamera();show('home')">
+<button id="navHome" class="active"
+onclick="endWorkout();show('home')">
 
 <span class="navIcon">⌂</span>
 Home
 
 </button>
 
-<button
-id="navWorkout"
+<button id="navWorkout"
 onclick="show('workout')">
 
 <span class="navIcon">🏋️</span>
@@ -962,21 +1031,19 @@ Train
 
 </button>
 
-<button
-id="navProgress"
-onclick="stopCamera();show('progress')">
+<button id="navProgress"
+onclick="endWorkout();show('progress')">
 
 <span class="navIcon">↗</span>
 Progress
 
 </button>
 
-<button
-id="navProfile"
-onclick="stopCamera();show('profile')">
+<button id="navPets"
+onclick="endWorkout();show('pets')">
 
-<span class="navIcon">●</span>
-Profile
+<span class="navIcon">🐾</span>
+Pets
 
 </button>
 
@@ -985,16 +1052,14 @@ Profile
 
 <div class="popup" id="popup">
 
-<div
-class="popupTitle"
-id="popupTitle">
+<div class="popupTitle" id="popupTitle">
 LEVEL UP!
 </div>
 
-<div
-class="popupText"
-id="popupText">
-You ranked up.
+<div class="popupText" id="popupText">
+You're getting stronger.
+</div>
+
 </div>
 
 </div>
@@ -1006,19 +1071,17 @@ You ranked up.
 DATA
 ========================= */
 
-let data =
-JSON.parse(localStorage.getItem("reprank")) || {
-
+const defaultData={
 xp:0,
 reps:0,
-
+level:1,
 streak:0,
 bestStreak:0,
-
 workouts:0,
-
+totalXP:0,
 history:[],
-
+pets:[],
+equippedPet:null,
 muscles:{
 chest:0,
 shoulders:0,
@@ -1026,48 +1089,164 @@ arms:0,
 core:0,
 legs:0
 }
-
 };
+
+let data=
+JSON.parse(localStorage.getItem("reprank"))||defaultData;
 
 let currentWorkout="Push-ups";
 
 let sessionReps=0;
 let sessionXP=0;
+let sessionStartReps=0;
 
 let pose=null;
 let cameraStream=null;
 let cameraRunning=false;
 
-let exerciseState="START";
 let lastRepTime=0;
 
-let plankStart=0;
-let plankLastAward=0;
+let movementState="UP";
+
+let downFrames=0;
+let upFrames=0;
+
+let plankSeconds=0;
+let plankTimer=null;
+
+let wildPet=null;
+let petMoveTimer=null;
 
 
 /* =========================
 RANKS
-100 XP EACH
-1000 = GOAT
 ========================= */
 
 const ranks=[
-
-{name:"ROOKIE I"},
-{name:"ROOKIE II"},
-{name:"ROOKIE III"},
-
-{name:"GRINDER I"},
-{name:"GRINDER II"},
-{name:"ATHLETE"},
-
-{name:"BEAST"},
-{name:"ELITE"},
-{name:"CHAMPION"},
-
-{name:"GOAT"}
-
+{name:"ROOKIE I",xp:0},
+{name:"ROOKIE II",xp:50},
+{name:"ROOKIE III",xp:100},
+{name:"GRINDER I",xp:200},
+{name:"GRINDER II",xp:300},
+{name:"ATHLETE I",xp:400},
+{name:"ATHLETE II",xp:500},
+{name:"BEAST I",xp:600},
+{name:"BEAST II",xp:700},
+{name:"ELITE I",xp:800},
+{name:"ELITE II",xp:900},
+{name:"CHAMPION",xp:950},
+{name:"GOAT",xp:1000}
 ];
+
+function getRank(){
+
+let rank=0;
+
+for(let i=0;i<ranks.length;i++){
+
+if(data.totalXP>=ranks[i].xp){
+rank=i;
+}
+
+}
+
+return rank;
+
+}
+
+
+/* =========================
+PETS
+========================= */
+
+const petTypes=[
+{
+id:"fluff",
+name:"Fluff",
+normal:"🐾"
+},
+{
+id:"bolt",
+name:"Bolt",
+normal:"🐺"
+},
+{
+id:"munch",
+name:"Munch",
+normal:"🐻"
+},
+{
+id:"wing",
+name:"Wing",
+normal:"🦅"
+},
+{
+id:"drake",
+name:"Drake",
+normal:"🐉"
+},
+{
+id:"blob",
+name:"Blob",
+normal:"👾"
+}
+];
+
+const mutations={
+normal:{
+name:"NORMAL",
+emoji:null
+},
+ice:{
+name:"ICE",
+emoji:"❄️"
+},
+fire:{
+name:"FIRE",
+emoji:"🔥"
+},
+lightning:{
+name:"LIGHTNING",
+emoji:"⚡"
+},
+beast:{
+name:"BEAST",
+emoji:"👹"
+}
+};
+
+function getPetEmoji(pet){
+
+if(pet.mutation==="beast"){
+
+return "👹";
+
+}
+
+if(pet.mutation==="lightning"){
+
+return "⚡";
+
+}
+
+if(pet.mutation==="fire"){
+
+return "🔥";
+
+}
+
+if(pet.mutation==="ice"){
+
+return "❄️";
+
+}
+
+const type=
+petTypes.find(x=>x.id===pet.type);
+
+return type?type.normal:"🐾";
+
+}
 
 
 /* =========================
@@ -1087,78 +1266,6 @@ updateUI();
 
 
 /* =========================
-RANK
-========================= */
-
-function getRank(){
-
-return Math.min(
-Math.floor(data.xp/100),
-9
-);
-
-}
-
-
-/* =========================
-UPDATE UI
-========================= */
-
-function updateUI(){
-
-document.getElementById("totalReps")
-.textContent=data.reps;
-
-document.getElementById("progressReps")
-.textContent=data.reps;
-
-document.getElementById("level")
-.textContent=Math.floor(data.xp/100)+1;
-
-document.getElementById("xp")
-.textContent=data.xp;
-
-document.getElementById("progressXP")
-.textContent=data.xp;
-
-document.getElementById("rankXP")
-.textContent=data.xp;
-
-document.getElementById("xpFill")
-.style.width=Math.min(100,data.xp/10)+"%";
-
-document.getElementById("streak")
-.textContent=data.streak;
-
-document.getElementById("workouts")
-.textContent=data.workouts;
-
-document.getElementById("bestStreak")
-.textContent=data.bestStreak;
-
-const rank=ranks[getRank()];
-
-document.getElementById("rankBadge")
-.textContent=rank.name;
-
-document.getElementById("progressRank")
-.textContent=rank.name;
-
-document.getElementById("profileRank")
-.textContent=rank.name;
-
-document.getElementById("profileRankNumber")
-.textContent=
-"Rank "+(getRank()+1);
-
-updateBody();
-
-drawChart();
-
-}
-
-
-/* =========================
 XP
 ========================= */
 
@@ -1166,18 +1273,23 @@ function gainXP(amount){
 
 const oldRank=getRank();
 
-data.xp=Math.min(
-1000,
-data.xp+amount
-);
+data.xp+=amount;
+data.totalXP+=amount;
+
+while(data.xp>=100){
+
+data.xp-=100;
+data.level++;
+
+}
 
 const newRank=getRank();
 
 if(newRank>oldRank){
 
 showPopup(
-"RANK UP!",
-"You reached "+ranks[newRank].name+" 🔥"
+"RANK UP 🔥",
+ranks[newRank].name
 );
 
 }
@@ -1186,56 +1298,33 @@ showPopup(
 
 
 /* =========================
-DAILY STREAK
+RECORD
 ========================= */
 
 function recordWorkout(){
 
 const today=
-new Date()
-.toISOString()
-.slice(0,10);
+new Date().toISOString().slice(0,10);
 
-const last=
+let last=
 data.history[data.history.length-1];
 
-if(!last || last.date!==today){
+if(!last||last.date!==today){
 
 data.history.push({
 date:today,
 reps:0
 });
 
-if(last){
-
-const previous=
-new Date(last.date);
-
-const now=
-new Date(today);
-
-const difference=
-Math.round(
-(now-previous)/86400000
-);
-
-if(difference===1){
-
-data.streak++;
-
-}else if(difference>1){
-
-data.streak=1;
-
 }
 
-}else{
-
-data.streak=1;
-
-}
+data.history[
+data.history.length-1
+].reps++;
 
 data.workouts++;
+
+data.streak++;
 
 if(data.streak>data.bestStreak){
 
@@ -1245,23 +1334,16 @@ data.bestStreak=data.streak;
 
 }
 
-data.history[
-data.history.length-1
-].reps++;
-
-}
-
 
 /* =========================
-REGISTER REP
-1 REP = 1 XP
+REP
 ========================= */
 
-function registerRep(){
+function countRep(){
 
 const now=Date.now();
 
-if(now-lastRepTime<800){
+if(now-lastRepTime<700){
 
 return;
 
@@ -1270,7 +1352,6 @@ return;
 lastRepTime=now;
 
 sessionReps++;
-
 sessionXP++;
 
 data.reps++;
@@ -1279,22 +1360,11 @@ gainXP(1);
 
 recordWorkout();
 
-updateMuscles();
+applyMuscles();
 
-document.getElementById("sessionReps")
-.textContent=sessionReps;
+updateSession();
 
-document.getElementById("cameraReps")
-.textContent=sessionReps;
-
-document.getElementById("sessionXP")
-.textContent=sessionXP;
-
-document.getElementById("formStatus")
-.textContent="REP COMPLETE ✓";
-
-document.getElementById("formStatus")
-.className="formText good";
+checkPetMutation();
 
 save();
 
@@ -1305,7 +1375,7 @@ save();
 MUSCLES
 ========================= */
 
-function updateMuscles(){
+function applyMuscles(){
 
 if(currentWorkout==="Push-ups"){
 
@@ -1331,6 +1401,7 @@ data.muscles.core++;
 if(currentWorkout==="Lunges"){
 
 data.muscles.legs++;
+data.muscles.core++;
 
 }
 
@@ -1345,22 +1416,73 @@ data.muscles.shoulders++;
 
 
 /* =========================
+SESSION UI
+========================= */
+
+function updateSession(){
+
+document.getElementById("sessionReps").textContent=
+sessionReps;
+
+document.getElementById("cameraReps").textContent=
+sessionReps;
+
+document.getElementById("sessionXP").textContent=
+sessionXP;
+
+}
+
+
+/* =========================
+MANUAL
+========================= */
+
+function manualRep(){
+
+if(currentWorkout==="Plank"){
+
+plankSeconds+=3;
+
+sessionReps++;
+
+sessionXP++;
+
+data.reps++;
+
+gainXP(1);
+
+recordWorkout();
+
+applyMuscles();
+
+updateSession();
+
+checkPetMutation();
+
+save();
+
+return;
+
+}
+
+countRep();
+
+}
+
+
+/* =========================
 OPEN WORKOUT
 ========================= */
 
 function openWorkout(name){
 
-stopCamera();
+endWorkout();
 
 currentWorkout=name;
 
 sessionReps=0;
 sessionXP=0;
-
-exerciseState="START";
-
-plankStart=0;
-plankLastAward=0;
+sessionStartReps=data.reps;
 
 document.getElementById("workoutTitle")
 .textContent=name;
@@ -1378,95 +1500,13 @@ document.getElementById("formScore")
 .textContent="--";
 
 document.getElementById("formStatus")
-.textContent=
-"Start camera to begin";
+.textContent="Start camera to begin";
 
 document.getElementById("plankTimer")
-.textContent="";
+.style.display=
+name==="Plank"?"block":"none";
 
 show("workout");
-
-}
-
-
-/* =========================
-BODY
-========================= */
-
-function bodyLevel(value){
-
-if(value>=50)return"high";
-
-if(value>=20)return"medium";
-
-if(value>=5)return"low";
-
-return"";
-
-}
-
-
-function updateBody(){
-
-const mapping={
-
-chest:[
-"bodyChestL",
-"bodyChestR"
-],
-
-shoulders:[
-"bodyShoulderL",
-"bodyShoulderR"
-],
-
-arms:[
-"bodyArmL",
-"bodyArmR"
-],
-
-core:[
-"bodyCore"
-],
-
-legs:[
-"bodyLegL",
-"bodyLegR"
-]
-
-};
-
-Object.keys(mapping).forEach(
-muscle=>{
-
-mapping[muscle].forEach(
-id=>{
-
-const el=
-document.getElementById(id);
-
-if(!el)return;
-
-el.classList.remove(
-"low",
-"medium",
-"high"
-);
-
-const level=
-bodyLevel(
-data.muscles[muscle]
-);
-
-if(level){
-
-el.classList.add(level);
-
-}
-
-});
-
-});
 
 }
 
@@ -1503,36 +1543,31 @@ audio:false
 
 });
 
-video.srcObject=
-cameraStream;
+video.srcObject=cameraStream;
 
 await video.play();
 
-
 pose=new Pose({
 
-locateFile:(file)=>
-"https://cdn.jsdelivr.net/npm/@mediapipe/pose/"+file
+locateFile:function(file){
+
+return "https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5.1675469404/"+file;
+
+}
 
 });
-
 
 pose.setOptions({
 
 modelComplexity:1,
-
 smoothLandmarks:true,
-
 enableSegmentation:false,
-
 minDetectionConfidence:.55,
-
 minTrackingConfidence:.55
 
 });
 
-
-pose.onResults(results=>{
+pose.onResults(function(results){
 
 processPose(
 results,
@@ -1542,15 +1577,20 @@ canvas
 
 });
 
-
 cameraRunning=true;
 
 document.getElementById("cameraStatus")
 .textContent="LOOKING FOR BODY";
 
-requestAnimationFrame(
-poseLoop
-);
+requestAnimationFrame(poseLoop);
+
+startPetSystem();
+
+if(currentWorkout==="Plank"){
+
+startPlankTimer();
+
+}
 
 }catch(error){
 
@@ -1579,10 +1619,7 @@ if(!cameraRunning)return;
 const video=
 document.getElementById("video");
 
-if(
-video.readyState>=2 &&
-pose
-){
+if(video.readyState>=2&&pose){
 
 try{
 
@@ -1598,9 +1635,7 @@ console.log(e);
 
 }
 
-requestAnimationFrame(
-poseLoop
-);
+requestAnimationFrame(poseLoop);
 
 }
 
@@ -1609,19 +1644,15 @@ poseLoop
 POSE PROCESS
 ========================= */
 
-function processPose(
-results,
-ctx,
-canvas
-){
+function processPose(results,ctx,canvas){
+
+if(!cameraRunning)return;
 
 canvas.width=
-document.getElementById("video")
-.videoWidth;
+document.getElementById("video").videoWidth;
 
 canvas.height=
-document.getElementById("video")
-.videoHeight;
+document.getElementById("video").videoHeight;
 
 ctx.clearRect(
 0,
@@ -1629,7 +1660,6 @@ ctx.clearRect(
 canvas.width,
 canvas.height
 );
-
 
 if(!results.poseLandmarks){
 
@@ -1640,10 +1670,8 @@ return;
 
 }
 
-
 document.getElementById("cameraStatus")
 .textContent="BODY DETECTED";
-
 
 drawSkeleton(
 ctx,
@@ -1652,10 +1680,35 @@ canvas.width,
 canvas.height
 );
 
+if(currentWorkout==="Push-ups"){
 
-detectExercise(
-results.poseLandmarks
-);
+detectPushup(results.poseLandmarks);
+
+}
+
+if(currentWorkout==="Squats"){
+
+detectSquat(results.poseLandmarks);
+
+}
+
+if(currentWorkout==="Lunges"){
+
+detectLunge(results.poseLandmarks);
+
+}
+
+if(currentWorkout==="Sit-ups"){
+
+detectSitup(results.poseLandmarks);
+
+}
+
+if(currentWorkout==="Plank"){
+
+detectPlank(results.poseLandmarks);
+
+}
 
 }
 
@@ -1664,22 +1717,17 @@ results.poseLandmarks
 SKELETON
 ========================= */
 
-function drawSkeleton(
-ctx,
-l,
-w,
-h
-){
+function drawSkeleton(ctx,l,w,h){
 
 const connections=[
+
+[11,12],
 
 [11,13],
 [13,15],
 
 [12,14],
 [14,16],
-
-[11,12],
 
 [11,23],
 [12,24],
@@ -1688,18 +1736,19 @@ const connections=[
 
 [23,25],
 [25,27],
+[27,29],
+[29,31],
 
 [24,26],
-[26,28]
+[26,28],
+[28,30],
+[30,32]
 
 ];
 
 ctx.lineWidth=5;
-
 ctx.lineCap="round";
-
-ctx.strokeStyle="#fff";
-
+ctx.strokeStyle="white";
 
 connections.forEach(pair=>{
 
@@ -1707,6 +1756,8 @@ const a=l[pair[0]];
 const b=l[pair[1]];
 
 if(
+a &&
+b &&
 a.visibility>.5 &&
 b.visibility>.5
 ){
@@ -1729,7 +1780,6 @@ ctx.stroke();
 
 });
 
-
 l.forEach(p=>{
 
 if(p.visibility>.5){
@@ -1739,12 +1789,12 @@ ctx.beginPath();
 ctx.arc(
 p.x*w,
 p.y*h,
-7,
+6,
 0,
 Math.PI*2
 );
 
-ctx.fillStyle="#fff";
+ctx.fillStyle="white";
 
 ctx.fill();
 
@@ -1762,29 +1812,23 @@ ANGLE
 function angle(a,b,c){
 
 const radians=
-
 Math.atan2(
 c.y-b.y,
 c.x-b.x
-)
-
--
-
+)-
 Math.atan2(
 a.y-b.y,
 a.x-b.x
 );
 
 let degrees=
-
 Math.abs(
 radians*180/Math.PI
 );
 
 if(degrees>180){
 
-degrees=
-360-degrees;
+degrees=360-degrees;
 
 }
 
@@ -1794,65 +1838,10 @@ return degrees;
 
 
 /* =========================
-DISTANCE
+PUSHUP
 ========================= */
 
-function distance(a,b){
-
-return Math.sqrt(
-
-Math.pow(a.x-b.x,2)+
-Math.pow(a.y-b.y,2)
-
-);
-
-}
-
-
-/* =========================
-EXERCISE DETECTOR
-========================= */
-
-function detectExercise(l){
-
-if(currentWorkout==="Push-ups"){
-
-detectPushups(l);
-
-}
-
-if(currentWorkout==="Squats"){
-
-detectSquats(l);
-
-}
-
-if(currentWorkout==="Sit-ups"){
-
-detectSitups(l);
-
-}
-
-if(currentWorkout==="Lunges"){
-
-detectLunges(l);
-
-}
-
-if(currentWorkout==="Plank"){
-
-detectPlank(l);
-
-}
-
-}
-
-
-/* =========================
-PUSHUPS
-========================= */
-
-function detectPushups(l){
+function detectPushup(l){
 
 const ls=l[11];
 const rs=l[12];
@@ -1863,9 +1852,7 @@ const re=l[14];
 const lw=l[15];
 const rw=l[16];
 
-if(!visible(
-ls,rs,le,re,lw,rw
-))return;
+if(!ls||!rs||!le||!re||!lw||!rw)return;
 
 const left=
 angle(ls,le,lw);
@@ -1878,37 +1865,60 @@ const elbow=
 
 const score=
 Math.round(
-Math.min(
-100,
 Math.max(
 0,
+Math.min(
+100,
 (elbow-60)/1.2
 )
 )
 );
 
-setForm(score);
+document.getElementById("formScore")
+.textContent=score+"%";
 
+if(elbow<80){
 
-if(elbow<85){
+downFrames++;
 
-exerciseState="DOWN";
+document.getElementById("formStatus")
+.textContent="DOWN — push!";
 
-setFormText(
-"DOWN — push!"
-);
+if(downFrames>=3){
+
+movementState="DOWN";
 
 }
 
+}else{
+
+downFrames=0;
+
+}
+
+if(elbow>155){
+
+upFrames++;
+
+document.getElementById("formStatus")
+.textContent="UP";
 
 if(
-elbow>155 &&
-exerciseState==="DOWN"
+upFrames>=3 &&
+movementState==="DOWN"
 ){
 
-registerRep();
+countRep();
 
-exerciseState="UP";
+movementState="UP";
+
+upFrames=0;
+
+}
+
+}else{
+
+upFrames=0;
 
 }
 
@@ -1916,10 +1926,10 @@ exerciseState="UP";
 
 
 /* =========================
-SQUATS
+SQUAT
 ========================= */
 
-function detectSquats(l){
+function detectSquat(l){
 
 const lh=l[23];
 const rh=l[24];
@@ -1930,9 +1940,7 @@ const rk=l[26];
 const la=l[27];
 const ra=l[28];
 
-if(!visible(
-lh,rh,lk,rk,la,ra
-))return;
+if(!lh||!rh||!lk||!rk||!la||!ra)return;
 
 const left=
 angle(lh,lk,la);
@@ -1943,37 +1951,27 @@ angle(rh,rk,ra);
 const knee=
 (left+right)/2;
 
-const score=
-Math.round(
-Math.min(
-100,
-Math.max(
-0,
-100-Math.abs(knee-90)
-)
-)
-);
+document.getElementById("formScore")
+.textContent=
+Math.round(Math.min(100,Math.max(0,100-Math.abs(90-knee))))+"%";
 
-setForm(score);
+if(knee<100){
 
-if(knee<105){
+movementState="DOWN";
 
-exerciseState="DOWN";
-
-setFormText(
-"LOW — drive up!"
-);
+document.getElementById("formStatus")
+.textContent="LOW — drive up!";
 
 }
 
-if(
-knee>160 &&
-exerciseState==="DOWN"
-){
+if(knee>160&&movementState==="DOWN"){
 
-registerRep();
+countRep();
 
-exerciseState="UP";
+movementState="UP";
+
+document.getElementById("formStatus")
+.textContent="REP COMPLETE ✓";
 
 }
 
@@ -1981,20 +1979,96 @@ exerciseState="UP";
 
 
 /* =========================
-SITUPS
+LUNGE
 ========================= */
 
-function detectSitups(l){
+function detectLunge(l){
 
-const shoulder=l[11];
-const hip=l[23];
-const knee=l[25];
+const lh=l[23];
+const rh=l[24];
 
-if(!visible(
-shoulder,
-hip,
-knee
-))return;
+const lk=l[25];
+const rk=l[26];
+
+const la=l[27];
+const ra=l[28];
+
+if(!lh||!rh||!lk||!rk||!la||!ra)return;
+
+const left=
+angle(lh,lk,la);
+
+const right=
+angle(rh,rk,ra);
+
+const knee=Math.min(left,right);
+
+const score=
+Math.round(
+Math.max(
+0,
+Math.min(
+100,
+100-Math.abs(90-knee)
+)
+)
+);
+
+document.getElementById("formScore")
+.textContent=score+"%";
+
+if(knee<105){
+
+movementState="DOWN";
+
+document.getElementById("formStatus")
+.textContent="DOWN — push back!";
+
+}
+
+if(knee>155&&movementState==="DOWN"){
+
+countRep();
+
+movementState="UP";
+
+document.getElementById("formStatus")
+.textContent="REP COMPLETE ✓";
+
+}
+
+}
+
+
+/* =========================
+SIT-UP
+========================= */
+
+function detectSitup(l){
+
+const shoulder={
+x:(l[11].x+l[12].x)/2,
+y:(l[11].y+l[12].y)/2,
+visibility:Math.min(l[11].visibility,l[12].visibility)
+};
+
+const hip={
+x:(l[23].x+l[24].x)/2,
+y:(l[23].y+l[24].y)/2,
+visibility:Math.min(l[23].visibility,l[24].visibility)
+};
+
+const knee={
+x:(l[25].x+l[26].x)/2,
+y:(l[25].y+l[26].y)/2,
+visibility:Math.min(l[25].visibility,l[26].visibility)
+};
+
+if(
+shoulder.visibility<.5||
+hip.visibility<.5||
+knee.visibility<.5
+)return;
 
 const torso=
 angle(
@@ -2005,110 +2079,35 @@ knee
 
 const score=
 Math.round(
-Math.min(
-100,
 Math.max(
 0,
-100-Math.abs(torso-90)*2
-)
-)
-);
-
-setForm(score);
-
-if(torso<65){
-
-exerciseState="UP";
-
-setFormText(
-"SIT UP — keep going!"
-);
-
-}
-
-if(
-torso>105 &&
-exerciseState==="UP"
-){
-
-registerRep();
-
-exerciseState="DOWN";
-
-}
-
-}
-
-
-/* =========================
-LUNGES
-========================= */
-
-function detectLunges(l){
-
-const hipL=l[23];
-const hipR=l[24];
-
-const kneeL=l[25];
-const kneeR=l[26];
-
-const ankleL=l[27];
-const ankleR=l[28];
-
-if(!visible(
-hipL,hipR,
-kneeL,kneeR,
-ankleL,ankleR
-))return;
-
-const left=
-angle(
-hipL,
-kneeL,
-ankleL
-);
-
-const right=
-angle(
-hipR,
-kneeR,
-ankleR
-);
-
-const knee=
-Math.min(left,right);
-
-const score=
-Math.round(
 Math.min(
 100,
-Math.max(
-0,
-100-Math.abs(knee-90)
+torso
 )
 )
 );
 
-setForm(score);
+document.getElementById("formScore")
+.textContent=score+"%";
 
-if(knee<105){
+if(torso<75){
 
-exerciseState="DOWN";
+movementState="DOWN";
 
-setFormText(
-"DOWN — drive up!"
-);
+document.getElementById("formStatus")
+.textContent="UP — sit up!";
 
 }
 
-if(
-knee>160 &&
-exerciseState==="DOWN"
-){
+if(torso>100&&movementState==="DOWN"){
 
-registerRep();
+countRep();
 
-exerciseState="UP";
+movementState="UP";
+
+document.getElementById("formStatus")
+.textContent="REP COMPLETE ✓";
 
 }
 
@@ -2117,101 +2116,74 @@ exerciseState="UP";
 
 /* =========================
 PLANK
-1 REP / 3 SECONDS
 ========================= */
 
 function detectPlank(l){
 
-const shoulderL=l[11];
-const shoulderR=l[12];
+const shoulder=l[11];
+const hip=l[23];
+const knee=l[25];
 
-const hipL=l[23];
-const hipR=l[24];
-
-const ankleL=l[27];
-const ankleR=l[28];
-
-if(!visible(
-shoulderL,
-shoulderR,
-hipL,
-hipR,
-ankleL,
-ankleR
-))return;
-
-const shoulder={
-x:(shoulderL.x+shoulderR.x)/2,
-y:(shoulderL.y+shoulderR.y)/2
-};
-
-const hip={
-x:(hipL.x+hipR.x)/2,
-y:(hipL.y+hipR.y)/2
-};
-
-const ankle={
-x:(ankleL.x+ankleR.x)/2,
-y:(ankleL.y+ankleR.y)/2
-};
+if(!shoulder||!hip||!knee)return;
 
 const bodyAngle=
 angle(
 shoulder,
 hip,
-ankle
+knee
 );
 
 const score=
 Math.round(
-Math.min(
-100,
 Math.max(
 0,
-100-Math.abs(bodyAngle-180)*2
-)
+100-Math.abs(180-bodyAngle)*3
 )
 );
 
-setForm(score);
+document.getElementById("formScore")
+.textContent=score+"%";
 
-if(score>=70){
+if(score>=80){
 
-if(!plankStart){
+document.getElementById("formStatus")
+.textContent="PERFECT PLANK 🔥";
 
-plankStart=Date.now();
+}else{
 
-plankLastAward=
-plankStart;
+document.getElementById("formStatus")
+.textContent="FIX YOUR FORM";
 
 }
 
-const elapsed=
-Math.floor(
-(Date.now()-plankStart)/1000
-);
+}
+
+
+/* =========================
+PLANK TIMER
+========================= */
+
+function startPlankTimer(){
+
+clearInterval(plankTimer);
+
+plankSeconds=0;
+
+plankTimer=
+setInterval(()=>{
+
+if(!cameraRunning)return;
+
+plankSeconds++;
 
 document.getElementById("plankTimer")
 .textContent=
-"PLANK: "+elapsed+"s";
+plankSeconds+"s";
 
-
-const awards=
-Math.floor(elapsed/3);
-
-const previousAwards=
-Math.floor(
-(Date.now()-plankLastAward)/3000
-);
-
-if(awards>sessionReps){
-
-const difference=
-awards-sessionReps;
-
-for(let i=0;i<difference;i++){
+if(plankSeconds%3===0){
 
 sessionReps++;
+
 sessionXP++;
 
 data.reps++;
@@ -2220,73 +2192,269 @@ gainXP(1);
 
 recordWorkout();
 
-updateMuscles();
+applyMuscles();
 
-}
+updateSession();
 
-document.getElementById("sessionReps")
-.textContent=sessionReps;
-
-document.getElementById("cameraReps")
-.textContent=sessionReps;
-
-document.getElementById("sessionXP")
-.textContent=sessionXP;
+checkPetMutation();
 
 save();
 
 }
 
-setFormText(
-"HOLD — stay straight!"
-);
-
-}else{
-
-plankStart=0;
-
-document.getElementById("plankTimer")
-.textContent="";
-
-setFormText(
-"STRAIGHTEN YOUR BODY"
-);
-
-}
+},1000);
 
 }
 
 
 /* =========================
-VISIBILITY
+PET SPAWN
 ========================= */
 
-function visible(...points){
+function startPetSystem(){
 
-return points.every(
-p=>p && p.visibility>.5
-);
+if(wildPet)return;
+
+setTimeout(()=>{
+
+if(
+cameraRunning &&
+Math.random()<0.85
+){
+
+spawnWildPet();
+
+}
+
+},5000+Math.random()*12000);
 
 }
 
 
 /* =========================
-FORM
+SPAWN PET
 ========================= */
 
-function setForm(score){
+function spawnWildPet(){
 
-document.getElementById("formScore")
+const type=
+petTypes[
+Math.floor(Math.random()*petTypes.length)
+];
+
+wildPet={
+type:type.id,
+mutation:"normal",
+extra:0
+};
+
+const layer=
+document.getElementById("petLayer");
+
+layer.innerHTML="";
+
+const pet=
+document.createElement("div");
+
+pet.className="wildPet";
+
+pet.id="wildPet";
+
+pet.textContent=type.normal;
+
+pet.style.left=
+(10+Math.random()*70)+"%";
+
+pet.style.top=
+(15+Math.random()*60)+"%";
+
+layer.appendChild(pet);
+
+document.getElementById("petNotice")
+.classList.add("show");
+
+document.getElementById("petNoticeName")
 .textContent=
-score+"%";
+"A WILD "+type.name.toUpperCase()+" APPEARED!";
+
+document.getElementById("petNoticeMutation")
+.textContent=
+"Push further to mutate it";
+
+moveWildPet();
+
+petMoveTimer=
+setInterval(moveWildPet,1000);
+
+showPopup(
+"WILD PET! 🐾",
+type.name+" appeared!"
+);
 
 }
 
 
-function setFormText(text){
+/* =========================
+MOVE PET
+========================= */
 
-document.getElementById("formStatus")
-.textContent=text;
+function moveWildPet(){
+
+const pet=
+document.getElementById("wildPet");
+
+if(!pet)return;
+
+pet.style.left=
+(5+Math.random()*78)+"%";
+
+pet.style.top=
+(10+Math.random()*70)+"%";
+
+}
+
+
+/* =========================
+PET MUTATIONS
+========================= */
+
+function checkPetMutation(){
+
+if(!wildPet)return;
+
+wildPet.extra++;
+
+let mutation="normal";
+
+if(wildPet.extra>=10){
+
+mutation="beast";
+
+}else if(wildPet.extra>=7){
+
+mutation="lightning";
+
+}else if(wildPet.extra>=5){
+
+mutation="fire";
+
+}else if(wildPet.extra>=2){
+
+mutation="ice";
+
+}
+
+wildPet.mutation=mutation;
+
+const emoji=
+getPetEmoji(wildPet);
+
+const pet=
+document.getElementById("wildPet");
+
+if(pet){
+
+pet.textContent=emoji;
+
+}
+
+document.getElementById("petExtra")
+.textContent=
+Math.min(wildPet.extra,10);
+
+document.getElementById("petNoticeMutation")
+.textContent=
+mutations[mutation].name+
+" • "+
+Math.min(wildPet.extra,10)+
+"/10 EXTRA REPS";
+
+if(wildPet.extra>=10){
+
+catchPet();
+
+}
+
+}
+
+
+/* =========================
+CATCH PET
+========================= */
+
+function catchPet(){
+
+if(!wildPet)return;
+
+clearInterval(petMoveTimer);
+
+const already=
+data.pets.some(
+p=>
+p.type===wildPet.type &&
+p.mutation===wildPet.mutation
+);
+
+if(!already){
+
+data.pets.push({
+
+type:wildPet.type,
+mutation:wildPet.mutation,
+caught:Date.now()
+
+});
+
+}
+
+showPopup(
+"PET CAUGHT! 🐾",
+mutations[wildPet.mutation].name+" "+wildPet.type
+);
+
+document.getElementById("petNotice")
+.classList.remove("show");
+
+document.getElementById("petLayer")
+.innerHTML="";
+
+wildPet=null;
+
+save();
+
+}
+
+
+/* =========================
+END WORKOUT
+========================= */
+
+function endWorkout(){
+
+stopCamera();
+
+clearInterval(plankTimer);
+clearInterval(petMoveTimer);
+
+wildPet=null;
+
+const notice=
+document.getElementById("petNotice");
+
+if(notice){
+
+notice.classList.remove("show");
+
+}
+
+const layer=
+document.getElementById("petLayer");
+
+if(layer){
+
+layer.innerHTML="";
+
+}
 
 }
 
@@ -2299,13 +2467,15 @@ function stopCamera(){
 
 cameraRunning=false;
 
+clearInterval(plankTimer);
+
 if(cameraStream){
 
 cameraStream
 .getTracks()
-.forEach(
-track=>track.stop()
-);
+.forEach(track=>{
+track.stop();
+});
 
 cameraStream=null;
 
@@ -2316,12 +2486,111 @@ document.getElementById("video");
 
 if(video){
 
+video.pause();
 video.srcObject=null;
+}
+
+const canvas=
+document.getElementById("poseCanvas");
+
+if(canvas){
+
+const ctx=canvas.getContext("2d");
+
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+canvas.width=1;
+canvas.height=1;
 
 }
 
 document.getElementById("cameraStatus")
 .textContent="CAMERA OFF";
+
+document.getElementById("formStatus")
+.textContent="Start camera to begin";
+
+}
+
+
+/* =========================
+BODY
+========================= */
+
+function bodyLevel(value){
+
+if(value>=50)return"high";
+if(value>=20)return"medium";
+if(value>=5)return"low";
+
+return"";
+
+}
+
+function updateBody(){
+
+const mapping={
+
+chest:[
+"bodyChestL",
+"bodyChestR"
+],
+
+shoulders:[
+"bodyShoulderL",
+"bodyShoulderR"
+],
+
+arms:[
+"bodyArmL",
+"bodyArmR"
+],
+
+core:[
+"bodyCore"
+],
+
+legs:[
+"bodyLegL",
+"bodyLegR"
+]
+
+};
+
+Object.keys(mapping).forEach(muscle=>{
+
+mapping[muscle].forEach(id=>{
+
+const el=
+document.getElementById(id);
+
+if(!el)return;
+
+el.classList.remove(
+"low",
+"medium",
+"high"
+);
+
+const level=
+bodyLevel(
+data.muscles[muscle]
+);
+
+if(level){
+
+el.classList.add(level);
+
+}
+
+});
+
+});
 
 }
 
@@ -2342,34 +2611,32 @@ document
 .getElementById(id)
 .classList.add("active");
 
-
 document
 .querySelectorAll(".nav button")
 .forEach(x=>{
 x.classList.remove("active");
 });
 
-
 const nav={
 
 home:"navHome",
 workout:"navWorkout",
 progress:"navProgress",
-profile:"navProfile"
+pets:"navPets"
 
 };
+
+if(nav[id]){
 
 document
 .getElementById(nav[id])
 .classList.add("active");
 
+}
 
-if(id==="progress"){
+if(id==="pets"){
 
-setTimeout(
-drawChart,
-50
-);
+renderPets();
 
 }
 
@@ -2377,132 +2644,169 @@ drawChart,
 
 
 /* =========================
-CHART
+PETDEX
 ========================= */
 
-function drawChart(){
+function renderPets(){
 
-const canvas=
-document.getElementById("chartCanvas");
+const grid=
+document.getElementById("petGrid");
 
-if(!canvas)return;
+grid.innerHTML="";
 
-const rect=
-canvas.getBoundingClientRect();
+if(data.pets.length===0){
 
-const ratio=
-window.devicePixelRatio||1;
+grid.innerHTML=`
 
-canvas.width=
-rect.width*ratio;
+<div class="petCard">
 
-canvas.height=
-rect.height*ratio;
+<div class="petEmoji">🥚</div>
 
-const ctx=
-canvas.getContext("2d");
+<strong>No pets yet</strong>
 
-ctx.setTransform(
-ratio,
-0,
-0,
-ratio,
-0,
-0
-);
+<small>
+Train until one appears.
+</small>
 
-const w=rect.width;
-const h=rect.height;
+</div>
 
-ctx.clearRect(
-0,
-0,
-w,
-h
-);
-
-const history=
-data.history.slice(-7);
-
-if(history.length===0){
-
-ctx.fillStyle="#666";
-
-ctx.font="12px Arial";
-
-ctx.textAlign="center";
-
-ctx.fillText(
-"No workouts yet",
-w/2,
-h/2
-);
+`;
 
 return;
 
 }
 
-const max=
-Math.max(
-1,
-...history.map(x=>x.reps)
+data.pets.forEach((pet,index)=>{
+
+const type=
+petTypes.find(
+x=>x.id===pet.type
 );
 
-ctx.strokeStyle="#333";
+const card=
+document.createElement("div");
 
-ctx.lineWidth=1;
+card.className="petCard";
 
-for(let i=0;i<4;i++){
+if(
+data.equippedPet &&
+data.equippedPet.type===pet.type &&
+data.equippedPet.mutation===pet.mutation
+){
 
-const y=
-20+i*((h-40)/3);
-
-ctx.beginPath();
-
-ctx.moveTo(10,y);
-
-ctx.lineTo(w-10,y);
-
-ctx.stroke();
+card.classList.add("equipped");
 
 }
 
-ctx.strokeStyle="#fff";
+card.innerHTML=`
 
-ctx.lineWidth=3;
+<div class="petEmoji">
+${getPetEmoji(pet)}
+</div>
 
-ctx.beginPath();
+<strong>
+${type?type.name:"Unknown"}
+</strong>
 
-history.forEach(
-(item,i)=>{
+<small>
+${mutations[pet.mutation].name}
+</small>
 
-const x=
-10+
-(i/
-Math.max(
-1,
-history.length-1
-))
-*(w-20);
+<button
+class="secondaryBtn"
+onclick="equipPet(${index})">
+${isEquipped(pet)?"EQUIPPED":"EQUIP"}
+</button>
 
-const y=
-h-20-
-(item.reps/max)
-*(h-45);
+`;
 
-if(i===0){
-
-ctx.moveTo(x,y);
-
-}else{
-
-ctx.lineTo(x,y);
-
-}
+grid.appendChild(card);
 
 });
 
-ctx.stroke();
+}
+
+function isEquipped(pet){
+
+return data.equippedPet &&
+data.equippedPet.type===pet.type &&
+data.equippedPet.mutation===pet.mutation;
+
+}
+
+function equipPet(index){
+
+data.equippedPet=
+data.pets[index];
+
+save();
+
+renderPets();
+
+showPopup(
+"PET EQUIPPED 🐾",
+"Your companion is ready."
+);
+
+}
+
+
+/* =========================
+UPDATE UI
+========================= */
+
+function updateUI(){
+
+document.getElementById("totalReps")
+.textContent=data.reps;
+
+document.getElementById("progressReps")
+.textContent=data.reps;
+
+document.getElementById("level")
+.textContent=data.level;
+
+document.getElementById("progressLevel")
+.textContent=data.level;
+
+document.getElementById("xp")
+.textContent=data.xp;
+
+document.getElementById("xpFill")
+.style.width=data.xp+"%";
+
+document.getElementById("streak")
+.textContent=data.streak;
+
+document.getElementById("workouts")
+.textContent=data.workouts;
+
+document.getElementById("bestStreak")
+.textContent=data.bestStreak;
+
+document.getElementById("progressTotalXP")
+.textContent=data.totalXP+" XP";
+
+document.getElementById("rankXPProgress")
+.textContent=data.totalXP;
+
+const rank=
+ranks[getRank()];
+
+document.getElementById("rankBadge")
+.textContent=rank.name;
+
+document.getElementById("progressRank")
+.textContent=rank.name;
+
+document.getElementById("profileRank")
+.textContent=rank.name;
+
+document.getElementById("profileRankNumber")
+.textContent=
+"Rank "+(getRank()+1);
+
+updateBody();
 
 }
 
@@ -2511,10 +2815,7 @@ ctx.stroke();
 POPUP
 ========================= */
 
-function showPopup(
-title,
-text
-){
+function showPopup(title,text){
 
 const popup=
 document.getElementById("popup");
@@ -2546,30 +2847,15 @@ if(!confirm(
 "Reset all REP//RANK progress?"
 ))return;
 
-data={
-
-xp:0,
-reps:0,
-
-streak:0,
-bestStreak:0,
-
-workouts:0,
-
-history:[],
-
-muscles:{
-chest:0,
-shoulders:0,
-arms:0,
-core:0,
-legs:0
-}
-
-};
+data=
+JSON.parse(
+JSON.stringify(defaultData)
+);
 
 sessionReps=0;
 sessionXP=0;
+
+localStorage.removeItem("reprank");
 
 save();
 
