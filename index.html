@@ -2,218 +2,193 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#080808">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#070707">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="REP//RANK">
 <title>REP//RANK</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{
+margin:0;background:#070707;color:#fff;
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
+}
+button{font:inherit}
+.app{max-width:520px;margin:auto;padding:22px 18px 110px}
+
+.top{
+display:flex;justify-content:space-between;align-items:center;
+}
+.logo{font-size:25px;font-weight:950;letter-spacing:-1.5px}
+.rank{
+padding:8px 13px;border-radius:20px;
+font-size:12px;font-weight:900;
+background:#242424;
 }
 
-body {
-  margin: 0;
-  background: #080808;
-  color: white;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+.hero{
+margin-top:24px;padding:24px;border-radius:25px;
+background:linear-gradient(145deg,#191919,#0d0d0d);
+border:1px solid #292929;
+}
+.muted{color:#888;font-size:12px;font-weight:700}
+.level{font-size:58px;font-weight:950;line-height:1;margin:5px 0}
+.xpbar{height:9px;background:#292929;border-radius:10px;overflow:hidden;margin-top:15px}
+.xpfill{height:100%;width:0;background:#fff;border-radius:10px;transition:.3s}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:13px}
+.card{
+background:#121212;border:1px solid #242424;
+border-radius:20px;padding:18px;
+}
+.card h3{margin:0;color:#777;font-size:11px}
+.card p{margin:7px 0 0;font-size:27px;font-weight:900}
+
+.section{margin-top:27px}
+.section h2{font-size:20px;margin:0 0 12px}
+
+.exercise{
+width:100%;display:flex;align-items:center;justify-content:space-between;
+background:#131313;color:#fff;border:1px solid #292929;
+border-radius:18px;padding:17px;margin-bottom:10px;
+text-align:left;cursor:pointer;
+}
+.exercise:active,.mainbtn:active,.nav button:active{transform:scale(.97)}
+.exercise strong{display:block;font-size:16px}
+.exercise span{display:block;color:#777;font-size:12px;margin-top:3px}
+
+.mainbtn{
+width:100%;border:0;border-radius:18px;padding:17px;
+background:#fff;color:#000;font-weight:900;
+cursor:pointer;margin-top:3px;
 }
 
-.app {
-  max-width: 500px;
-  margin: auto;
-  padding: 24px 18px 100px;
+.bodybox{
+height:390px;background:#111;border:1px solid #252525;
+border-radius:24px;position:relative;overflow:hidden;
+display:flex;justify-content:center;
+}
+.body{
+position:relative;width:230px;height:370px;margin-top:10px;
+}
+.head{
+position:absolute;width:58px;height:68px;border-radius:50%;
+background:#bdbdbd;left:86px;top:5px;
+}
+.neck{
+position:absolute;width:34px;height:35px;background:#a8a8a8;
+left:98px;top:55px;border-radius:8px;
+}
+.shoulderL,.shoulderR{
+position:absolute;width:58px;height:43px;background:#858585;
+top:78px;border-radius:50%;
+}
+.shoulderL{left:28px;transform:rotate(-18deg)}
+.shoulderR{right:28px;transform:rotate(18deg)}
+
+.chestL,.chestR{
+position:absolute;width:66px;height:58px;background:#777;
+top:92px;border-radius:45% 45% 35% 35%;
+}
+.chestL{left:48px}.chestR{right:48px}
+
+.bicepL,.bicepR{
+position:absolute;width:37px;height:82px;background:#656565;
+top:112px;border-radius:25px;
+}
+.bicepL{left:16px;transform:rotate(10deg)}
+.bicepR{right:16px;transform:rotate(-10deg)}
+
+.forearmL,.forearmR{
+position:absolute;width:30px;height:90px;background:#555;
+top:181px;border-radius:22px;
+}
+.forearmL{left:3px;transform:rotate(8deg)}
+.forearmR{right:3px;transform:rotate(-8deg)}
+
+.abs{
+position:absolute;width:78px;height:115px;left:76px;top:147px;
+background:linear-gradient(#686868 0 16%,#4e4e4e 16% 20%,#686868 20% 36%,#4e4e4e 36% 40%,#686868 40% 56%,#4e4e4e 56% 60%,#686868 60%);
+border-radius:18px;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.waist{
+position:absolute;width:92px;height:55px;background:#555;
+left:69px;top:235px;border-radius:0 0 35px 35px;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: 900;
-  letter-spacing: -1px;
+.quadL,.quadR{
+position:absolute;width:62px;height:125px;background:#686868;
+top:255px;border-radius:28px 28px 20px 20px;
+}
+.quadL{left:52px}.quadR{right:52px}
+
+.muscle{
+transition:.35s;
 }
 
-.rank {
-  background: #171717;
-  padding: 8px 12px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 700;
+.muscle.level1{filter:brightness(1.2)}
+.muscle.level2{filter:brightness(1.5)}
+.muscle.level3{filter:brightness(1.9)}
+
+.legend{
+display:flex;justify-content:center;gap:12px;margin-top:10px;
+font-size:10px;color:#777;
+}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#555;margin-right:4px}
+.dot.active{background:#fff}
+
+.screen{display:none}
+.screen.active{display:block}
+
+.back{
+background:none;border:0;color:#aaa;padding:0 0 18px;
+font-weight:700;cursor:pointer;
 }
 
-.hero {
-  margin-top: 28px;
-  padding: 24px;
-  border-radius: 24px;
-  background: linear-gradient(145deg, #181818, #0d0d0d);
-  border: 1px solid #252525;
+.camera{
+height:430px;background:#050505;border:1px solid #292929;
+border-radius:24px;overflow:hidden;position:relative;
+display:flex;align-items:center;justify-content:center;
+}
+video{width:100%;height:100%;object-fit:cover}
+.cameraText{
+position:absolute;bottom:20px;left:20px;right:20px;
+background:rgba(0,0,0,.7);padding:14px;border-radius:15px;
+text-align:center;font-weight:800;
 }
 
-.small {
-  color: #888;
-  font-size: 13px;
+.repcount{
+font-size:72px;font-weight:950;text-align:center;margin:20px 0;
 }
 
-.big {
-  font-size: 52px;
-  font-weight: 900;
-  margin: 5px 0;
+.progressbar{
+height:12px;background:#292929;border-radius:10px;overflow:hidden;
 }
+.progressfill{height:100%;width:0;background:#fff}
 
-.xpbar {
-  height: 9px;
-  background: #292929;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-top: 15px;
+.rankcard{
+padding:22px;border-radius:22px;border:1px solid #292929;
+background:#131313;text-align:center;
 }
+.rankname{font-size:30px;font-weight:950}
 
-.xp {
-  height: 100%;
-  width: 42%;
-  background: white;
-  border-radius: 10px;
+.nav{
+position:fixed;bottom:0;left:0;right:0;
+background:rgba(9,9,9,.95);backdrop-filter:blur(18px);
+border-top:1px solid #222;
+display:flex;justify-content:space-around;
+padding:10px 0 calc(10px + env(safe-area-inset-bottom));
+z-index:20;
 }
-
-.stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 14px;
+.nav button{
+background:none;border:0;color:#666;font-size:10px;font-weight:700;
+cursor:pointer;
 }
-
-.card {
-  background: #131313;
-  border: 1px solid #242424;
-  padding: 18px;
-  border-radius: 20px;
-}
-
-.card h3 {
-  margin: 0;
-  font-size: 14px;
-  color: #888;
-}
-
-.card p {
-  margin: 8px 0 0;
-  font-size: 27px;
-  font-weight: 800;
-}
-
-.section {
-  margin-top: 28px;
-}
-
-.section h2 {
-  font-size: 20px;
-  margin-bottom: 12px;
-}
-
-.workout {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #131313;
-  border: 1px solid #242424;
-  padding: 17px;
-  border-radius: 18px;
-  margin-bottom: 10px;
-}
-
-.workout strong {
-  display: block;
-  font-size: 16px;
-}
-
-.workout span {
-  color: #888;
-  font-size: 12px;
-}
-
-button {
-  width: 100%;
-  border: none;
-  background: white;
-  color: black;
-  padding: 17px;
-  border-radius: 18px;
-  font-size: 16px;
-  font-weight: 800;
-  margin-top: 12px;
-}
-
-button:active {
-  transform: scale(.97);
-}
-
-.body {
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #131313;
-  border: 1px solid #242424;
-  border-radius: 22px;
-  position: relative;
-  overflow: hidden;
-}
-
-.person {
-  font-size: 150px;
-  filter: grayscale(1);
-}
-
-.muscle {
-  position: absolute;
-  padding: 7px 10px;
-  background: #202020;
-  border-radius: 12px;
-  font-size: 11px;
-  color: #aaa;
-}
-
-.chest { top: 85px; }
-.shoulders { top: 55px; left: 25px; }
-.arms { top: 135px; right: 25px; }
-.core { top: 155px; }
-.legs { bottom: 30px; }
-
-.nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(10,10,10,.94);
-  border-top: 1px solid #222;
-  display: flex;
-  justify-content: space-around;
-  padding: 13px 0 calc(13px + env(safe-area-inset-bottom));
-  backdrop-filter: blur(15px);
-}
-
-.nav div {
-  color: #777;
-  font-size: 11px;
-  text-align: center;
-}
-
-.nav .active {
-  color: white;
-}
-
-.icon {
-  font-size: 20px;
-  display: block;
-  margin-bottom: 3px;
-}
+.nav button.active{color:#fff}
+.navicon{display:block;font-size:21px;margin-bottom:2px}
 </style>
 </head>
 
@@ -221,114 +196,396 @@ button:active {
 
 <div class="app">
 
-  <div class="header">
-    <div class="logo">REP//RANK</div>
-    <div class="rank">ROOKIE I</div>
-  </div>
+<!-- HOME -->
+<div id="home" class="screen active">
 
-  <div class="hero">
-    <div class="small">CURRENT LEVEL</div>
-    <div class="big">1</div>
-    <div class="small">42 / 100 XP</div>
-    <div class="xpbar">
-      <div class="xp"></div>
-    </div>
-  </div>
+<div class="top">
+<div class="logo">REP//RANK</div>
+<div id="rankBadge" class="rank">ROOKIE I</div>
+</div>
 
-  <div class="stats">
-    <div class="card">
-      <h3>TOTAL REPS</h3>
-      <p id="reps">0</p>
-    </div>
+<div class="hero">
+<div class="muted">CURRENT LEVEL</div>
+<div id="level" class="level">1</div>
+<div class="muted"><span id="xp">0</span> / 100 XP</div>
+<div class="xpbar"><div id="xpfill" class="xpfill"></div></div>
+</div>
 
-    <div class="card">
-      <h3>🔥 STREAK</h3>
-      <p>0 days</p>
-    </div>
-  </div>
+<div class="grid">
+<div class="card">
+<h3>TOTAL REPS</h3>
+<p id="totalReps">0</p>
+</div>
+<div class="card">
+<h3>🔥 STREAK</h3>
+<p id="streak">0</p>
+</div>
+</div>
 
-  <div class="section">
-    <h2>Start Training</h2>
+<div class="section">
+<h2>Train</h2>
 
-    <div class="workout">
-      <div>
-        <strong>Push-ups</strong>
-        <span>Chest • Triceps • Shoulders</span>
-      </div>
-      <strong>→</strong>
-    </div>
+<button class="exercise" onclick="openWorkout('Push-ups')">
+<div><strong>Push-ups</strong><span>Chest • Triceps • Shoulders</span></div>
+<strong>›</strong>
+</button>
 
-    <div class="workout">
-      <div>
-        <strong>Squats</strong>
-        <span>Quads • Glutes • Core</span>
-      </div>
-      <strong>→</strong>
-    </div>
+<button class="exercise" onclick="openWorkout('Squats')">
+<div><strong>Squats</strong><span>Quads • Glutes • Core</span></div>
+<strong>›</strong>
+</button>
 
-    <div class="workout">
-      <div>
-        <strong>Plank</strong>
-        <span>Core • Shoulders</span>
-      </div>
-      <strong>→</strong>
-    </div>
+<button class="exercise" onclick="openWorkout('Plank')">
+<div><strong>Plank</strong><span>Core • Shoulders</span></div>
+<strong>›</strong>
+</button>
+</div>
 
-    <button onclick="addRep()">+ ADD PUSH-UP</button>
-  </div>
+<div class="section">
+<h2>Body</h2>
 
-  <div class="section">
-    <h2>Body Progress</h2>
+<div class="bodybox">
+<div class="body">
 
-    <div class="body">
-      <div class="person">🧍</div>
-      <div class="muscle shoulders">SHOULDERS</div>
-      <div class="muscle chest">CHEST</div>
-      <div class="muscle arms">TRICEPS</div>
-      <div class="muscle core">CORE</div>
-      <div class="muscle legs">LEGS</div>
-    </div>
-  </div>
+<div class="head"></div>
+<div class="neck"></div>
+<div id="shoulders" class="muscle shoulderL"></div>
+<div id="shoulders2" class="muscle shoulderR"></div>
+<div id="chest" class="muscle chestL"></div>
+<div id="chest2" class="muscle chestR"></div>
+<div id="arms" class="muscle bicepL"></div>
+<div id="arms2" class="muscle bicepR"></div>
+<div id="arms3" class="muscle forearmL"></div>
+<div id="arms4" class="muscle forearmR"></div>
+<div id="core" class="muscle abs"></div>
+<div class="waist"></div>
+<div id="legs" class="muscle quadL"></div>
+<div id="legs2" class="muscle quadR"></div>
 
 </div>
+</div>
+
+<div class="legend">
+<span><i class="dot"></i>Untrained</span>
+<span><i class="dot active"></i>Worked</span>
+</div>
+
+</div>
+</div>
+
+
+<!-- WORKOUT -->
+<div id="workout" class="screen">
+
+<button class="back" onclick="show('home')">‹ Back</button>
+
+<h1 id="workoutTitle">Push-ups</h1>
+
+<div id="pushupArea">
+
+<div class="camera">
+<video id="video" autoplay playsinline muted></video>
+<div class="cameraText" id="cameraText">
+Camera ready — start your push-ups
+</div>
+</div>
+
+<div class="repcount" id="sessionReps">0</div>
+
+<button class="mainbtn" onclick="startCamera()">START CAMERA</button>
+<button class="mainbtn" onclick="addPushup()">+ ADD REP</button>
+
+</div>
+
+<div id="otherWorkout" style="display:none">
+<div class="rankcard">
+<div class="muted">WORKOUT</div>
+<div class="rankname" id="otherName">Squats</div>
+</div>
+<button class="mainbtn" onclick="addGenericRep()">+ COMPLETE REP</button>
+</div>
+
+</div>
+
+
+<!-- PROGRESS -->
+<div id="progress" class="screen">
+
+<h1>Progress</h1>
+
+<div class="card">
+<h3>TOTAL REPS</h3>
+<p id="progressReps">0</p>
+</div>
+
+<div class="section">
+<h2>Level</h2>
+<div class="rankcard">
+<div class="rankname" id="progressRank">ROOKIE I</div>
+<div class="muted">Keep training to rank up.</div>
+</div>
+</div>
+
+<div class="section">
+<h2>XP</h2>
+<div class="progressbar">
+<div id="progressXP" class="progressfill"></div>
+</div>
+</div>
+
+</div>
+
+
+<!-- PROFILE -->
+<div id="profile" class="screen">
+
+<h1>Profile</h1>
+
+<div class="rankcard">
+<div class="muted">CURRENT RANK</div>
+<div class="rankname" id="profileRank">ROOKIE I</div>
+</div>
+
+<div class="section">
+<button class="mainbtn" onclick="resetData()">RESET PROGRESS</button>
+</div>
+
+</div>
+
+</div>
+
 
 <div class="nav">
-  <div class="active">
-    <span class="icon">⌂</span>
-    Home
-  </div>
 
-  <div>
-    <span class="icon">🏋️</span>
-    Workout
-  </div>
+<button id="navHome" class="active" onclick="show('home')">
+<span class="navicon">⌂</span>Home
+</button>
 
-  <div>
-    <span class="icon">📈</span>
-    Progress
-  </div>
+<button id="navWorkout" onclick="show('workout')">
+<span class="navicon">🏋️</span>Workout
+</button>
 
-  <div>
-    <span class="icon">👤</span>
-    Profile
-  </div>
+<button id="navProgress" onclick="show('progress')">
+<span class="navicon">↗</span>Progress
+</button>
+
+<button id="navProfile" onclick="show('profile')">
+<span class="navicon">●</span>Profile
+</button>
+
 </div>
 
-<script>
-let reps = Number(localStorage.getItem("reps")) || 0;
 
-function update() {
-  document.getElementById("reps").textContent = reps;
+<script>
+
+let data = JSON.parse(localStorage.getItem("reprank")) || {
+reps:0,
+xp:0,
+level:1,
+streak:0,
+muscles:{
+chest:0,
+shoulders:0,
+arms:0,
+core:0,
+legs:0
+}
+};
+
+let sessionReps=0;
+let currentWorkout="Push-ups";
+
+const ranks=[
+["ROOKIE I","#777"],
+["ROOKIE II","#888"],
+["ROOKIE III","#999"],
+["GRINDER I","#aaa"],
+["GRINDER II","#bbb"],
+["ATHLETE","#ccc"],
+["BEAST","#ddd"],
+["ELITE","#eee"],
+["GOAT","#fff"]
+];
+
+function save(){
+localStorage.setItem("reprank",JSON.stringify(data));
+update();
 }
 
-function addRep() {
-  reps++;
-  localStorage.setItem("reps", reps);
-  update();
+function update(){
+
+document.getElementById("totalReps").textContent=data.reps;
+document.getElementById("progressReps").textContent=data.reps;
+document.getElementById("streak").textContent=data.streak;
+
+let rankIndex=Math.min(Math.floor(data.level/2),ranks.length-1);
+let rankName=ranks[rankIndex][0];
+
+document.getElementById("rankBadge").textContent=rankName;
+document.getElementById("progressRank").textContent=rankName;
+document.getElementById("profileRank").textContent=rankName;
+
+document.getElementById("level").textContent=data.level;
+document.getElementById("xp").textContent=data.xp;
+
+document.getElementById("xpfill").style.width=data.xp+"%";
+document.getElementById("progressXP").style.width=data.xp+"%";
+
+let muscles=data.muscles;
+
+["chest","shoulders","arms","core","legs"].forEach(m=>{
+let elements=document.querySelectorAll("#"+m+",#"+m+"2,#"+m+"3,#"+m+"4");
+elements.forEach(el=>{
+el.classList.remove("level1","level2","level3");
+if(muscles[m]>=10)el.classList.add("level1");
+if(muscles[m]>=25)el.classList.add("level2");
+if(muscles[m]>=50)el.classList.add("level3");
+});
+});
+
+}
+
+function gainXP(amount){
+
+data.xp+=amount;
+
+while(data.xp>=100){
+data.xp-=100;
+data.level++;
+}
+
+}
+
+function addPushup(){
+
+sessionReps++;
+data.reps++;
+
+gainXP(5);
+
+data.muscles.chest++;
+data.muscles.shoulders++;
+data.muscles.arms++;
+
+document.getElementById("sessionReps").textContent=sessionReps;
+
+save();
+
+}
+
+function addGenericRep(){
+
+data.reps++;
+gainXP(5);
+
+if(currentWorkout==="Squats"){
+data.muscles.legs++;
+data.muscles.core++;
+}
+
+if(currentWorkout==="Plank"){
+data.muscles.core++;
+data.muscles.shoulders++;
+}
+
+save();
+
+}
+
+async function startCamera(){
+
+try{
+
+const stream=await navigator.mediaDevices.getUserMedia({
+video:{facingMode:"user"},
+audio:false
+});
+
+document.getElementById("video").srcObject=stream;
+document.getElementById("cameraText").textContent=
+"Camera active — rep detection coming next";
+
+}catch(error){
+
+document.getElementById("cameraText").textContent=
+"Camera permission was blocked. Check Safari settings.";
+
+}
+
+}
+
+function openWorkout(name){
+
+currentWorkout=name;
+sessionReps=0;
+
+document.getElementById("workoutTitle").textContent=name;
+document.getElementById("sessionReps").textContent="0";
+
+if(name==="Push-ups"){
+
+document.getElementById("pushupArea").style.display="block";
+document.getElementById("otherWorkout").style.display="none";
+
+}else{
+
+document.getElementById("pushupArea").style.display="none";
+document.getElementById("otherWorkout").style.display="block";
+document.getElementById("otherName").textContent=name;
+
+}
+
+show("workout");
+
+}
+
+function show(id){
+
+document.querySelectorAll(".screen").forEach(s=>{
+s.classList.remove("active");
+});
+
+document.getElementById(id).classList.add("active");
+
+document.querySelectorAll(".nav button").forEach(b=>{
+b.classList.remove("active");
+});
+
+if(id==="home")document.getElementById("navHome").classList.add("active");
+if(id==="workout")document.getElementById("navWorkout").classList.add("active");
+if(id==="progress")document.getElementById("navProgress").classList.add("active");
+if(id==="profile")document.getElementById("navProfile").classList.add("active");
+
+}
+
+function resetData(){
+
+if(confirm("Reset all REP//RANK progress?")){
+
+data={
+reps:0,
+xp:0,
+level:1,
+streak:0,
+muscles:{
+chest:0,
+shoulders:0,
+arms:0,
+core:0,
+legs:0
+}
+};
+
+save();
+
+}
+
 }
 
 update();
+
 </script>
 
 </body>
 </html>
+
