@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="REP//RANK">
+<title>REP//RANK</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  background: #080808;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+}
+
+.app {
+  max-width: 500px;
+  margin: auto;
+  padding: 24px 18px 100px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.rank {
+  background: #171717;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.hero {
+  margin-top: 28px;
+  padding: 24px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #181818, #0d0d0d);
+  border: 1px solid #252525;
+}
+
+.small {
+  color: #888;
+  font-size: 13px;
+}
+
+.big {
+  font-size: 52px;
+  font-weight: 900;
+  margin: 5px 0;
+}
+
+.xpbar {
+  height: 9px;
+  background: #292929;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+.xp {
+  height: 100%;
+  width: 42%;
+  background: white;
+  border-radius: 10px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.card {
+  background: #131313;
+  border: 1px solid #242424;
+  padding: 18px;
+  border-radius: 20px;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 14px;
+  color: #888;
+}
+
+.card p {
+  margin: 8px 0 0;
+  font-size: 27px;
+  font-weight: 800;
+}
+
+.section {
+  margin-top: 28px;
+}
+
+.section h2 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.workout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #131313;
+  border: 1px solid #242424;
+  padding: 17px;
+  border-radius: 18px;
+  margin-bottom: 10px;
+}
+
+.workout strong {
+  display: block;
+  font-size: 16px;
+}
+
+.workout span {
+  color: #888;
+  font-size: 12px;
+}
+
+button {
+  width: 100%;
+  border: none;
+  background: white;
+  color: black;
+  padding: 17px;
+  border-radius: 18px;
+  font-size: 16px;
+  font-weight: 800;
+  margin-top: 12px;
+}
+
+button:active {
+  transform: scale(.97);
+}
+
+.body {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #131313;
+  border: 1px solid #242424;
+  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+}
+
+.person {
+  font-size: 150px;
+  filter: grayscale(1);
+}
+
+.muscle {
+  position: absolute;
+  padding: 7px 10px;
+  background: #202020;
+  border-radius: 12px;
+  font-size: 11px;
+  color: #aaa;
+}
+
+.chest { top: 85px; }
+.shoulders { top: 55px; left: 25px; }
+.arms { top: 135px; right: 25px; }
+.core { top: 155px; }
+.legs { bottom: 30px; }
+
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10,10,10,.94);
+  border-top: 1px solid #222;
+  display: flex;
+  justify-content: space-around;
+  padding: 13px 0 calc(13px + env(safe-area-inset-bottom));
+  backdrop-filter: blur(15px);
+}
+
+.nav div {
+  color: #777;
+  font-size: 11px;
+  text-align: center;
+}
+
+.nav .active {
+  color: white;
+}
+
+.icon {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 3px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <div class="header">
+    <div class="logo">REP//RANK</div>
+    <div class="rank">ROOKIE I</div>
+  </div>
+
+  <div class="hero">
+    <div class="small">CURRENT LEVEL</div>
+    <div class="big">1</div>
+    <div class="small">42 / 100 XP</div>
+    <div class="xpbar">
+      <div class="xp"></div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="card">
+      <h3>TOTAL REPS</h3>
+      <p id="reps">0</p>
+    </div>
+
+    <div class="card">
+      <h3>🔥 STREAK</h3>
+      <p>0 days</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Start Training</h2>
+
+    <div class="workout">
+      <div>
+        <strong>Push-ups</strong>
+        <span>Chest • Triceps • Shoulders</span>
+      </div>
+      <strong>→</strong>
+    </div>
+
+    <div class="workout">
+      <div>
+        <strong>Squats</strong>
+        <span>Quads • Glutes • Core</span>
+      </div>
+      <strong>→</strong>
+    </div>
+
+    <div class="workout">
+      <div>
+        <strong>Plank</strong>
+        <span>Core • Shoulders</span>
+      </div>
+      <strong>→</strong>
+    </div>
+
+    <button onclick="addRep()">+ ADD PUSH-UP</button>
+  </div>
+
+  <div class="section">
+    <h2>Body Progress</h2>
+
+    <div class="body">
+      <div class="person">🧍</div>
+      <div class="muscle shoulders">SHOULDERS</div>
+      <div class="muscle chest">CHEST</div>
+      <div class="muscle arms">TRICEPS</div>
+      <div class="muscle core">CORE</div>
+      <div class="muscle legs">LEGS</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="nav">
+  <div class="active">
+    <span class="icon">⌂</span>
+    Home
+  </div>
+
+  <div>
+    <span class="icon">🏋️</span>
+    Workout
+  </div>
+
+  <div>
+    <span class="icon">📈</span>
+    Progress
+  </div>
+
+  <div>
+    <span class="icon">👤</span>
+    Profile
+  </div>
+</div>
+
+<script>
+let reps = Number(localStorage.getItem("reps")) || 0;
+
+function update() {
+  document.getElementById("reps").textContent = reps;
+}
+
+function addRep() {
+  reps++;
+  localStorage.setItem("reps", reps);
+  update();
+}
+
+update();
+</script>
+
+</body>
+</html>
